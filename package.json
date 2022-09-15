@@ -10,7 +10,7 @@
     "url": "https://github.com/noop-inc/documentation/issues"
   },
   "homepage": "https://github.com/noop-inc/documentation#readme",
-  "sections": [
+  "pages": [
     "Applications",
     "Environments",
     "Builds",
