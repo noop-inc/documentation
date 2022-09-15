@@ -1,0 +1,31 @@
+{
+  "name": "@noop-inc/documentation",
+  "version": "0.0.0-automated",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noop-inc/documentation.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noop-inc/documentation/issues"
+  },
+  "homepage": "https://github.com/noop-inc/documentation#readme",
+  "sections": [
+    "Applications",
+    "Environments",
+    "Builds",
+    "Pipelines",
+    "Endpoints",
+    "Components",
+    "Resources",
+    "Routing",
+    "Deployments",
+    "Stacks",
+    "Logs",
+    "Security",
+    "Local",
+    "Manifests",
+    "Logic",
+    "Workflows"
+  ]
+}
