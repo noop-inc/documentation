@@ -1,6 +1,7 @@
 {
   "name": "@noop-inc/documentation",
   "version": "0.0.0-automated",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/noop-inc/documentation.git"
