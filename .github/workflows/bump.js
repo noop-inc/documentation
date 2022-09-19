@@ -51,27 +51,27 @@ if (!versionNumber) throw new Error('Missing versionNumber')
 console.log(`Releasing version 'v${versionNumber}' to '${distTag}' channel`)
 
 // array of before dist-tags
-const targetTags = await getDistTags()
+// const targetTags = await getDistTags()
 
 // bump version, but do not create associated tag/commit
-await exec(`npm --no-git-tag-version version ${versionNumber}`)
+// await exec(`npm --no-git-tag-version version ${versionNumber}`)
 
 // publish version with parsed dist-tag
 await exec(`npm publish --tag ${distTag}`)
 
 // insert published version into target dist-tags object
-targetTags[distTag] = versionNumber
+// targetTags[distTag] = versionNumber
 
-const afterTags = await getDistTags()
+// const afterTags = await getDistTags()
 
 // reassign distTags
-for (const [tag, version] of Object.entries(targetTags)) {
-  if (afterTags[tag] !== version) {
-    await exec(`npm dist-tag add ${packageName}@${version} ${tag}`)
-  }
-}
+// for (const [tag, version] of Object.entries(targetTags)) {
+//   if (afterTags[tag] !== version) {
+//     await exec(`npm dist-tag add ${packageName}@${version} ${tag}`)
+//   }
+// }
 
 // remove erroneously assigned dist-tags
-for (const tag in afterTags) {
-  if (!(tag in targetTags)) await exec(`npm dist-tag rm ${packageName} ${tag}`)
-}
+// for (const tag in afterTags) {
+//   if (!(tag in targetTags)) await exec(`npm dist-tag rm ${packageName} ${tag}`)
+// }
