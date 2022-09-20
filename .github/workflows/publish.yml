@@ -41,6 +41,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_READ_TOKEN }}
 
+      - name: Build Documentation JSON File
+        run: node .github/workflows/build.js
+
       - name: Bump and Publish
         run: node .github/workflows/bump.js
         env:

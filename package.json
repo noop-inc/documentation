@@ -30,6 +30,7 @@
     "concurrently": "^7.4.0",
     "eslint": "^8.23.1",
     "eslint-config-standard": "^17.0.0",
+    "marked": "^4.1.0",
     "prettier": "^2.7.1"
   },
   "eslintConfig": {
@@ -44,8 +45,5 @@
     "singleQuote": true,
     "trailingComma": "none",
     "arrowParens": "avoid"
-  },
-  "dependencies": {
-    "marked": "^4.1.0"
   }
 }
