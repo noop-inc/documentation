@@ -10,22 +10,8 @@
     "url": "https://github.com/noop-inc/documentation/issues"
   },
   "homepage": "https://github.com/noop-inc/documentation#readme",
-  "pages": [
-    "Applications",
-    "Environments",
-    "Builds",
-    "Pipelines",
-    "Endpoints",
-    "Components",
-    "Resources",
-    "Routing",
-    "Deployments",
-    "Stacks",
-    "Logs",
-    "Security",
-    "Local",
-    "Manifests",
-    "Logic",
-    "Workflows"
-  ]
+  "type": "module",
+  "dependencies": {
+    "marked": "^4.1.0"
+  }
 }
