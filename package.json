@@ -44,5 +44,8 @@
     "singleQuote": true,
     "trailingComma": "none",
     "arrowParens": "avoid"
+  },
+  "dependencies": {
+    "marked": "^4.1.0"
   }
 }
