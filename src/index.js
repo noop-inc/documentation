@@ -117,8 +117,8 @@ class Section {
     this.#page = page
     this.#entries = entries
 
-    const key = header.text.replaceAll(' ', '')
-    const existing = this.#page.sections.filter(section => section.title.replaceAll(' ', '') === key)
+    const key = header.text.replace(/\W/g, '')
+    const existing = this.#page.sections.filter(section => section.title.replace(/\W/g, '') === key)
 
     this.title = header.text
     this.key = `${key}${existing.length ? (existing.length + 1) : ''}`
