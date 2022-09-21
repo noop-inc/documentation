@@ -26,11 +26,13 @@
     "lint-eslint": "npm run common-eslint",
     "lint-prettier": "npm run common-prettier -- --check"
   },
+  "dependencies": {
+    "marked": "^4.1.0"
+  },
   "devDependencies": {
     "concurrently": "^7.4.0",
     "eslint": "^8.23.1",
     "eslint-config-standard": "^17.0.0",
-    "marked": "^4.1.0",
     "prettier": "^2.7.1"
   },
   "eslintConfig": {

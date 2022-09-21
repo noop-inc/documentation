@@ -56,6 +56,9 @@ const targetTags = await getDistTags()
 // bump version, but do not create associated tag/commit
 await exec(`npm --no-git-tag-version version ${versionNumber}`)
 
+// build static documentation json file
+await exec(`node .github/workflows/build.js`)
+
 // publish version with parsed dist-tag
 await exec(`npm publish --tag ${distTag}`)
 

@@ -1,25 +1,13 @@
-import { readFile, writeFile } from 'node:fs/promises'
+import { mkdir, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
-import { marked } from 'marked'
-import { pages } from '../../index.js'
+import documentation from '../../index.js'
 
-const getFilePath = file => (
-  fileURLToPath(new URL(`../../${file}`, import.meta.url))
+const getFilePath = path => (
+  fileURLToPath(new URL(`../../${path}`, import.meta.url))
 )
 
-const getFileContent = async file => (
-  (await readFile(getFilePath(`pages/${file}.md`))).toString()
-)
+const distPath = getFilePath('dist')
+const jsonPath = getFilePath('dist/index.json')
 
-const mdToHtml = async page => {
-  const file = page.replaceAll(' ', '')
-  const markdown = await getFileContent(file)
-  const html = marked.parse(markdown)
-
-  return { page, html }
-}
-
-const documentation = await Promise.all(pages.map(page => mdToHtml(page)))
-const json = JSON.stringify(documentation)
-
-await writeFile(getFilePath('dist.json'), json)
+await mkdir(distPath, { recursive: true })
+await writeFile(jsonPath, JSON.stringify(documentation))
