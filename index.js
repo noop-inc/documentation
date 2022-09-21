@@ -96,5 +96,4 @@ class Section {
 }
 
 const docs = new Documentation()
-console.log(JSON.stringify(docs, null, 2))
 export default docs
