@@ -47,7 +47,7 @@ class Page {
     const bodyBuffer = []
     const sectionBuffer = []
     for (const entry of this.#entries) {
-      if (entry.type === 'heading') {
+      if (entry.type === 'heading' && entry.depth <= 2) {
         if (entry.depth === 1) {
           if (!this.title) this.title = entry.text
         } else if (entry.depth === 2) {
@@ -96,4 +96,5 @@ class Section {
 }
 
 const docs = new Documentation()
+console.log(JSON.stringify(docs, null, 2))
 export default docs
