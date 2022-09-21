@@ -23,7 +23,8 @@ class Documentation {
   ]
 
   constructor () {
-    this.intro = new Page('Introduction', readFileSync(join('.', 'README.md')).toString())
+    const { version } = JSON.parse(readFileSync(join('.', 'package.json')))
+    this.version = version
     this.pages = Documentation.pages.map(pageKey => {
       const markdown = readFileSync(join('.', 'pages', `${pageKey}.md`))
       return new Page(pageKey, markdown.toString())
