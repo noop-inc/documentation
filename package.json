@@ -28,6 +28,7 @@
     "common-eslint": "eslint . --ext .js,.cjs,.mjs --cache --cache-location node_modules/.cache/.eslintcache --ignore-path .gitignore",
     "common-prettier": "prettier \"**/*.{htm,html,json,md,markdown,yml,yaml}\" --cache --ignore-path .gitignore",
     "common-sequential": "concurrently --raw --max-processes 1",
+    "build": "node .github/workflows/build.js",
     "fix": "npm run common-sequential -- npm:fix-*",
     "fix-eslint": "npm run common-eslint -- --fix",
     "fix-prettier": "npm run common-prettier -- --write",
