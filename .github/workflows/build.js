@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
-import documentation from '../../index.js'
+import documentation from '../../lib/index.js'
 
 const getFilePath = path => (
   fileURLToPath(new URL(`../../${path}`, import.meta.url))
