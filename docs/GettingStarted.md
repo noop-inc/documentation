@@ -1,6 +1,6 @@
 # Getting Started
 
-![Noop Logo](assets/logo.png)
+![Noop Logo](/docs/assets/logo.png)
 
 ## Why Noop?
 Noop is an **integrated** toolchain and platform to solve the challenges that stand between **developing** your code and **delivering** it. Our integrated approach stands alone in attempting to solve this broad set of challenges and crucially understands the **context** of you applications.
