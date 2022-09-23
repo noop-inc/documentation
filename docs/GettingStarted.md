@@ -5,3 +5,11 @@
 ## What is Noop?
 
 [Components](/docs/components)
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
