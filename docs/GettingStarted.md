@@ -3,6 +3,7 @@
 ![Noop Logo](/docs/assets/logo.png)
 
 ## Why Noop?
+
 Noop is an **integrated** toolchain and platform to solve the challenges that stand between **developing** your code and **delivering** it. Our integrated approach stands alone in attempting to solve this broad set of challenges and crucially understands the **context** of you applications.
 
 ```mermaid
@@ -11,7 +12,7 @@ flowchart LR
     direction TB
     Code[Source\nCode]-->Repository & AppManifest
     end
-    subgraph Noop 
+    subgraph Noop
     direction LR
     Repository-->Pipelines-->Build[Build & Deploy]-->Runtime[Runtime\nEnvironment]
     Diagnostics[Diagnostics &\nObservability]-->Runtime
@@ -29,4 +30,17 @@ flowchart LR
 ```
 
 ## Why Not DevOps?
+
 In DevOps, tools only attempt to address specific areas. This leaves the chalenge of selection, integration, and maintenance of each tool in the toolchain to the organizations trying to deliver software.
+
+[Components](/docs/Components.md)
+
+### Dummy SubSection One
+
+hello
+
+### Dummy SubSection Two
+
+world
+
+## Dummy End Section
