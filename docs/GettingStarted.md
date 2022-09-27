@@ -35,6 +35,8 @@ In DevOps, tools only attempt to address specific areas. This leaves the chaleng
 
 [Components](/docs/Components.md)
 
+[Tasks](/docs/Components.md#tasks)
+
 ### Dummy SubSection One
 
 hello
