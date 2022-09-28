@@ -2,9 +2,11 @@
 
 ![Noop Logo](/docs/assets/logo.png)
 
+[Quick Start Guide](/docs/QuickStart.md)
+
 ## Why Noop?
 
-Noop is an **integrated** toolchain and platform to solve the challenges that stand between **developing** your code and **delivering** it. Our integrated approach stands alone in attempting to solve this broad set of challenges and crucially understands the **context** of you applications.
+Noop is an **integrated** toolchain and platform to solve the challenges that stand between **developing** your code and **delivering** it. Our integrated approach stands alone in attempting to solve this broad set of challenges and crucially understands the holistic **context** of your applications. **Context** is power in automating and observing systems.
 
 ```mermaid
 flowchart LR
@@ -31,18 +33,6 @@ flowchart LR
 
 ## Why Not DevOps?
 
-In DevOps, tools only attempt to address specific areas. This leaves the chalenge of selection, integration, and maintenance of each tool in the toolchain to the organizations trying to deliver software.
+In DevOps, tools only attempt to address specific areas. This leaves the challenge of selection, integration, and maintenance of each tool in the toolchain to the organizations trying to deliver software. These challenges accumulate as your team and technology stack grow gradually slowing you down and increasing cost.
 
-[Components](/docs/Components.md)
-
-[Tasks](/docs/Components.md#tasks)
-
-### Dummy SubSection One
-
-hello
-
-### Dummy SubSection Two
-
-world
-
-## Dummy End Section
+This also leaves you with the burden of understanding your overall system **context**. You end up enforcing clunky naming & tagging standards, or integrating more with external tracking systems, or rely on asking the engineers that set it up.
