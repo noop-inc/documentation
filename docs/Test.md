@@ -4,6 +4,12 @@ Integer molestie purus ut lorem malesuada euismod id quis nunc. Nam vel arcu dia
 
 [Components](/docs/Components.md)
 
+[Getting Started](/docs/GettingStarted.md#getting-started)
+
+[Why Not DevOps?](/docs/GettingStarted.md#why-not-devops)
+
+[Developing with Noop Desktop](/docs/QuickStart.md#developing-with-noop-desktop)
+
 ## Morbi fermentum a
 
 Fusce molestie at tortor nec molestie. Nunc cursus a quam ac eleifend. Vestibulum nec quam vel purus tempor luctus in a risus. Aenean pretium, tellus eu accumsan dignissim, leo nibh tincidunt velit, id lacinia justo sapien vitae orci. Donec ut risus elementum, maximus augue vel, tempus enim. Quisque iaculis blandit nibh vel dapibus. Aenean eleifend sapien eget diam semper aliquet. Proin porta, tortor sit amet blandit fermentum, dui lorem tincidunt felis, at facilisis lectus ante quis nisl.
