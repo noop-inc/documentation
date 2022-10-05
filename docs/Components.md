@@ -1,10 +1,19 @@
 # Components
-The [Noop Application Model]() supports several Components you can define for how we build and run your code. You can mix and match multiple Components to meet your evolving needs. Want to add a new microservice to your architecture, easy just define a new Service. Need to run a cron job nightly, just define a Task. Developing the next version of your API in a new framework, it can be defined alongside the current version with Routes to specific which version handles which requests.
+The [Noop Application Model](/docs/Applications.md#noop-application-model) supports several Components you can define for how we build and run your code. You can mix and match multiple Components to meet your evolving needs. Want to add a new microservice to your architecture, easy just define a new Service. Need to run a cron job nightly, just define a Task. Developing the next version of your API in a new framework, it can be defined alongside the current version with Routes to specific which version handles which requests.
 
 ## Services
 Service Components run your code in horizontally-scalable containers and often handle HTTP Traffic.
 
 ```yaml
+# Simple example
+components:
+  - name: Webserver
+    type: service
+    image: nginx
+```
+
+```yaml
+# All available options
 components:
   - name: Api
     type: service

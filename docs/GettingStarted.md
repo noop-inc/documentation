@@ -1,12 +1,10 @@
 # Getting Started
 
-![Noop Logo](/docs/assets/logo.png)
-
-[Quick Start Guide](/docs/QuickStart.md)
+Jump to the [Quick Start Guide](/docs/QuickStart.md) to dive right in to using Noop!
 
 ## Why Noop?
 
-Noop is an **integrated** toolchain and platform to solve the challenges that stand between **developing** your code and **delivering** it. Our integrated approach stands alone in attempting to solve this broad set of challenges and crucially understands the holistic **context** of your applications. **Context** is power in automating and observing systems.
+Noop is an **integrated** toolchain and platform to solve the challenges that stand between **developing** your code and **delivering** it. Our integrated approach stands alone in attempting to solve this broad set of challenges with a compelling understanding of system **context**. **Context** is power in automating, observing, and diagnosing systems.
 
 ```mermaid
 flowchart LR

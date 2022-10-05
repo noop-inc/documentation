@@ -1,3 +1,0 @@
-# Endpoints
-
-## Internet Endpoints
