@@ -4,7 +4,7 @@ There are two different ways to quickly get up and running with Noop. You can do
 
 ## The NoopApp
 
-We use the term "NoopApp" to describe application source code configured to run using the [Noop Application Model](/docs/Applications.md#NoopApplicationModel). Primarily, this requires describing your application with a [AppManifest](/docs/Manifests.md#AppManifest) in your source code at `.noop/app.yml`.
+We use the term "NoopApp" to describe application source code configured to run using the [Noop Application Model](/docs/Applications.md#noop-application-model). Primarily, this requires describing your application with a [AppManifest](/docs/Manifests.md#appmanifest) in your source code at `.noop/app.yml`.
 
 ## Blueprints
 

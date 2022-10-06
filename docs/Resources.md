@@ -3,6 +3,7 @@
 Resources handle the persistent, stateful needs of your code. While [Components]() come and go as your code changes, Resources persist in your [Environment]().
 
 ## S3 Buckets
+
 ```yaml
 resources:
   - name: ImagesBucket
@@ -10,6 +11,7 @@ resources:
 ```
 
 ## DynamoDB Tables
+
 ```yaml
 resources:
   - name: Customers
@@ -19,6 +21,7 @@ resources:
 ```
 
 ## MySQL Databases
+
 ```yaml
 resources:
   - name: Inventory
@@ -26,6 +29,7 @@ resources:
 ```
 
 ## PostgreSQL Databases
+
 ```yaml
 resources:
   - name: Orders

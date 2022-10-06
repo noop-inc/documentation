@@ -83,5 +83,4 @@ resources:
     type: mysql
   - name: S3Bucket
     type: s3
-
 ```
