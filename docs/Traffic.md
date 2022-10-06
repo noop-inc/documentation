@@ -16,7 +16,7 @@ Secure, public Internet Endpoints that are hosted by our global routing network.
 
 ## Localstack
 
-Secure, internal communication between the Components of a [Stack](/docs/Stacks.md) leveraging Routing Rules. Easily available from any Component by making HTTP requests to `http://localstack`.
+Secure, internal communication between the Components of a [Stack]() leveraging Routing Rules. Easily available from any Component by making HTTP requests to `http://localstack`.
 
 ## Routing Rules
 

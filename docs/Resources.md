@@ -1,6 +1,6 @@
 # Resources
 
-Resources handle the persistent, stateful needs of your code. While [Components]() come and go as your code changes, Resources persist in your [Environment]().
+Resources handle the persistent, stateful needs of your code. While [Components](/docs/Components.md) come and go as your code changes, Resources persist in your [Environment](/docs/Environments.md).
 
 ## S3 Buckets
 

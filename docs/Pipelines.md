@@ -1,6 +1,6 @@
 # Pipelines
 
-Pipelines enable you to run [Workflows](/docs/Workflows.md) in response to [Repository Events](/docs/Applications.md#linked-repositories). This includes continuous integration and delivery (CI/CD) as well as so much more. They are a great way to have Noop automatically respond to changes in your [Source Code](/docs/Builds.md#source-code)
+Pipelines enable you to run [Workflows]() in response to [Repository Events](/docs/Applications.md#linked-repositories). This includes continuous integration and delivery (CI/CD) as well as so much more. They are a great way to have Noop automatically respond to changes in your [Source Code](/docs/Builds.md#source-code)
 
 ## Templates
 
