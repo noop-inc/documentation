@@ -37,7 +37,7 @@
     "lint-prettier": "npm run common-prettier -- --check"
   },
   "dependencies": {
-    "marked": "^4.1.0"
+    "marked": "^4.1.1"
   },
   "devDependencies": {
     "concurrently": "^7.4.0",
