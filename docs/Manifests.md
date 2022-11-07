@@ -2,7 +2,7 @@
 
 ## AppManifest Specification
 
-The AppManifest YAML file defines your application's components, routes, resources, and lifecycle events.  
+The AppManifest YAML file defines your application's components, routes, resources, and lifecycle events.
 
 ### Components top-level element
 
@@ -19,17 +19,16 @@ components:
 <!-- <details> -->
 
 #### name
+
 Defines the name of the component. Each component `name` must be unique. **Required**.
 
 #### type
 
 Specifies the type of the component; must be one of `service`, `task`, or `static`. **Required**.
 
-
 #### image
 
 Sets the base image from which the component is built. **Required**.
-
 
 #### port
 
@@ -37,21 +36,21 @@ The container port to expose.
 
 #### root
 
-Establishes the docker build context, setting the host working directory for `copy` and `run` build step commands. 
+Establishes the docker build context, setting the host working directory for `copy` and `run` build step commands.
 
 #### build
 
- Defines a series of `steps` to be executed in creating the component image. Steps are defined as an array of mappings, where the mapping key is the step instruction and mapping value are arguments for that instruction. 
+Defines a series of `steps` to be executed in creating the component image. Steps are defined as an array of mappings, where the mapping key is the step instruction and mapping value are arguments for that instruction.
 
- Steps:
+Steps:
 
- ##### directory
+##### directory
 
- Sets the working directory of the image for build step commands that follow. 
+Sets the working directory of the image for build step commands that follow.
 
 ##### copy
 
- Copies files from the host to the image. The copy step can take both string and array types as an argument. Strings can use the wildcard symbol '*' to pattern match files. Arrays must have at least one element, where elements represent individual files to be copied from host to image. The copy step object can be used in conjunction with the optional `destination` key to specify the image directory in which files are to be copied.
+Copies files from the host to the image. The copy step can take both string and array types as an argument. Strings can use the wildcard symbol '\*' to pattern match files. Arrays must have at least one element, where elements represent individual files to be copied from host to image. The copy step object can be used in conjunction with the optional `destination` key to specify the image directory in which files are to be copied.
 
 ```yaml
 ...
@@ -63,7 +62,7 @@ Establishes the docker build context, setting the host working directory for `co
         - copy: [index.js, dynamodb.js, s3.js]
           destination: ./
     ...
-``` 
+```
 
 ##### run
 
@@ -80,7 +79,7 @@ Specifies an image to be used for multi-stage builds. The optional `stage` key c
         - image: node:10
           stage: server-build
       ...
-``` 
+```
 
 #### runtime
 
@@ -90,10 +89,9 @@ Specifies an image to be used for multi-stage builds. The optional `stage` key c
 
 Resources that a component will use must be defined in the `resources` property of a component's runtime section. Resources are an array of strings, where the string value corresponds to the name of the resource as defined in the AppManifest resources (provide link) section.
 
-
 ```yaml
 ...
-    runtime: 
+    runtime:
       resources:
         - DynamoDBTable
         - S3Bucket
@@ -105,7 +103,7 @@ resources:
     hashKeyType: S
   - name: S3Bucket
     type: s3
-``` 
+```
 
 ##### entrypoint
 
@@ -113,7 +111,7 @@ Defines a container ENTRYPOINT instruction used to specify a command that will b
 
 ##### command
 
-Defines a container CMD instruction used to specify a command that will be executed when the container starts. If used in conjunction with `entrypoint`, the value of `command` specifies arguments that will be passed to the `entrypoint` command. 
+Defines a container CMD instruction used to specify a command that will be executed when the container starts. If used in conjunction with `entrypoint`, the value of `command` specifies arguments that will be passed to the `entrypoint` command.
 
 ##### cpu
 
@@ -128,7 +126,7 @@ Used to specify the memory (in MB) of a component instance.
 Defines variables to be used at runtime. Each variable is a mapping object, where the object key is the variable name and object value is the variable value. Variables can make use of Noop logic to access object values within certain scopes. A common pattern to assign a variable the value of a resource property is to use the `$resources` scope object with the corresponding resource object and property.
 
 ```yaml
-    runtime: 
+    runtime:
     ...
       variables:
         S3_BUCKET:
@@ -136,12 +134,11 @@ Defines variables to be used at runtime. Each variable is a mapping object, wher
         S3_ENDPOINT:
           $resources: ImagesBucket.endpoint
         LOG_LEVEL: info
-``` 
+```
 
 <br>
  
 <!-- <details> -->
-
 
 <!-- </details> -->
 
@@ -183,11 +180,9 @@ components:
 `maximum` The maximum number of instances present in a stack at all times. When a scale up event occurs, the number of instances in the stack will never be greater than this number
 
 ##### **target**
-`target` 
+`target`
 
 -->
-
-
 
 ## AppManifest Sample
 
