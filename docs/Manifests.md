@@ -4,8 +4,6 @@
 
 The AppManifest YAML file defines your application's components, routes, resources, and lifecycle events.  
 
-
-
 ### Components top-level element
 
 An AppManifest must declare a `components` root element as a list of objects containing configuration for each component in your application. At least one component object must be defined.
