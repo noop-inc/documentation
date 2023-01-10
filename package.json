@@ -37,13 +37,13 @@
     "lint-prettier": "npm run common-prettier -- --check"
   },
   "dependencies": {
-    "marked": "^4.1.1"
+    "marked": "^4.2.5"
   },
   "devDependencies": {
-    "concurrently": "^7.5.0",
-    "eslint": "^8.26.0",
+    "concurrently": "^7.6.0",
+    "eslint": "^8.31.0",
     "eslint-config-standard": "^17.0.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.8.2"
   },
   "eslintConfig": {
     "root": true,
