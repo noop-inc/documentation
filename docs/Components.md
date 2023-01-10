@@ -97,6 +97,6 @@ components:
 ```
 
 At the end of building your Static Component, Noop will extract all the files and subdirectories in the current working directory.
-Notice how in the example above, the Build starts in the `/site` directory, 
+Notice how in the example above, the Build starts in the `/site` directory,
 runs the compilation commands, and then moves into the `dist/` subdirectory where the assets were saved.
 The resulting Static will host all the files from the `/site/dist` directory.
