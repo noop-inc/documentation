@@ -1,6 +1,13 @@
-# Manifests
+---
+layout: ../../layouts/Layout.astro
+title: app.yml
+description: Overview of the Noop app.yml file, your application definition.
+section: Reference
+order: 4
+---
 
-## AppManifest Specification
+
+## Specification
 
 The AppManifest YAML file defines your application's components, routes, resources, and lifecycle events.
 

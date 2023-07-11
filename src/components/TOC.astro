@@ -1,0 +1,33 @@
+<!-- This component is derived from work by: https://github.com/theisel/astro-toc -->
+
+---
+const { headings, depth = 1, ...props } = Astro.props;
+const { use: Cmp, class: className } = props;
+const as = props.as ?? props.style ?? "bullet";
+const maxDepth = Number(props.maxDepth);
+
+const hasMaxDepth = Number.isInteger(maxDepth);
+
+const heds = (headings || []).filter((it) => it.depth === depth);
+---
+
+<ol data-astro-toc={depth} class={props.class}>
+  {
+  heds.map((it, idx) => {
+  const nextHeading = heds[idx + 1];
+
+  const subHeadings = headings.slice(
+  headings.indexOf(it) + 1,
+  nextHeading ? headings.indexOf(nextHeading) : undefined
+  );
+      const hasSubHeadings = subHeadings.length > 0;
+      const shouldRenderSubHeadings = hasMaxDepth ? maxDepth > it.depth : hasSubHeadings;
+      return (
+  <li data-astro-toc={depth}>
+    <a href={'#' + it.slug}>{it.text}</a>
+    {shouldRenderSubHeadings ? <Astro.self class="py-3.5 pl-3" headings={subHeadings} depth={it.depth + 1} {...props} /> : null}
+  </li>
+  );
+  })
+  }
+</ol>
