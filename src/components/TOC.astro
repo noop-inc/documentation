@@ -23,9 +23,9 @@ const heds = (headings || []).filter((it) => it.depth === depth);
       const hasSubHeadings = subHeadings.length > 0;
       const shouldRenderSubHeadings = hasMaxDepth ? maxDepth > it.depth : hasSubHeadings;
       return (
-  <li data-astro-toc={depth}>
+  <li data-astro-toc={depth} class="my-3 pl-3">
     <a href={'#' + it.slug}>{it.text}</a>
-    {shouldRenderSubHeadings ? <Astro.self class="py-3.5 pl-3" headings={subHeadings} depth={it.depth + 1} {...props} /> : null}
+    {shouldRenderSubHeadings ? <Astro.self class="" headings={subHeadings} depth={it.depth + 1} {...props} /> : null}
   </li>
   );
   })

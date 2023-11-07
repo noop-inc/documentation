@@ -1,3 +1,12 @@
+---
+layout: ../../layouts/Layout.astro
+title: Quick Start Guide
+description: Get up and running on Noop in 5 minutes
+section: Guides
+order: 1
+---
+
+
 # Quick Start Guide
 
 There are two different ways to quickly get up and running with Noop. You can download [Noop Desktop](https://noop.dev/download) (available on Mac, Linux, and Windows) to start developing and running NoopApps.

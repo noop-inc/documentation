@@ -11,9 +11,6 @@ export interface Props {
 }
 
 const { content = {}, headings } = Astro.props;
-
-
-
 ---
 
 <!DOCTYPE html>
@@ -22,36 +19,58 @@ const { content = {}, headings } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/noop-logo-plain.svg" />
-    
     <title>{content.title}</title>
   </head>
   <body class="h-full">
     <div class="min-h-full max-w-screen-2xl m-auto">
-      <header class="">
-        <div class="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <header class="flex lg:block items-center justify-between">
+        <div class="flex h-16 items-center justify-start lg:justify-between px-4 sm:px-6 lg:px-8">
           <div class="flex items-center">
             <img class="h-11" src="/noop-logo-plain.svg" alt="Noop Inc.">
-            <span class="font-mono font-bold text-xl text-white pl-2">noop_</span>
+            <span class="hidden lg:block font-mono font-bold text-xl text-white pl-2">noop_</span>
             <span class="font-sans text-xl uppercase font-bold text-white pl-4 ml-4 border-l border-lime-500">Docs</span>
           </div>
 
-          <div class="flex items-center gap-x-8">
+          <a href="/home" class="rounded-md bg-noop ml-6 lg:ml-0 px-2 py-1.5 text-xs lg:px-3.5 lg:py-2.5 lg:text-sm font-mono uppercase text-white shadow-sm">Noop Home</a>
 
-            <a href="/home" class="rounded-md bg-noop px-3.5 py-2.5 text-sm font-mono uppercase text-white shadow-sm">Noop Home</a>
+        </div>
 
-          </div>
+        <div class="lg:hidden p-4">
+          <button type="button" id="open-sidebar" class="p-1.5 border border-gray-600 bg-gray-800 rounded text-gray-700">
+            <span class="sr-only">Open sidebar</span>
+            <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
+
+          <button type="button" id="close-sidebar" class="p-1.5 border border-gray-600 bg-gray-800 rounded text-gray-700 hidden">
+            <span class="sr-only">Close sidebar</span>
+            <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       </header>
+
+
+      <!-- Mobile sidebar content -->
+      <div class="absolute lg:hidden w-full bg-black z-10 p-6 bg-gray-800 hidden" id="mobile-menu">
+        <Navigation />
+      </div>
+
       <div class="grid grid-cols-12 gap-4 px-4 sm:px-6 lg:px-8 py-8">
-        <div class="flex col-span-3 border-r border-gray-700">
-          <!-- Sidebar left -->
-          <Navigation />
+
+
+        <div class="hidden lg:block col-span-3 border-r-8 border-gray-700">
+          <div class="sticky top-8">
+            <!-- Sidebar left -->
+            <Navigation />
+          </div>
         </div>
 
 
-        <main class="col-span-6">
-          
-          <div class="py-10 lg:py-6">
+        <main class="lg:col-span-6 col-span-12">
+          <div class="">
             <article class="">
               <header class="">
                 <h3 class="text-xs font-mono uppercase text-fuchsia-500">
@@ -77,13 +96,13 @@ const { content = {}, headings } = Astro.props;
 
               <ContentFooter />
             </article>
-            
           </div>
         </main>
 
-        <aside class="border-l border-gray-700 col-span-3 pl-4">
+        <aside class="border-l border-gray-700 col-span-3 pl-4 hidden lg:block">
           <!-- Secondary column (hidden on smaller screens) -->
-          <div class="sticky top-0 text-base lg:text-sm">
+          <div class="sticky top-8 text-base lg:text-sm">
+            <h4 class="font-bold text-base">On this page</h4>
             <TOC headings={headings} maxDepth={4} depth={2} />
           </div>
         </aside>
@@ -92,5 +111,21 @@ const { content = {}, headings } = Astro.props;
   </body>
 </html>
 
-<style is:global>
-</style>
+<script>
+ const openSidebar = document.getElementById('open-sidebar')
+ const closeSidebar = document.getElementById('close-sidebar')
+ const mobileMenu = document.getElementById('mobile-menu')
+
+ openSidebar.addEventListener('click', () => {
+   openSidebar.classList.add('hidden');
+   closeSidebar.classList.remove('hidden');
+
+   mobileMenu.classList.remove('hidden');
+ })
+
+ closeSidebar.addEventListener('click', () => {
+   openSidebar.classList.remove('hidden');
+   closeSidebar.classList.add('hidden');
+   mobileMenu.classList.add('hidden');
+ })
+</script>

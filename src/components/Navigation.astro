@@ -2,30 +2,35 @@
 ---
 const docs = await Astro.glob('../pages/docs/*.md');
 
-
+const sections = ['Guides', 'Reference']
 /* How is this sorted? */
 const groupedDocs = docs.reduce((docs, object) => {
   const property = object.frontmatter.section;
   docs[property] = docs[property] || [];
-
   docs[property].push(object);
-
   return docs;
 }, {});
+
+
+Object.keys(groupedDocs).forEach(k => {
+  groupedDocs[k].sort((a, b) => {
+    return (a.frontmatter.order || 0) - (b.frontmatter.order || 0)
+  })
+})
 ---
 
-<nav class="sticky top-[2.5rem] w-64 pr-8 text-base lg:text-sm">
-  <ul role="list" class="-ml-0.5 h-[calc(100vh-4.5rem)] overflow-y-auto pl-0.5 space-y-8">
+<nav class="pr-8 text-base lg:text-sm">
+  <ul role="list" class="-ml-0.5  overflow-y-auto pl-0.5 space-y-8">
     {
-    Object.entries(groupedDocs).map((section) => (
+    sections.map((section) => (
     <li>
-      <h3 class="font-semibold tracking-tight">
-        {section[0]}
+      <h3 class="font-bold">
+        {section}
       </h3>
 
       <ul role="list" class="pl-3 mt-3 space-y-2">
         {
-        section[1].map((item) => (
+        groupedDocs[section].map((item) => (
         <li>
           <a href={item.url}>
             {item.frontmatter.title}

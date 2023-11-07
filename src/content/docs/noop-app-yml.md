@@ -1,19 +1,19 @@
 ---
 layout: ../../layouts/Layout.astro
-title: app.yml
+title: Noop app.yml
 description: Overview of the Noop app.yml file, your application definition.
 section: Reference
-order: 4
+order: 5
 ---
 
 
 ## Specification
 
-The AppManifest YAML file defines your application's components, routes, resources, and lifecycle events.
+The Noop app.yml file defines your application's components, routes, resources, and lifecycle events.
 
-### Components top-level element
+### components
 
-An AppManifest must declare a `components` root element as a list of objects containing configuration for each component in your application. At least one component object must be defined.
+The app.yml must declare a `components` root element as a list of objects containing configuration for each component in your application. At least one component object must be defined.
 
 ```yaml
 components:
@@ -133,6 +133,7 @@ Used to specify the memory (in MB) of a component instance.
 Defines variables to be used at runtime. Each variable is a mapping object, where the object key is the variable name and object value is the variable value. Variables can make use of Noop logic to access object values within certain scopes. A common pattern to assign a variable the value of a resource property is to use the `$resources` scope object with the corresponding resource object and property.
 
 ```yaml
+...
     runtime:
     ...
       variables:
@@ -143,55 +144,114 @@ Defines variables to be used at runtime. Each variable is a mapping object, wher
         LOG_LEVEL: info
 ```
 
-<br>
- 
-<!-- <details> -->
 
-<!-- </details> -->
+### resources
 
-<!-- </details> -->
+Resources include Postgres, MySQL, Redis, Amazon DynamoDB and Amazon S3. To create a resource in your Application, specify the name, type and optional configuration parameters.
 
-<!--
-|              **Field**                   | **Type** |                                      **Description**                                      |
-|:----------------------------------------:|:--------:|:-----------------------------------------------------------------------------------------:|
-|  <span id="components-name">name</span>     | `string` |                 **_REQUIRED_** The name of the component; must be unique.                 |
-|  <span id="components-type">type</span>     | `string` | **_REQUIRED_** The type of the component; must be one of `service`, `task`, or `static`.  |
-| <span id="components-image">image</span>    | `string` |                                 **_REQUIRED_** The image                                  |
-| <span id="components-port">port</span>      | `int`    |                                 _OPTIONAL_ The container port to expose.                  |
-| <span id="components-port">root</span>      | `string` |  _OPTIONAL_ Sets the working directory for **copy** and **run** build step commands       |
-| <span id="components-scaling">scaling</span>| `string` |  _OPTIONAL_ Sets the working directory for **copy** and **run** build step commands       |
-
--->
-
-<!--
-#### **scaling**
-
-`scaling` Sets scaling policies for component instances in a stack.
+Here is a minimal definition of each resource type:
 
 ```yaml
-components:
-  - name: webserver
-    type: service
-    image: nginx
-    port: 80
-    scaling:
-      # minimum: 1
-      # maximum: 3
-      target: 2
-      # autopilot: true
+...
+resources:
+  - name: DynamoDBTable
+    type: dynamodb
+    hashKeyName: id
+    hashKeyType: S
+  - name: S3Bucket
+    type: s3
+  - name: EphemeralCache
+    type: redis
+  - name: RecordsDB
+    type: postgres
+  - name: OtherDB
+    type: mysql
 ```
-##### **minimum**
-`minimum` The minimum number of instances present in a stack at all times. When a scale down event occurs, the number of remaining instances in the stack will never be less than this number.
 
-##### **maximum**
-`maximum` The maximum number of instances present in a stack at all times. When a scale up event occurs, the number of instances in the stack will never be greater than this number
+#### name
 
-##### **target**
-`target`
+Defines the name of the resource. **Required**.
 
--->
+#### type
 
-## AppManifest Sample
+One of `dynamodb`, `postgres`, `mysql`, `s3` or `redis` **Required**.
+
+#### How to referenece a resource from Application components
+
+To associate the resources with your Application components (Services and Tasks) define them on the `component.[n].runtime.resources` property.
+
+```yaml
+...
+    runtime:
+      resources:
+        - DynamoDBTable
+        - S3Bucket
+    ...
+resources:
+  - name: DynamoDBTable
+    type: dynamodb
+    hashKeyName: id
+    hashKeyType: S
+  - name: S3Bucket
+    type: s3
+```
+
+When specifying a Dynamo table there are a couple other required and optional properties.
+
+#### hashKeyName (Dynamo-specific)
+
+Alpha-numeric name `-` and `_` are allowed. **Required**.
+
+#### hashKeyType (Dynamo-specific)
+
+One of `S`, `N` `B` **Required**.
+
+#### rangeKeyName (Dynamo-specific)
+
+Alpha-numeric name `-` and `_` are allowed.
+
+#### rangeKeyType (Dynamo-specific)
+
+One of `S`, `N` `B`
+
+### routes
+
+Routes get internet traffic to your Application. Specifically, Routes connect your Application's Service and Static components to the internet.
+
+#### target
+
+The name of the `static` or `service` component to send Traffic to. **Required**
+
+#### pattern 
+
+String representing the URL path portion to match when forwarding Traffic. Accepts `/*` and `/**` notation.
+
+#### internal
+
+Boolean. Determines whether the route is publicly accessible.
+
+#### methods
+
+Array of HTTP methods, `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS` 
+
+#### condition
+
+Uses Noop Logic. Other conditional rules to determine if traffic should resolve to target.
+
+### lifecycles
+
+Lifecycle events allow your Application to run a task or group of tasks when the specified event is triggered.
+
+#### event
+
+One of `BeforeTraffic` or `BeforeServices`. **Required**
+
+#### components
+
+Array of `task` Components. Components are executed in series. **Required**
+
+
+## Complete app.yml Example
 
 Expressed in Source Code at `.noop/app.yml`
 
