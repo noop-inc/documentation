@@ -1,11 +1,11 @@
-
 ---
-const docs = await Astro.glob('../pages/docs/*.md');
+import { getCollection } from 'astro:content';
+const docs = [].concat(await getCollection('docs'));
 
-const sections = ['Guides', 'Reference']
+const sections = ['getting started', 'core concepts', 'guides', 'components', 'resources', 'reference']
 /* How is this sorted? */
 const groupedDocs = docs.reduce((docs, object) => {
-  const property = object.frontmatter.section;
+  const property = object.data.section;
   docs[property] = docs[property] || [];
   docs[property].push(object);
   return docs;
@@ -14,7 +14,7 @@ const groupedDocs = docs.reduce((docs, object) => {
 
 Object.keys(groupedDocs).forEach(k => {
   groupedDocs[k].sort((a, b) => {
-    return (a.frontmatter.order || 0) - (b.frontmatter.order || 0)
+    return (a.data.order || 0) - (b.data.order || 0)
   })
 })
 ---
@@ -22,9 +22,9 @@ Object.keys(groupedDocs).forEach(k => {
 <nav class="pr-8 text-base lg:text-sm">
   <ul role="list" class="-ml-0.5  overflow-y-auto pl-0.5 space-y-8">
     {
-    sections.map((section) => (
+    sections.filter(s => !!groupedDocs[s]).map((section) => (
     <li>
-      <h3 class="font-bold">
+      <h3 class="font-bold capitalize">
         {section}
       </h3>
 
@@ -32,8 +32,8 @@ Object.keys(groupedDocs).forEach(k => {
         {
         groupedDocs[section].map((item) => (
         <li>
-          <a href={item.url}>
-            {item.frontmatter.title}
+          <a href={`/docs/${item.slug}`}>
+            {item.data.title}
           </a>
         </li>
         ))

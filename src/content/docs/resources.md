@@ -1,18 +1,17 @@
 ---
-layout: ../../layouts/Layout.astro
-title: Resources overview
+layout: ../../layouts/Doc.astro
+title: Resources
+slug: "resources"
 description: Overview of Resources available to Noop Applications
-section: Reference
+section: "core concepts"
 order: 5
 ---
-
-# Resources
 
 Resources are for storing state within your Applications, whether that's Amazon S3 to store image files or a relational database to store customer orders. 
 
 A Resource is created at the Environment level and can be attached to any Component in the Environment.
 
-As you create new Environments for your Application, Noop automatically creates the necessary Resources defined in your [app.yml]().
+As you create new Environments for your Application, Noop automatically creates the necessary Resources defined in your [app.yml](/docs/application-manifest-app-yml/).
 
 Resources include Postgres, MySQL, Redis, Amazon DynamoDB and Amazon S3. To create a resource in your Application, specify the name, type and other Resource-specific configuration parameters.
 

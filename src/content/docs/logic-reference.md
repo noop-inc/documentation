@@ -1,8 +1,8 @@
 ---
-layout: ../../layouts/Layout.astro
 title: Logic Reference
 description: Reference of Noop Logic Operators
-section: Reference
+section: reference
+layout: "../../layouts/Doc.astro"
 order: 5
 ---
 

@@ -39,16 +39,16 @@ EDITED IDEAL:
 
 HELP CENTER:
 
-Noop Notifications are a tool for staying informed about application issues, including Build, Deployment, and Pipeline failures. Access this feature in the Noop Console, under Notification menu on your Organization, Application, and Environment dashboards. Click the 🔔 icon to toggle the relevant Notifications.
+[Noop Notifications](https://noop.dev/docs/notifications) are a tool for staying informed about application issues, including Build, Deployment, and Pipeline failures. Access this feature in the Noop Console, under Notification menu on your Organization, Application, and Environment dashboards. Click the 🔔 icon to toggle the relevant Notifications.
 
-Ensure Correct Email Settings
+# Ensure Correct Email Settings
 
 Notifications function via email and in-app messages within the Engagement Center. For this to work, confirm that a valid email address is associated with your user account.
 
-Manage Notification Volume
+# Manage Notification Volume
 
 Enable Notifications at the Organization or Application level to receive alerts for every Application and Environment, or every Environment within an Application, respectively. This can lead to numerous messages, so consider carefully which level suits your needs best to control the volume of alerts.
 
-Coordinate Team Notification Preferences
+# Coordinate Team Notification Preferences
 
 Remember, Notifications are user-specific. If not all team members have activated their Notifications, they might miss important alerts. Ensure all team members have correctly set up their Notification preferences, fostering effective team communication and quick issue resolution.

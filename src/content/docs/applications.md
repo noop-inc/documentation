@@ -1,13 +1,14 @@
 ---
-layout: ../../layouts/Layout.astro
+
+layout: "../../layouts/Doc.astro"
 title: Applications
-description: Overview of the Noop app.yml file, your application definition.
-section: Reference
-order: 1
+slug: applications
+description: ""
+section: core concepts
+order: 3
+
 ---
 
-
-# Applications
 
 Applications are software components that run together. Noop Applications map 1:1 with a code repository. An Application can be a single service (possibly with a database requirement) or a monorepo that includes a collection of services, tasks and resources.
 
@@ -27,7 +28,7 @@ Each component must define its own build process. The container in the final bui
 
 ## Source Code
 
-Applications can be linked to a Repository to integrate with its code and events automatically. Linked Resositories connect Source Code to Builds and trigger [Pipelines](/pipelines).
+Applications can be linked to a Repository to integrate with its code and events automatically. Linked Resositories connect Source Code to Builds and trigger [Pipelines](/docs/pipelines/).
 
 ## Environments
 
