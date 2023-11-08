@@ -5,34 +5,29 @@ const { content = {}, headings } = Astro.props
 ---
 
 <Layout>
-
-
   <main class="lg:col-span-6 col-span-12">
-    <div class="">
-      <article class="">
+    <article>
+      <header>
+        <h3 class="text-xs font-mono uppercase text-fuchsia-500">
+          {content.section}
+        </h3>
 
-        <header class="">
-          <h3 class="text-xs font-mono uppercase text-fuchsia-500">
-            {content.section}
-          </h3>
+        <h1 class="text-5xl pb-8 font-bold">
+          {content.title}
+        </h1>
+      </header>
 
-          <h1 class="text-5xl pb-8 font-bold">
-            {content.title}
-          </h1>
-        </header>
+      <p class="mt-2  pb-8">
+        {content.description}
+      </p>
 
-        <p class="mt-2  pb-8">
-          {content.description}
-        </p>
-
-        <div class="prose prose-invert text-white">
-          <slot />
-        </div>
-
-      </article>
-    </div>
+      <div class="prose prose-invert text-white">
+        <slot />
+      </div>
+    </article>
   </main>
 
+  { headings.length ?
   <aside class="border-l border-gray-700 col-span-3 pl-4 hidden lg:block">
     <!-- Secondary column (hidden on smaller screens) -->
     <div class="sticky top-8 text-base lg:text-sm">
@@ -40,7 +35,7 @@ const { content = {}, headings } = Astro.props
       <TOC headings={headings} maxDepth={4} depth={2} />
     </div>
   </aside>
-
+  : '' }
 
 
 </Layout>
