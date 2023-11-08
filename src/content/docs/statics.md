@@ -1,13 +1,11 @@
 ---
-
-title: "Statics"
-description: "Hosting static websites and single page apps on Noop"
-slug: "statics"
-section: "components"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Statics'
+description: 'Hosting static websites and single page apps on Noop'
+slug: 'statics'
+section: 'components'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 13
-
 ---
 
 Static Components are for hosting static websites and assets. A Static Component can be configured to serve single page applications (SPAs), or a directory (folder) of files.
@@ -33,7 +31,7 @@ Statics are a good choice for hosting static sites and SPAs. Noop supports all m
 Static Components are defined in the Application Manifest (app.yml). Statics require an alphanumeric `name`, a `type` of `static` and an `image` for executing the asset build process.
 
 ```
-components:  
+components:
   - name: StaticApp
     type: static
     image: node:18-alpine

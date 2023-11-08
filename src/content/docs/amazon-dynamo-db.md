@@ -1,13 +1,11 @@
 ---
-
-title: "Amazon DynamoDB"
-description: "How to connect NoSQL database Amazon Dynamo to Noop Components."
-slug: "amazon-dynamo-db"
-section: "resources"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Amazon DynamoDB'
+description: 'How to connect NoSQL database Amazon Dynamo to Noop Components.'
+slug: 'amazon-dynamo-db'
+section: 'resources'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 20
-
 ---
 
 The Amazon DynamoDB Resource is a NoSQL database solution for the Noop platform. It provides a no-configuration way to connect application services to the “Fast and flexible NoSQL database service for any scale,” [DynamoDB](https://aws.amazon.com/pm/dynamodb/).

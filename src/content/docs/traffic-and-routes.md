@@ -1,13 +1,11 @@
 ---
-
-title: "Traffic and Routes"
-description: "How to Route Traffic from the internet and within your Noop Apps"
-slug: "traffic-and-routes"
-section: "core concepts"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Traffic and Routes'
+description: 'How to Route Traffic from the internet and within your Noop Apps'
+slug: 'traffic-and-routes'
+section: 'core concepts'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 4
-
 ---
 
 # Overview
@@ -129,7 +127,7 @@ routes:
       component: Website
 ```
 
-Here any Traffic request under the **`/api/**`** Route will resolve to the **`ApiService`** Component, all other requests will resolve to the **`Website` **Component.
+Here any Traffic request under the **`/api/**`** Route will resolve to the **`ApiService`** Component, all other requests will resolve to the **`Website` \*\*Component.
 
 Routes can be configured to match requests on path patterns, HTTP methods, and Logic conditions.
 
@@ -173,7 +171,7 @@ routes:
       component: ApiService
 ```
 
-In the example above any Traffic requests for the pattern **`/__internal__/**` **made from the public Internet will resolve to the **`ApiService`** Route because **`PrivateApiService`** is not available publicly. However, the ApiService Component will be able to make requests to the **`/__internal__/**`** pattern by using the **`http://localstack/__internal__/`** URL.
+In the example above any Traffic requests for the pattern **`/**internal**/**` **made from the public Internet will resolve to the **`ApiService`** Route because **`PrivateApiService`** is not available publicly. However, the ApiService Component will be able to make requests to the **`/**internal**/**`** pattern by using the **`http://localstack/__internal__/`** URL.
 
 ## Localstack
 

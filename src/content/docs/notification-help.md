@@ -1,4 +1,4 @@
-PROMPT: 
+PROMPT:
 
 I would like a variation of an article describing a software product feature.
 
@@ -33,7 +33,6 @@ The notification settings are level-specific and propagate downwards. If you're 
 Involving All Team Members
 
 Remember, notification settings are user-specific. If all team members need to be informed about failures, each must configure their own notification settings. Ensure everyone understands this process to guarantee seamless information flow.
-
 
 EDITED IDEAL:
 

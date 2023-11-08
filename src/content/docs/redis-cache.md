@@ -1,13 +1,11 @@
 ---
-
-title: "Redis Cache"
-description: "How to create and use Redis Resources within Noop"
-slug: "redis-cache"
-section: "resources"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Redis Cache'
+description: 'How to create and use Redis Resources within Noop'
+slug: 'redis-cache'
+section: 'resources'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 16
-
 ---
 
 The Redis Resource is a high-speed, in-memory database storage solution for Noop Cloud and Noop Desktop. It provides a way to connect your software Components to the in-memory database, [Redis](https://redis.com/), without the need to configure individual database settings.

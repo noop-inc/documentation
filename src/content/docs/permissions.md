@@ -1,13 +1,11 @@
 ---
-
-title: "Permissions"
-description: "Controlling what Users and Teams can do within the Noop Console"
-slug: "permissions"
-section: "core concepts"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Permissions'
+description: 'Controlling what Users and Teams can do within the Noop Console'
+slug: 'permissions'
+section: 'core concepts'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 8
-
 ---
 
 Permissions control which Users can do what within an Organization. All User actions, including viewing pages within Noop, are associated with a Grant. When the User has a Grant, they can perform the associated action.

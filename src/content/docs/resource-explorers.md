@@ -1,13 +1,11 @@
 ---
-
-title: "Resource Explorers"
-description: "Resource Explorers are tools for browsing and manipulating data stored in Noop Resources."
-slug: "resource-explorers"
-section: "core concepts"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Resource Explorers'
+description: 'Resource Explorers are tools for browsing and manipulating data stored in Noop Resources.'
+slug: 'resource-explorers'
+section: 'core concepts'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 9
-
 ---
 
 Resource Explorers are web-based interfaces for browsing and manipulating data of Noop Resources. There is a dedicated Explorer for every Resource type (Amazon DynamoDB, Postgres, MySQL, Amazon S3 and Redis). The Explorers are available on each individual Resource page in the Noop Console.

@@ -1,13 +1,11 @@
 ---
-
-title: "Local Development"
-description: "Overview and guide for developing Applications locally using Noop Desktop."
-slug: "local-development"
-section: "getting started"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
-order: 3
-
+title: 'Local Development'
+description: 'Overview and guide for developing Applications locally using Noop Desktop.'
+slug: 'local-development'
+section: 'getting started'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
+order: 5
 ---
 
 # Installation

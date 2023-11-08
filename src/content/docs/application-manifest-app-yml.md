@@ -1,13 +1,11 @@
 ---
-
-title: "Blueprints (app.yml)"
-description: "Describing how to run your Software, with Source Code"
-slug: "application-manifest-app-yml"
-section: "core concepts"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Blueprints (app.yml)'
+description: 'Describing how to run your Software, with Source Code'
+slug: 'application-manifest-app-yml'
+section: 'core concepts'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 2
-
 ---
 
 # Specification
@@ -152,7 +150,8 @@ Resources include Postgres, MySQL, Redis, Amazon DynamoDB and Amazon S3. To crea
 Here is a minimal definition of each resource type:
 
 ```yaml
-...
+
+---
 resources:
   - name: DynamoDBTable
     type: dynamodb

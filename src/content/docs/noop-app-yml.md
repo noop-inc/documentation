@@ -6,7 +6,6 @@ section: Reference
 order: 5
 ---
 
-
 ## Specification
 
 The Noop app.yml file defines your application's components, routes, resources, and lifecycle events.
@@ -144,7 +143,6 @@ Defines variables to be used at runtime. Each variable is a mapping object, wher
         LOG_LEVEL: info
 ```
 
-
 ### resources
 
 Resources include Postgres, MySQL, Redis, Amazon DynamoDB and Amazon S3. To create a resource in your Application, specify the name, type and optional configuration parameters.
@@ -152,7 +150,8 @@ Resources include Postgres, MySQL, Redis, Amazon DynamoDB and Amazon S3. To crea
 Here is a minimal definition of each resource type:
 
 ```yaml
-...
+
+---
 resources:
   - name: DynamoDBTable
     type: dynamodb
@@ -222,7 +221,7 @@ Routes get internet traffic to your Application. Specifically, Routes connect yo
 
 The name of the `static` or `service` component to send Traffic to. **Required**
 
-#### pattern 
+#### pattern
 
 String representing the URL path portion to match when forwarding Traffic. Accepts `/*` and `/**` notation.
 
@@ -232,7 +231,7 @@ Boolean. Determines whether the route is publicly accessible.
 
 #### methods
 
-Array of HTTP methods, `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS` 
+Array of HTTP methods, `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`
 
 #### condition
 
@@ -249,7 +248,6 @@ One of `BeforeTraffic` or `BeforeServices`. **Required**
 #### components
 
 Array of `task` Components. Components are executed in series. **Required**
-
 
 ## Complete app.yml Example
 

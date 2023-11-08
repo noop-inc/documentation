@@ -1,13 +1,11 @@
 ---
-
-title: "Tasks"
-description: ""
-slug: "tasks"
-section: "components"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Tasks'
+description: ''
+slug: 'tasks'
+section: 'components'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 15
-
 ---
 
 Tasks are a type of Component for executing one-off or repeating and short-running processes. Tasks are defined in the Application Manifest (app.yml). Tasks can either run on a cron schedule, in response to deployment hooks (`BeforeTraffic` and `BeforeServices`), or by manual execution via the Console Stack page.

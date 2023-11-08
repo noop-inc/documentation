@@ -1,20 +1,18 @@
 ---
-
-title: "Environment Variables and Secrets"
-description: "How to create and manage Environment Variables."
-slug: "environment-variables-and-secrets"
-section: "core concepts"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Environment Variables and Secrets'
+description: 'How to create and manage Environment Variables.'
+slug: 'environment-variables-and-secrets'
+section: 'core concepts'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 5
-
 ---
 
 Environment Variables can be defined in a number of ways. Which method to use depends on whether the Variable is a Secret. If the Variable contains sensitive data that needs to be kept private and secure, define a [Secret](http://localhost:3000/docs/environment-variables#secrets) in the Noop Console Environment settings page.
 
 # Standard Variables
 
-When a variable does not need to be secret it can be included directly in the Application Manifest (app.yml). If the variable is the same across all Environments create a static variable definition like the LOG\_LEVEL example here:
+When a variable does not need to be secret it can be included directly in the Application Manifest (app.yml). If the variable is the same across all Environments create a static variable definition like the LOG_LEVEL example here:
 
 ```
 components:
@@ -27,7 +25,7 @@ components:
        LOG_LEVEL: info
 ```
 
-When a variable needs to change based on environment or other application criteria, define it using Logic. Here is an example that changes the value of the LOG\_LEVEL variable based on whether the environment is set to production:
+When a variable needs to change based on environment or other application criteria, define it using Logic. Here is an example that changes the value of the LOG_LEVEL variable based on whether the environment is set to production:
 
 ```
 components:
@@ -38,7 +36,7 @@ components:
      command: npm start
      variables:
        LOG_LEVEL: $env
-         if: 
+         if:
 - var: production
            - warn
            - info

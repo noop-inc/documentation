@@ -1,13 +1,11 @@
 ---
-
-title: "Amazon S3"
-description: "Adding block storage to Noop Applications using Amazon S3"
-slug: "amazon-s3"
-section: "resources"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Amazon S3'
+description: 'Adding block storage to Noop Applications using Amazon S3'
+slug: 'amazon-s3'
+section: 'resources'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 19
-
 ---
 
 Noop provides an Amazon S3 Resource to associate block storage with your application Components. [Amazon S3](https://aws.amazon.com/pm/serv-s3/) is “object storage built to store and retrieve any amount of data from anywhere”.
@@ -45,7 +43,7 @@ When an S3 resource is connected to an Application Component the following dynam
 To reference a resource property use the special `$resource` key. See the following example:
 
 ```
-components:  
+components:
   - ...
     runtime:
       resources:

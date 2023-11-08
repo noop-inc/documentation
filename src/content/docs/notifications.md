@@ -1,13 +1,11 @@
 ---
-
-title: "Notifications"
-description: "How to set up Build, Deployment and Pipeline failure Notifications to stay informed about Application issues."
-slug: "notifications"
-section: "core concepts"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Notifications'
+description: 'How to set up Build, Deployment and Pipeline failure Notifications to stay informed about Application issues.'
+slug: 'notifications'
+section: 'core concepts'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 7
-
 ---
 
 Notification are for informing Noop users about Application problems. The Notification settings are available in the Noop Console on each Organization, Application, Environment dashboard and Pipeline pages.

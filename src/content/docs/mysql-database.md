@@ -1,13 +1,11 @@
 ---
-
-title: "MySQL Database"
-description: "How to launch and configure MySQL databases alongside Noop Tasks and Services"
-slug: "mysql-database"
-section: "resources"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'MySQL Database'
+description: 'How to launch and configure MySQL databases alongside Noop Tasks and Services'
+slug: 'mysql-database'
+section: 'resources'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 17
-
 ---
 
 The MySQL resource is a relational database solution for the Noop platform. It provides a no-configuration way to connect application services to the “fully integrated transaction-safe, ACID compliant database”, [MySQL](https://www.mysql.com).

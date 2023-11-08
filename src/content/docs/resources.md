@@ -1,13 +1,13 @@
 ---
 layout: ../../layouts/Doc.astro
 title: Resources
-slug: "resources"
+slug: 'resources'
 description: Overview of Resources available to Noop Applications
-section: "core concepts"
+section: 'core concepts'
 order: 5
 ---
 
-Resources are for storing state within your Applications, whether that's Amazon S3 to store image files or a relational database to store customer orders. 
+Resources are for storing state within your Applications, whether that's Amazon S3 to store image files or a relational database to store customer orders.
 
 A Resource is created at the Environment level and can be attached to any Component in the Environment.
 
@@ -18,7 +18,8 @@ Resources include Postgres, MySQL, Redis, Amazon DynamoDB and Amazon S3. To crea
 Here is a minimal definition of each resource type:
 
 ```yaml
-...
+
+---
 resources:
   - name: DynamoDBTable
     type: dynamodb
@@ -60,7 +61,6 @@ Alpha-numeric name `-` and `_` are allowed.
 
 One of `S`, `N` `B`
 
-
 ## Referenece a resource from Application Components
 
 To associate the resources with your Application Components (Services and Tasks) define them on the `component.[n].runtime.resources` property.
@@ -79,7 +79,6 @@ resources:
 ```
 
 An application can access the Resource connection parameters via environment variables.
-
 
 ```yaml
 ...
@@ -176,7 +175,6 @@ resources:
     - `port`
     - `database`
 
-
 ### Example
 
 ```yaml
@@ -215,7 +213,6 @@ resources:
     - `host`
     - `port`
     - `database`
-
 
 ### Example
 

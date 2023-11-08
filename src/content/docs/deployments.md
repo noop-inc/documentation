@@ -1,13 +1,11 @@
 ---
-
-title: "Deployments"
-description: "How to create and manage Deployments"
-slug: "deployments"
-section: "core concepts"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Deployments'
+description: 'How to create and manage Deployments'
+slug: 'deployments'
+section: 'core concepts'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 11
-
 ---
 
 Simply put, Deployments publish code and configuration changes to Noop Environments.

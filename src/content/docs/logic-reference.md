@@ -2,7 +2,7 @@
 title: Logic Reference
 description: Reference of Noop Logic Operators
 section: reference
-layout: "../../layouts/Doc.astro"
+layout: '../../layouts/Doc.astro'
 order: 5
 ---
 
@@ -12,50 +12,43 @@ Add a list of numbers together. Strings will be converted to numbers, null is tr
 
 ### Return Value
 
-(`number`) 
+(`number`)
 
 ### Parameters
 
-#### operand  (`number`, `string`, `null`)
+#### operand (`number`, `string`, `null`)
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 add:
   - 1
   - 1
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 2
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 add:
   - 1
   - '1'
-
 ```
 
-
-
-*Returns*
+_Returns_
 
 ```json
 2
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 add:
@@ -63,15 +56,13 @@ add:
   - add:
       - 2
       - 3
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 6
 ```
-
 
 ## and
 
@@ -79,16 +70,15 @@ Determines whether all arguments evaluate truthy.
 
 ### Return Value
 
-(`boolean`) 
+(`boolean`)
 
 ### Parameters
 
-#### condition  (`number`, `string`, `null`, `array`, `object`, `boolean`)
+#### condition (`number`, `string`, `null`, `array`, `object`, `boolean`)
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 and:
@@ -98,17 +88,15 @@ and:
   - and:
       - 1
       - 1
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 and:
@@ -118,15 +106,13 @@ and:
   - and:
       - true
       - true
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
-
 
 ## concat
 
@@ -134,12 +120,11 @@ Concatenate array or values into single array
 
 ### Parameters
 
-####  (`number`, `string`, `null`, `array`, `object`, `boolean`)
+#### (`number`, `string`, `null`, `array`, `object`, `boolean`)
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 concat:
@@ -149,24 +134,15 @@ concat:
     - 4
   - - 5
     - 6
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
-[
-  1,
-  2,
-  3,
-  4,
-  5,
-  6
-]
+[1, 2, 3, 4, 5, 6]
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 concat:
@@ -178,26 +154,13 @@ concat:
     - 6
   - - 7
     - 8
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
-[
-  1,
-  2,
-  [
-    3,
-    4
-  ],
-  5,
-  6,
-  7,
-  8
-]
+[1, 2, [3, 4], 5, 6, 7, 8]
 ```
-
 
 ## divide
 
@@ -205,7 +168,7 @@ Divide two numbers, Logic will attempt to convert strings to numbers, null is tr
 
 ### Return Value
 
-(`number`) 
+(`number`)
 
 ### Parameters
 
@@ -215,14 +178,13 @@ Divide two numbers, Logic will attempt to convert strings to numbers, null is tr
 
 ### Examples
 
-
 ## endswith
 
-Determines whether a string ends with the characters of this search string.  Number arguments are converted to strings.
+Determines whether a string ends with the characters of this search string. Number arguments are converted to strings.
 
 ### Return Value
 
-(`boolean`) 
+(`boolean`)
 
 ### Parameters
 
@@ -232,54 +194,47 @@ Determines whether a string ends with the characters of this search string.  Num
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 endswith:
   - Hello, friend
   - friend
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 endswith:
   - 42
   - 2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 endswith:
   - Hello, friend
   - Joe
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
-
 
 ## equals
 
@@ -287,63 +242,56 @@ Determines if all arguments are the same, returns true of false as appropriate.
 
 ### Return Value
 
-(`boolean`) 
+(`boolean`)
 
 ### Parameters
 
-####  (`number`, `string`, `null`, `array`, `object`, `boolean`)
+#### (`number`, `string`, `null`, `array`, `object`, `boolean`)
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 equals:
   - 1
   - 1
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 equals:
   - true
   - false
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 equals:
   - 7
   - 7
   - 7
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
-
 
 ## filter
 
@@ -351,7 +299,7 @@ Filter an array of items by a condition. When the condition evaluates true for t
 
 ### Return Value
 
-(`array`) 
+(`array`)
 
 ### Parameters
 
@@ -361,8 +309,7 @@ Filter an array of items by a condition. When the condition evaluates true for t
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 filter:
@@ -372,18 +319,13 @@ filter:
   - greater:
       - var: _item
       - 2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
-[
-  3,
-  4
-]
+[3, 4]
 ```
-
 
 ## find
 
@@ -391,7 +333,7 @@ Find an item in an array using a match condition expression. The first item in t
 
 ### Return Value
 
-(`number`, `string`, `null`, `array`, `object`, `boolean`) 
+(`number`, `string`, `null`, `array`, `object`, `boolean`)
 
 ### Parameters
 
@@ -401,8 +343,7 @@ Find an item in an array using a match condition expression. The first item in t
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 find:
@@ -412,15 +353,13 @@ find:
   - greater:
       - var: _item
       - 2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 3
 ```
-
 
 ## flat
 
@@ -428,7 +367,7 @@ Flattens nested arrays to the specied depth.
 
 ### Return Value
 
-(`array`) 
+(`array`)
 
 ### Parameters
 
@@ -438,50 +377,34 @@ Flattens nested arrays to the specied depth.
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 flat:
   - - - - 1
       - 2
     - 2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
-[
-  [
-    1
-  ],
-  2,
-  2
-]
+[[1], 2, 2]
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 flat:
   - - - - 1
       - 2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
-[
-  [
-    1
-  ],
-  2
-]
+[[1], 2]
 ```
-
 
 ## greater
 
@@ -489,7 +412,7 @@ Determines if valueA is greater than valueB.
 
 ### Return Value
 
-(`boolean`) 
+(`boolean`)
 
 ### Parameters
 
@@ -499,38 +422,33 @@ Determines if valueA is greater than valueB.
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 greater:
   - 2
   - 1
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 greater:
   - 1
   - 1
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
-
 
 ## greaterequals
 
@@ -538,7 +456,7 @@ Determines if valueA is greater than or equal to valueB.
 
 ### Return Value
 
-(`boolean`) 
+(`boolean`)
 
 ### Parameters
 
@@ -548,54 +466,47 @@ Determines if valueA is greater than or equal to valueB.
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 greaterequals:
   - 2
   - 1
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 greaterequals:
   - 1
   - 1
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 greaterequals:
   - 0
   - 1
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
-
 
 ## has
 
@@ -603,7 +514,7 @@ Determines if an object includes a specific key. Returns a boolean.
 
 ### Return Value
 
-(`boolean`) 
+(`boolean`)
 
 ### Parameters
 
@@ -613,38 +524,33 @@ Determines if an object includes a specific key. Returns a boolean.
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 has:
   - first_name: Joe
   - first_name
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 has:
   - first_name: Joe
   - last_name
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
-
 
 ## if
 
@@ -664,8 +570,7 @@ Creates branching logic. When the first argument evaluates truthy the second arg
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 if:
@@ -674,15 +579,13 @@ if:
       - 1
   - foo
   - bar
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 "foo"
 ```
-
 
 ## ifnot
 
@@ -702,14 +605,13 @@ Creates branching logic. When the first argument evaluates falsy the second argu
 
 ### Examples
 
-
 ## includes
 
 determines whether an array or string contains a specified search element, returns a boolean.
 
 ### Return Value
 
-(`boolean`) 
+(`boolean`)
 
 ### Parameters
 
@@ -719,8 +621,7 @@ determines whether an array or string contains a specified search element, retur
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 includes:
@@ -728,17 +629,15 @@ includes:
     - 2
     - 3
   - 2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 includes:
@@ -746,15 +645,13 @@ includes:
     - 2
     - 3
   - 0
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
-
 
 ## join
 
@@ -762,7 +659,7 @@ Creates and returns a string by concatenating all of the elements in the items a
 
 ### Return Value
 
-(`string`) 
+(`string`)
 
 ### Parameters
 
@@ -772,8 +669,7 @@ Creates and returns a string by concatenating all of the elements in the items a
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 join:
@@ -781,32 +677,28 @@ join:
     - Fries
     - Soda
   - ' & '
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 "Hamburger & Fries & Soda"
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 join:
   - - This
     - Or
     - That
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 "ThisOrThat"
 ```
-
 
 ## length
 
@@ -814,7 +706,7 @@ Returns the number of items or character in the specified array or string respec
 
 ### Return Value
 
-(`number`) 
+(`number`)
 
 ### Parameters
 
@@ -822,40 +714,35 @@ Returns the number of items or character in the specified array or string respec
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 length:
   - 0
   - 1
   - 2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 3
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 length:
   - foo
   - bar
   - baz
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 3
 ```
-
 
 ## less
 
@@ -863,7 +750,7 @@ Determines if valueA is less than valueB.
 
 ### Return Value
 
-(`boolean`) 
+(`boolean`)
 
 ### Parameters
 
@@ -873,38 +760,33 @@ Determines if valueA is less than valueB.
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 less:
   - 1
   - 1
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 less:
   - 0
   - 1
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
-
 
 ## lessequals
 
@@ -918,54 +800,47 @@ Determines if valueA is less than or equal to valueB.
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 lessequals:
   - 2
   - 1
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 lessequals:
   - 1
   - 1
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 lessequals:
   - 0
   - 1
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
-
 
 ## map
 
@@ -973,7 +848,7 @@ Creates a new array populated with the results of calling a provided Logic expre
 
 ### Return Value
 
-(`array`) 
+(`array`)
 
 ### Parameters
 
@@ -983,8 +858,7 @@ Creates a new array populated with the results of calling a provided Logic expre
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 map:
@@ -994,19 +868,13 @@ map:
   - add:
       - var: _item
       - 2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
-[
-  3,
-  4,
-  5
-]
+[3, 4, 5]
 ```
-
 
 ## match
 
@@ -1014,65 +882,58 @@ Determines whether a source path matches for any of the provided glob patterns. 
 
 ### Return Value
 
-(`boolean`) 
+(`boolean`)
 
 ### Parameters
 
 #### sourcePath (`number`, `string`)
 
-#### globPattern  (`string`, `number`)
+#### globPattern (`string`, `number`)
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 match:
   - /santa/lives/up/north
   - '**/up/north'
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 match:
   - /santa/lives/up/north
   - /santa/**
   - '**/down/south'
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 match:
   - /santa/lives/up/north
   - '**/down/south'
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
-
 
 ## glob
 
@@ -1080,65 +941,58 @@ Determines whether a source path matches for any of the provided glob patterns. 
 
 ### Return Value
 
-(`boolean`) 
+(`boolean`)
 
 ### Parameters
 
 #### sourcePath (`number`, `string`)
 
-#### globPattern  (`string`, `number`)
+#### globPattern (`string`, `number`)
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 match:
   - /santa/lives/up/north
   - '**/up/north'
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 match:
   - /santa/lives/up/north
   - /santa/**
   - '**/down/south'
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 match:
   - /santa/lives/up/north
   - '**/down/south'
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
-
 
 ## max
 
@@ -1146,65 +1000,58 @@ Returns the largest of given values, strings are converted to numbers. Returns a
 
 ### Return Value
 
-(`number`) 
+(`number`)
 
 ### Parameters
 
-#### value  (`number`, `string`, `null`)
+#### value (`number`, `string`, `null`)
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 max:
   - 1
   - 2
   - 3
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 3
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 max:
   - 1
   - 2
   - '3'
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 3
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 max:
   - 100
   - 42
   - '3'
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 100
 ```
-
 
 ## min
 
@@ -1212,65 +1059,58 @@ Returns the smallest of given values, strings are converted to numbers. Returns 
 
 ### Return Value
 
-(`number`) 
+(`number`)
 
 ### Parameters
 
-#### value  (`number`, `string`, `null`)
+#### value (`number`, `string`, `null`)
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 min:
   - 1
   - 2
   - 3
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 1
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 min:
   - 1
   - 2
   - '3'
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 1
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 min:
   - 100
   - 42
   - '3'
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 3
 ```
-
 
 ## modulo
 
@@ -1284,102 +1124,89 @@ Returns the remainder after performing a division.
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 modulo:
   - 13
   - 5
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 3
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 modulo:
   - 1
   - -2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 1
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 modulo:
   - 1
   - 2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 1
 ```
 
-
-*Example 4*
+_Example 4_
 
 ```yaml
 modulo:
   - -13
   - 5
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 -3
 ```
 
-
-*Example 5*
+_Example 5_
 
 ```yaml
 modulo:
   - -4
   - 2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 0
 ```
 
-
-*Example 6*
+_Example 6_
 
 ```yaml
 modulo:
   - 5.5
   - 2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 1.5
 ```
-
 
 ## multiply
 
@@ -1387,64 +1214,57 @@ Produces the product of the operands.
 
 ### Return Value
 
-(`number`) 
+(`number`)
 
 ### Parameters
 
-#### operand  (`number`, `string`, `null`)
+#### operand (`number`, `string`, `null`)
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 multiply:
   - 1
   - 2
   - 3
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 6
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 multiply:
   - 50
   - 50
   - 50
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 125000
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 multiply:
   - 21
   - 2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 42
 ```
-
 
 ## netmask
 
@@ -1452,81 +1272,72 @@ Determines if an IP address is within one of the provided CIDR ranges.
 
 ### Return Value
 
-(`boolean`) 
+(`boolean`)
 
 ### Parameters
 
 #### ipAddress (`string`)
 
-#### cidr  (`string`)
+#### cidr (`string`)
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 netmask:
   - 17.17.17.17
   - 17.17.0.0/16
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 netmask:
   - 17.17.17.17
   - 17.17.17.0/24
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 netmask:
   - 17.17.17.17
   - 17.17.17.0/32
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
 
-
-*Example 4*
+_Example 4_
 
 ```yaml
 netmask:
   - 17.17.17.17
   - 17.17.17.0/24
   - 2.0.0.0/16
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
-
 
 ## notequals
 
@@ -1534,63 +1345,56 @@ Determines if all arguments are not the same, returns true of false as appropria
 
 ### Return Value
 
-(`boolean`) 
+(`boolean`)
 
 ### Parameters
 
-####  (`number`, `string`, `null`, `array`, `object`, `boolean`)
+#### (`number`, `string`, `null`, `array`, `object`, `boolean`)
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 notequals:
   - 1
   - 1
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 notequals:
   - true
   - false
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 notequals:
   - 7
   - 7
   - 42
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
-
 
 ## or
 
@@ -1598,16 +1402,15 @@ Determines whether any of the conditions evaluate truthy.
 
 ### Return Value
 
-(`boolean`) 
+(`boolean`)
 
 ### Parameters
 
-#### condition  (`number`, `string`, `null`, `array`, `object`, `boolean`)
+#### condition (`number`, `string`, `null`, `array`, `object`, `boolean`)
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 or:
@@ -1616,17 +1419,15 @@ or:
   - or:
       - 1
       - 0
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 or:
@@ -1635,15 +1436,13 @@ or:
   - or:
       - false
       - null
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
-
 
 ## querystring
 
@@ -1651,7 +1450,7 @@ Produces a list of list pairs for each entry in the provided query string.
 
 ### Return Value
 
-(`array`) 
+(`array`)
 
 ### Parameters
 
@@ -1659,30 +1458,21 @@ Produces a list of list pairs for each entry in the provided query string.
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 querystring:
   - '?santa=claus&bat=man'
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 [
-  [
-    "santa",
-    "claus"
-  ],
-  [
-    "bat",
-    "man"
-  ]
+  ["santa", "claus"],
+  ["bat", "man"]
 ]
 ```
-
 
 ## reduce
 
@@ -1690,7 +1480,7 @@ Executes a "reducer" Logic expression on each element of the array, in order, pa
 
 ### Return Value
 
-(`number`, `string`, `object`, `array`, `boolean`, `null`) 
+(`number`, `string`, `object`, `array`, `boolean`, `null`)
 
 ### Parameters
 
@@ -1702,8 +1492,7 @@ Executes a "reducer" Logic expression on each element of the array, in order, pa
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 reduce:
@@ -1714,17 +1503,15 @@ reduce:
       - var: _previous
       - var: _current
   - 10
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 16
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 reduce:
@@ -1736,15 +1523,13 @@ reduce:
       - var: _previous
       - var: _current
   - 10
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 0
 ```
-
 
 ## slice
 
@@ -1752,7 +1537,7 @@ Returns a portion of an array selected from start to end (end not included) wher
 
 ### Return Value
 
-(`array`) 
+(`array`)
 
 ### Parameters
 
@@ -1764,8 +1549,7 @@ Returns a portion of an array selected from start to end (end not included) wher
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 slice:
@@ -1774,19 +1558,15 @@ slice:
     - 3
   - 0
   - 1
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
-[
-  1
-]
+[1]
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 slice:
@@ -1794,19 +1574,13 @@ slice:
     - 2
     - 3
   - 0
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
-[
-  1,
-  2,
-  3
-]
+[1, 2, 3]
 ```
-
 
 ## startswith
 
@@ -1814,7 +1588,7 @@ Determines whether a string starts with the characters of this search string. Nu
 
 ### Return Value
 
-(`boolean`) 
+(`boolean`)
 
 ### Parameters
 
@@ -1824,54 +1598,47 @@ Determines whether a string starts with the characters of this search string. Nu
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 endswith:
   - Hello, friend
   - Hello
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 endswith:
   - 42
   - 4
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 false
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 endswith:
   - Hello, friend
   - friend
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 true
 ```
-
 
 ## substring
 
@@ -1879,7 +1646,7 @@ Returns a portion of a string selected from start to end (end not included) wher
 
 ### Return Value
 
-(`string`) 
+(`string`)
 
 ### Parameters
 
@@ -1889,10 +1656,9 @@ Returns a portion of a string selected from start to end (end not included) wher
 
 #### rangeEnd (`number`, `string`)
 
-####  (`number`, `string`)
+#### (`number`, `string`)
 
 ### Examples
-
 
 ## subtract
 
@@ -1900,33 +1666,30 @@ Subtracts a list of numbers in sequence from first to last. Strings will be conv
 
 ### Return Value
 
-(`number`) 
+(`number`)
 
 ### Parameters
 
-####  (`number`, `string`, `null`)
+#### (`number`, `string`, `null`)
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 subtract:
   - 5
   - 3
   - 2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 0
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 subtract:
@@ -1935,15 +1698,13 @@ subtract:
       - 12
   - 3
   - 2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 -7
 ```
-
 
 ## unique
 
@@ -1951,55 +1712,44 @@ Produces a list of items with all duplicate values reduced to a single instance.
 
 ### Return Value
 
-(`array`) 
+(`array`)
 
 ### Parameters
 
-#### item  (`number`, `string`, `object`, `array`, `boolean`, `null`)
+#### item (`number`, `string`, `object`, `array`, `boolean`, `null`)
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 unique:
   - banana
   - banana
   - pear
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
-[
-  "banana",
-  "pear"
-]
+["banana", "pear"]
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 unique:
   - banana
   - pear
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
-[
-  "banana",
-  "pear"
-]
+["banana", "pear"]
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 unique:
@@ -2008,18 +1758,13 @@ unique:
   - banana
   - mango
   - mango
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
-[
-  "banana",
-  "mango"
-]
+["banana", "mango"]
 ```
-
 
 ## useragent
 
@@ -2027,7 +1772,7 @@ Parses a user agent string constructing an object with user agent data separated
 
 ### Return Value
 
-*useragent*: (`object`) Object with user agent data organized by individual property
+_useragent_: (`object`) Object with user agent data organized by individual property
 
 ```json
 {
@@ -2077,25 +1822,22 @@ Parses a user agent string constructing an object with user agent data separated
 }
 ```
 
-
 ### Parameters
 
 #### userAgentString (`string`)
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 useragent:
   - >-
     Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.2 (KHTML, like Gecko)
     Ubuntu/11.10 Chromium/15.0.874.106 Chrome/15.0.874.106 Safari/535.2
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 {
@@ -2120,7 +1862,6 @@ useragent:
 }
 ```
 
-
 ## var
 
 Retrieves the value of a given variable path, sub-indexes separated with ".". Optionally provide a data object for which to access the variable path from.
@@ -2133,45 +1874,38 @@ Retrieves the value of a given variable path, sub-indexes separated with ".". Op
 
 ### Examples
 
-
-*Example 1*
+_Example 1_
 
 ```yaml
 var: _item
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 "doorknob"
 ```
 
-
-*Example 2*
+_Example 2_
 
 ```yaml
 var: $request.content-type
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 "application/html"
 ```
 
-
-*Example 3*
+_Example 3_
 
 ```yaml
 var: fancy.thing
-
 ```
 
-*Returns*
+_Returns_
 
 ```json
 "snow globe"
 ```
-

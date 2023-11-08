@@ -1,13 +1,11 @@
 ---
-
-title: "Logs and Log Filtering"
-description: "Overview of Log types and how to query them."
-slug: "logs-and-log-filtering"
-section: "core concepts"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Logs and Log Filtering'
+description: 'Overview of Log types and how to query them.'
+slug: 'logs-and-log-filtering'
+section: 'core concepts'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 6
-
 ---
 
 ## Overview

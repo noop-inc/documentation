@@ -1,13 +1,11 @@
 ---
-
-title: "Services"
-description: "Overview of Noop Services, Components for running web servers, and how to create them."
-slug: "services"
-section: "components"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Services'
+description: 'Overview of Noop Services, Components for running web servers, and how to create them.'
+slug: 'services'
+section: 'components'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 14
-
 ---
 
 Service Components are for running web servers. Typically they are responsible for responding to Traffic from the public internet, they can also be used to run private APIs.

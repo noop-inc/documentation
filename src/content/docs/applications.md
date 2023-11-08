@@ -1,14 +1,11 @@
 ---
-
-layout: "../../layouts/Doc.astro"
+layout: '../../layouts/Doc.astro'
 title: Applications
 slug: applications
-description: ""
+description: ''
 section: core concepts
 order: 3
-
 ---
-
 
 Applications are software components that run together. Noop Applications map 1:1 with a code repository. An Application can be a single service (possibly with a database requirement) or a monorepo that includes a collection of services, tasks and resources.
 

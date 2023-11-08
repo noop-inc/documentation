@@ -1,13 +1,11 @@
 ---
-
-title: "Quick Start Guide"
-description: ""
-slug: "quick-start-guide"
-section: "getting started"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
-order: 2
-
+title: 'Quick Start Guide'
+description: ''
+slug: 'quick-start-guide'
+section: 'getting started'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
+order: 4
 ---
 
 ## Overview

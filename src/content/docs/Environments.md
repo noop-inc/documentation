@@ -1,15 +1,12 @@
 ---
-
-title: "Environments"
-description: ""
-slug: "environments"
-section: "core concepts"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Environments'
+description: ''
+slug: 'environments'
+section: 'core concepts'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 12
-
 ---
-
 
 # Environments
 
@@ -21,7 +18,7 @@ An Environment can be created manually from the Application dashboard or dynamic
 
 ## Configuration using Variables and Secrets
 
-Variables and secrets can be used to configure Application runtime parameters. Variables are either defined in the Environment settings (in console) or in the Application Blueprint (app.yml). 
+Variables and secrets can be used to configure Application runtime parameters. Variables are either defined in the Environment settings (in console) or in the Application Blueprint (app.yml).
 
 Secrets are defined exclusively in the console. Secrets are encrypted at rest and obfuscated in logs.
 
@@ -40,4 +37,3 @@ A Build is the combined Variable/Secret configuration and Source Code artifact.
 In response to a repository event, such as a pull request, a Pipeline is able to create a temporary preview environment. The preview Environment utilizes an existing environment as the foundation to create the one-off.
 
 The preview Environment will remain online until the configured shutdown period elapses.
-

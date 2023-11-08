@@ -1,5 +1,4 @@
 ---
-
 components:
   - name: Website
     type: static
@@ -15,4 +14,3 @@ components:
 routes:
   - target:
       component: Website
-
