@@ -1,13 +1,11 @@
 ---
-
-title: "Logic"
-description: "Overview of Noop Logic, uses in context."
-slug: "logic"
-section: "core concepts"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Logic'
+description: 'Overview of Noop Logic, uses in context.'
+slug: 'logic'
+section: 'core concepts'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 10
-
 ---
 
 Noop Logic is a lightweight utility language for augmenting functionality across the Noop platform. Logic expressions are composed of operators and their parameters, which can also be nested Logic expressions. All Logic expressions conform to standard YAML syntax.
@@ -15,8 +13,8 @@ Noop Logic is a lightweight utility language for augmenting functionality across
 One of the most common uses of Logic is filtering Logs. Any Noop Log stream can be filtered using Logic. The following example shows how to view error-level logs only:
 
 ```
-equals: 
-  - var: level 
+equals:
+  - var: level
   - error
 ```
 
@@ -41,10 +39,10 @@ When a user Application outputs its own logs in JSON format, the keys of that JS
 Variables in Logic are referenced with the **`var`** operator. Some Logic operators also create their own context accessible via the **`var`** operator. See the following example that returns a list of all items greater than 2:
 
 ```
-filter: 
-  - [2, 3, 4] 
-  - greater: 
-    - var: _item 
+filter:
+  - [2, 3, 4]
+  - greater:
+    - var: _item
     - 2
 ```
 
@@ -57,8 +55,8 @@ See the Logs documentation for more information on how to apply Logic conditions
 The following example matches all log entries where the **`level`** variable equals “error”.
 
 ```
-equals: 
-  - var: level 
+equals:
+  - var: level
   - error
 ```
 
@@ -77,83 +75,83 @@ The context variable of Logs changes depending on the Log stream and also by cus
 Within the Application Manifest, Logic can be used to dynamically set properties. For example, an environment variable could be written to change depending on whether the Noop **`$env.production`** value is set to **`true`**. In the following example the **`NODE_ENV`** environment variable is set to **`production`** when **`$env.production`** is **`true`** otherwise it is set to **`dev`**.
 
 ```
---- 
-components: 
-  - ... 
-    runtime: ... 
-      variables: 
-        NODE_ENV: $env: 
-          if: - var: production 
-            - production 
+---
+components:
+  - ...
+    runtime: ...
+      variables:
+        NODE_ENV: $env:
+          if: - var: production
+            - production
             - dev
 ```
 
 ## Context
 
-- *$app*: data about the Noop Application.
+- _$app_: data about the Noop Application.
 
-- *$env*: data about the Noop Environment.
+- _$env_: data about the Noop Environment.
 
-- *$build*: data about the Noop Build.
+- _$build_: data about the Noop Build.
 
-- *$source*: data about the Noop Source (repository).
+- _$source_: data about the Noop Source (repository).
 
-- *$resources*: data about the Noop Resource.
+- _$resources_: data about the Noop Resource.
 
-- *$stack*: data about the Noop Stack.
+- _$stack_: data about the Noop Stack.
 
 # Pipeline Execution
 
-Pipelines execute when their **`condition`** property evaluates *truthy*. The **`condition`** property is evaluated as Logic and has a **`$repoevent`** context. The **`$repoevent`** context includes all of the **[Github webhook data](https://docs.github.com/en/webhooks/webhook-events-and-payloads)** Noop receives when code is pushed to Github.
+Pipelines execute when their **`condition`** property evaluates _truthy_. The **`condition`** property is evaluated as Logic and has a **`$repoevent`** context. The **`$repoevent`** context includes all of the **[Github webhook data](https://docs.github.com/en/webhooks/webhook-events-and-payloads)** Noop receives when code is pushed to Github.
 
 ```
-condition: 
-  $repoevent: 
-    and: 
-      - equals: 
-        - var: payload.ref 
-        - refs/heads/dev 
-      - equals: 
-        - var: type 
-        - push 
-      - ifnot: 
-        - var: payload.deleted 
-workflow: 
-  steps: 
-    - name: SourceCode 
-      params: 
-        reference: 
-          $pipeline: RepositoryEvent.payload.after 
-        appId: 
-          $pipeline: Application.id 
+condition:
+  $repoevent:
+    and:
+      - equals:
+        - var: payload.ref
+        - refs/heads/dev
+      - equals:
+        - var: type
+        - push
+      - ifnot:
+        - var: payload.deleted
+workflow:
+  steps:
+    - name: SourceCode
+      params:
+        reference:
+          $pipeline: RepositoryEvent.payload.after
+        appId:
+          $pipeline: Application.id
       action: SourceCodeLookup
 ```
 
 ## Context
 
-- *$repoevent*: data about the Github repository event. Data includes a **`type`**property, which indicates which event took place and **`payload`** property which includes the raw **[Github webhook data](https://docs.github.com/en/webhooks/webhook-events-and-payloads)**
+- _$repoevent_: data about the Github repository event. Data includes a **`type`**property, which indicates which event took place and **`payload`** property which includes the raw **[Github webhook data](https://docs.github.com/en/webhooks/webhook-events-and-payloads)**
 
 The workflow steps contains context as well.
 
-- *$pipeline*: data about the pipeline itself. Includes **`RepositoryEvent`**, **`Application`**, and **`Organization`** data.
+- _$pipeline_: data about the pipeline itself. Includes **`RepositoryEvent`**, **`Application`**, and **`Organization`** data.
 
 # Routing Endpoint Traffic
 
-When creating an Endpoint Route, it’s possible to specify a Logic condition which will forward traffic only when the condition evaluates *truthy*. To block certain IP addresses, for example, a condition could be assigned to a *Black Hole*route, effectively blocking all incoming requests from those IPs.
+When creating an Endpoint Route, it’s possible to specify a Logic condition which will forward traffic only when the condition evaluates _truthy_. To block certain IP addresses, for example, a condition could be assigned to a *Black Hole*route, effectively blocking all incoming requests from those IPs.
 
 See the following example:
 
 ```
-$request: 
-  includes: 
-    - - 42.42.42.42 
-      - 7.7.7.7 
+$request:
+  includes:
+    - - 42.42.42.42
+      - 7.7.7.7
     - var: x-forwarded-for
 ```
 
 ## Context
 
-- *$request*: data includes headers properties of the incoming request.
+- _$request_: data includes headers properties of the incoming request.
 
 # Conditional Application Routing
 
@@ -162,16 +160,16 @@ Similar to routing Endpoint Traffic, it’s also possible to conditionally route
 See the following example:
 
 ```
-$request: 
-  includes: 
-    - - 42.42.42.42 
-      - 7.7.7.7 
+$request:
+  includes:
+    - - 42.42.42.42
+      - 7.7.7.7
     - var: x-forwarded-for
 ```
 
 ## Context
 
-- *$request*: data includes headers of the incoming request.
+- _$request_: data includes headers of the incoming request.
 
 # Runbook Configuration
 
@@ -179,7 +177,7 @@ Runbooks are procedures that handle operational responsibilities for your softwa
 
 ## Context
 
-- *$runbook*: data about the runbook itself. Includes **`Organization`**, **`Application`**, and **`SourceCode`** data.
+- _$runbook_: data about the runbook itself. Includes **`Organization`**, **`Application`**, and **`SourceCode`** data.
 
 ​\
 ​

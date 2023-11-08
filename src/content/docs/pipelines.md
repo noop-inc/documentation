@@ -1,13 +1,11 @@
 ---
-
-title: "Pipelines"
-description: "How to run CI/CD Workflows in response to Source Repository events"
-slug: "pipelines"
-section: "core concepts"
-layout: "../../layouts/Doc.astro"
-pubDate: ""
+title: 'Pipelines'
+description: 'How to run CI/CD Workflows in response to Source Repository events'
+slug: 'pipelines'
+section: 'core concepts'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
 order: 12
-
 ---
 
 Pipelines run an operational procedure called a Workflow. The Pipeline Workflow is triggered in response to Repository events (Activity in Github).
@@ -40,6 +38,6 @@ Once created, the Pipeline Workflow and condition can be modified from the Pipel
 
 ## Conditions
 
-Pipelines execute when their **`condition`** property evaluates *truthy*. The **`condition`** property is evaluated as Logic and has a **`$repoevent`** context. The **`$repoevent`** context includes all of the **[Github webhook data](https://docs.github.com/en/webhooks/webhook-events-and-payloads)** Noop receives when code is pushed to Github.
+Pipelines execute when their **`condition`** property evaluates _truthy_. The **`condition`** property is evaluated as Logic and has a **`$repoevent`** context. The **`$repoevent`** context includes all of the **[Github webhook data](https://docs.github.com/en/webhooks/webhook-events-and-payloads)** Noop receives when code is pushed to Github.
 
 Logic provides a way to respond to user-defined conventions derived from the Github event payload. For example, different Pipelines can be executed in response to different formatting in a repository tag. When Source code includes a “pre-release” tag, a Build and Deployment could be triggered for a “Staging” environment.
