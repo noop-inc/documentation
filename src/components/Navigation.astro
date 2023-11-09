@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+const docs = [].concat(await getCollection('docs'));
+
+const sections = ['getting started', 'core concepts', 'guides', 'components', 'resources', 'reference']
+/* How is this sorted? */
+const groupedDocs = docs.reduce((docs, object) => {
+  const property = object.data.section;
+  docs[property] = docs[property] || [];
+  docs[property].push(object);
+  return docs;
+}, {});
+
+
+Object.keys(groupedDocs).forEach(k => {
+  groupedDocs[k].sort((a, b) => {
+    return (a.data.order || 0) - (b.data.order || 0)
+  })
+})
+---
+
+<nav class="pr-8 text-base lg:text-sm">
+  <ul role="list" class="-ml-0.5  overflow-y-auto pl-0.5 space-y-8">
+    {
+    sections.filter(s => !!groupedDocs[s]).map((section) => (
+    <li>
+      <h3 class="font-bold capitalize">
+        {section}
+      </h3>
+
+      <ul role="list" class="pl-3 mt-3 space-y-2">
+        {
+        groupedDocs[section].map((item) => (
+        <li>
+          <a href={`/docs/${item.slug}`}>
+            {item.data.title}
+          </a>
+        </li>
+        ))
+        }
+      </ul>
+    </li>
+    ))
+    }
+  </ul>
+</nav>
+
+

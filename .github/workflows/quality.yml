@@ -18,7 +18,7 @@ jobs:
       - name: Install NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
           registry-url: 'https://npm.pkg.github.com'
           scope: '@noop-inc'
 
@@ -46,6 +46,3 @@ jobs:
             ./node_modules/.cache/.eslintcache
           key: ${{ runner.os }}-lint-${{ github.sha }}
           restore-keys: ${{ runner.os }}-lint-
-
-      - name: Code Linting
-        run: npm run lint

@@ -12,8 +12,8 @@
   },
   "homepage": "https://github.com/noop-inc/documentation#readme",
   "engines": {
-    "node": ">=16",
-    "npm": ">=8"
+    "node": ">=20",
+    "npm": ">=10"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
@@ -21,14 +21,18 @@
   "main": "lib/index.js",
   "files": [
     "dist/*",
-    "docs/*",
-    "lib/*"
+    "lib/*",
+    "src/*"
   ],
   "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
     "common-eslint": "eslint . --ext .js,.cjs,.mjs --cache --cache-location node_modules/.cache/.eslintcache --ignore-path .gitignore",
     "common-prettier": "prettier \"**/*.{htm,html,json,md,markdown,yml,yaml}\" --cache --ignore-path .gitignore",
     "common-sequential": "concurrently --raw --max-processes 1",
-    "build": "node .github/workflows/build.js",
     "fix": "npm run common-sequential -- npm:fix-*",
     "fix-eslint": "npm run common-eslint -- --fix",
     "fix-prettier": "npm run common-prettier -- --write",
@@ -37,13 +41,16 @@
     "lint-prettier": "npm run common-prettier -- --check"
   },
   "dependencies": {
-    "marked": "^4.2.5"
+    "@astrojs/tailwind": "^3.1.3",
+    "astro": "^2.10.15",
+    "tailwindcss": "^3.3.5"
   },
   "devDependencies": {
-    "concurrently": "^7.6.0",
-    "eslint": "^8.31.0",
-    "eslint-config-standard": "^17.0.0",
-    "prettier": "^2.8.2"
+    "@tailwindcss/typography": "^0.5.10",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.53.0",
+    "eslint-config-standard": "^17.1.0",
+    "prettier": "^2.8.8"
   },
   "eslintConfig": {
     "root": true,

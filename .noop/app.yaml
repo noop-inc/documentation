@@ -1,0 +1,16 @@
+---
+components:
+  - name: Website
+    type: static
+    image: node:alpine
+    hosting:
+      index: index.html
+    build:
+      steps:
+        - copy: .
+        - run: npm ci
+        - run: npm run build
+        - directory: dist/
+routes:
+  - target:
+      component: Website

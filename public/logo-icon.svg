@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> <!-- Created with Vectornator for iOS (http://vectornator.io/) --><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="100%" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100%" xmlns:vectornator="http://vectornator.io" version="1.1" viewBox="0 0 208 208">
+<metadata>
+<vectornator:setting key="Units" value="Points"/>
+<vectornator:setting key="GuidesVisible" value="1"/>
+<vectornator:setting key="RulersVisible" value="1"/>
+<vectornator:setting key="SnapToGuides" value="1"/>
+<vectornator:setting key="DynamicGuides" value="1"/>
+</metadata>
+<defs/>
+<g id="Icon" vectornator:layerName="Icon">
+<path stroke="#0091ff" vectornator:shadowColor="#000000" vectornator:shadowOffset="7.57709" stroke-width="24.99" fill="#f4f3ef" fill-rule="evenodd" stroke-linecap="round" vectornator:shadowAngle="2.10006" opacity="1" stroke-linejoin="round" vectornator:shadowRadius="5.39648" d="M35.115+64.2295L103.999+24.46L172.882+64.2295L172.882+143.77L103.999+183.54L35.115+143.77L35.115+64.2295Z" vectornator:shadowOpacity="0.625929"/>
+<path stroke="#0091ff" fill-rule="evenodd" stroke-width="12" d="M104.026+55.0286L104.026+55.0286L104.15+102.514" fill="#ffffff" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+<path stroke="#0091ff" fill-rule="evenodd" stroke-width="12" d="M118.329+63.2855L104.026+55.0286L118.329+63.2855Z" fill="#ffffff" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+<path stroke="#0091ff" fill-rule="evenodd" stroke-width="12" d="M89.7233+63.2855L95.6692+59.8536L104.026+55.0286L89.7233+63.2855Z" fill="#ffffff" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+<path stroke="#0091ff" fill-rule="evenodd" stroke-width="12" d="M75.7975+136.767L61.4957+128.509L75.7975+136.767Z" fill="#ffffff" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+<path stroke="#0091ff" fill-rule="evenodd" stroke-width="12" d="M61.4957+111.994L61.4957+118.859L61.4957+128.509L61.4957+111.994Z" fill="#ffffff" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+<path stroke="#0091ff" fill-rule="evenodd" stroke-width="12" d="M104.15+104.264L62.4957+128.314" fill="#ffffff" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+</g>
+<g id="Lantern" vectornator:layerName="Lantern">
+<path stroke="#0091ff" fill-rule="evenodd" stroke-width="12" d="M146.397+128.602L104.15+103.998" fill="#ffffff" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+<path stroke="#0091ff" fill-rule="evenodd" stroke-width="12" d="M83.8344+92.3581L103.997+80.7173L124.159+92.3581L124.159+115.639L103.997+127.28L83.8344+115.639L83.8344+92.3581Z" fill="#f4f3ef" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+<path stroke="#0091ff" fill-rule="evenodd" stroke-width="12" d="M146.397+112.086L146.397+128.602L146.397+112.086Z" fill="#ffffff" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+<path stroke="#0091ff" fill-rule="evenodd" stroke-width="12" d="M132.095+136.859L138.04+133.427L146.397+128.602L132.095+136.859Z" fill="#ffffff" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+</g>
+</svg>

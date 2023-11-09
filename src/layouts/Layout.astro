@@ -1,0 +1,251 @@
+---
+import Navigation from '../components/Navigation.astro'
+import ContentNavigation from '../components/ContentNavigation.astro'
+import VideoWalkthrough from '../components/VideoWalkthrough.astro'
+import Footer from '../components/Footer.astro'
+import QuickLinks from '../components/QuickLinks.astro'
+
+
+export interface Props {
+  title: string;
+}
+
+const { content = {}, headings } = Astro.props
+
+---
+
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-black text-white">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/noop-logo-plain.svg" />
+    <link rel="stylesheet" type="text/css" href="/assets/docs/styles.css" />
+    <title>{content.title}</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BQFKP55CCM"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'G-BQFKP55CCM');
+    </script>
+  </head>
+  <body class="h-full">
+    <div class="min-h-full max-w-screen-2xl m-auto  px-4 sm:px-6 lg:px-8">
+
+
+      <div class="relative isolate overflow-hidden bg-black py-10">
+
+        <div class="mx-auto flex lg:px-8 items-center justify-between">
+          <div class="flex h-16 items-center justify-start lg:justify-between flex-1">
+            <div class="max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl flex items-center">
+              <a class="flex items-center" href="/">
+                <span class="sr-only">Noop</span>
+                <img class="h-11" src="/noop-logo-plain.svg" alt="Noop">
+              </a>
+              <a href="/docs/" class="font-sans text-3xl uppercase font-bold text-white pl-4 ml-4 border-l border-lime-500">Docs</a>
+
+            </div>
+            <div class="flex items-center">
+              <a href="/register" id="app-link" class="ml-6 lg:ml-0 px-2 py-1.5 text-xs lg:px-3.5 lg:py-2.5 lg:text-sm font-mono uppercase rounded-md bg-lime-500 text-black ">Log in</a>
+            </div>
+          </div>
+
+          <div class="lg:hidden">
+            <button type="button" id="open-sidebar" class="p-1.5 border border-gray-600 bg-gray-800 rounded text-gray-700">
+              <span class="sr-only">Open sidebar</span>
+              <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+
+            <button type="button" id="close-sidebar" class="p-1.5 border border-gray-600 bg-gray-800 rounded text-gray-700 hidden">
+              <span class="sr-only">Close sidebar</span>
+              <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile sidebar content -->
+      <div class="absolute left-0 lg:hidden w-full bg-black z-10 p-6 bg-gray-800 hidden" id="mobile-menu">
+        <Navigation />
+      </div>
+
+      <div class="grid grid-cols-12 gap-4 px-4 sm:px-6 lg:px-8 py-8">
+
+
+        <div class="hidden lg:block col-span-3 border-r-8 border-gray-700">
+          <div class="sticky top-8">
+            <!-- Sidebar left -->
+            <Navigation />
+          </div>
+        </div>
+
+
+        <slot />
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+ const openSidebar = document.getElementById('open-sidebar')
+ const closeSidebar = document.getElementById('close-sidebar')
+ const mobileMenu = document.getElementById('mobile-menu')
+
+ openSidebar.addEventListener('click', () => {
+   openSidebar.classList.add('hidden');
+   closeSidebar.classList.remove('hidden');
+
+   mobileMenu.classList.remove('hidden');
+ })
+
+ closeSidebar.addEventListener('click', () => {
+   openSidebar.classList.remove('hidden');
+   closeSidebar.classList.add('hidden');
+   mobileMenu.classList.add('hidden');
+ })
+</script>
+
+
+<style is:global>
+/* Subset: Latin1 */
+ @font-face {
+	 font-family: 'IBM Plex Mono';
+	 font-style: normal;
+	 font-weight: 700;
+	 src: local("IBM Plex Mono Bold"), local("IBMPlexMono-Bold"), url("/assets/docs/fonts/IBMPlexMono-Bold-Latin1.woff2") format("woff2");
+	 unicode-range: U+0000, U+000D, U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122, U+2212, U+FB01-FB02
+ }
+ /* Subset: Latin2 */
+ @font-face {
+	 font-family: 'IBM Plex Mono';
+	 font-style: normal;
+	 font-weight: 700;
+	 src: local("IBM Plex Mono Bold"), local("IBMPlexMono-Bold"), url("/assets/docs/fonts/IBMPlexMono-Bold-Latin2.woff2") format("woff2");
+	 unicode-range: U+0100-0101, U+0104-0130, U+0132-0151, U+0154-017F, U+018F, U+0192, U+01A0-01A1, U+01AF-01B0, U+01FA-01FF, U+0218-021B, U+0237, U+0259, U+1E80-1E85, U+1E9E, U+20A1, U+20A4, U+20A6, U+20A8-20AA, U+20AD-20AE, U+20B1-20B2, U+20B4-20B5, U+20B8-20BA, U+20BD, U+20BF
+ }
+ /* Subset: Latin3 */
+ @font-face {
+	 font-family: 'IBM Plex Mono';
+	 font-style: normal;
+	 font-weight: 700;
+	 src: local("IBM Plex Mono Bold"), local("IBMPlexMono-Bold"), url("/assets/docs/fonts/IBMPlexMono-Bold-Latin3.woff2") format("woff2");
+	 unicode-range: U+0102-0103, U+01CD-01DC, U+1EA0-1EF9, U+20AB
+ }
+
+
+ /* Subset: Latin1 */
+ @font-face {
+	 font-family: 'IBM Plex Mono';
+	 font-style: normal;
+	 font-weight: 400;
+	 src: local("IBM Plex Mono"), local("IBMPlexMono"), url("/assets/docs/fonts/IBMPlexMono-Regular-Latin1.woff2") format("woff2");
+	 unicode-range: U+0000, U+000D, U+0020-007E, U+00A0-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122, U+2212, U+FB01-FB02
+ }
+ /* Subset: Latin2 */
+ @font-face {
+	 font-family: 'IBM Plex Mono';
+	 font-style: normal;
+	 font-weight: 400;
+	 src: local("IBM Plex Mono"), local("IBMPlexMono"), url("/assets/docs/fonts/IBMPlexMono-Regular-Latin2.woff2") format("woff2");
+	 unicode-range: U+0100-0101, U+0104-0130, U+0132-0151, U+0154-017F, U+018F, U+0192, U+01A0-01A1, U+01AF-01B0, U+01FA-01FF, U+0218-021B, U+0237, U+0259, U+1E80-1E85, U+1E9E, U+20A1, U+20A4, U+20A6, U+20A8-20AA, U+20AD-20AE, U+20B1-20B2, U+20B4-20B5, U+20B8-20BA, U+20BD, U+20BF
+ }
+ /* Subset: Latin3 */
+ @font-face {
+	 font-family: 'IBM Plex Mono';
+	 font-style: normal;
+	 font-weight: 400;
+	 src: local("IBM Plex Mono"), local("IBMPlexMono"), url("/assets/docs/fonts/IBMPlexMono-Regular-Latin3.woff2") format("woff2");
+	 unicode-range: U+0102-0103, U+01CD-01DC, U+1EA0-1EF9, U+20AB
+ }
+
+
+ @font-face {
+   font-family: 'Inter';
+   font-style:  normal;
+   font-weight: 400;
+   font-display: swap;
+   src: url("/assets/docs/fonts/Inter-Regular.woff2?v=3.19") format("woff2"),
+   url("/assets/docs/fonts/Inter-Regular.woff?v=3.19") format("woff");
+ }
+ @font-face {
+   font-family: 'Inter';
+   font-style:  italic;
+   font-weight: 400;
+   font-display: swap;
+   src: url("/assets/docs/fonts/Inter-Italic.woff2?v=3.19") format("woff2"),
+   url("/assets/docs/fonts/Inter-Italic.woff?v=3.19") format("woff");
+ }
+
+ @font-face {
+   font-family: 'Inter';
+   font-style:  normal;
+   font-weight: 700;
+   font-display: swap;
+   src: url("/assets/docs/fonts/Inter-Bold.woff2?v=3.19") format("woff2"),
+   url("/assets/docs/fonts/Inter-Bold.woff?v=3.19") format("woff");
+ }
+ @font-face {
+   font-family: 'Inter';
+   font-style:  italic;
+   font-weight: 700;
+   font-display: swap;
+   src: url("/assets/docs/fonts/Inter-BoldItalic.woff2?v=3.19") format("woff2"),
+   url("/assets/docs/fonts/Inter-BoldItalic.woff?v=3.19") format("woff");
+ }
+
+
+ @font-face {
+   font-family: 'space-grotesk';
+   src: url('/assets/docs/fonts/SpaceGrotesk-Bold.woff2') format('woff2');
+   font-weight: bold;
+   font-style: normal;
+   font-display: swap;
+ }
+
+
+ .hljs {
+   display: block;
+   overflow-x: auto;
+   padding: 0.5em;
+ }
+
+
+ .hljs,
+ .hljs-subst {
+   color: #fff;
+ }
+
+ .hljs-string,
+ .hljs-section,
+ .hljs-selector-class,
+ .hljs-template-variable,
+ .hljs-deletion {
+   color: rgb(120, 200, 40);
+ }
+
+ .prose li p {
+   @apply my-0;
+ }
+
+</style>
+
+
+
+<script>
+ const isLoggedIn = localStorage.getItem('NOOP_IDENTITY')
+                 && localStorage.getItem('NOOP_SECRET')
+                 && localStorage.getItem('NOOP_TOKEN')
+ if (isLoggedIn) {
+   const appLink = document.getElementById('app-link')
+   appLink.href = '/home'
+   appLink.text = 'Console'
+ }
+</script>
