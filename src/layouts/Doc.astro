@@ -4,7 +4,7 @@ import TOC from '../components/TOC.astro'
 const { content = {}, headings } = Astro.props
 ---
 
-<Layout>
+<Layout data={content}>
   <main class="lg:col-span-6 col-span-12">
     <article>
       <header>

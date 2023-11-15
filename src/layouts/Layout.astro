@@ -4,14 +4,15 @@ import ContentNavigation from '../components/ContentNavigation.astro'
 import VideoWalkthrough from '../components/VideoWalkthrough.astro'
 import Footer from '../components/Footer.astro'
 import QuickLinks from '../components/QuickLinks.astro'
+import Search from "../components/Search.astro"
+
 
 
 export interface Props {
   title: string;
 }
 
-const { content = {}, headings } = Astro.props
-
+const { data = {} } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -21,7 +22,15 @@ const { content = {}, headings } = Astro.props
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/noop-logo-plain.svg" />
     <link rel="stylesheet" type="text/css" href="/assets/docs/styles.css" />
-    <title>{content.title}</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description" content={data.description} />
+
+    <meta property="og:title" content={`Noop Developer Docs: ${data.title}`}>
+    <meta property="og:description" content={data.description}>
+    <meta property="og:url" content={Astro.url.pathname}>
+    <meta property="og:image" content={data.image}>
+
+    <title>{`Noop Docs ${data.title ? ': ' + data.title : ''}`}</title>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BQFKP55CCM"></script>
@@ -37,7 +46,7 @@ const { content = {}, headings } = Astro.props
     <div class="min-h-full max-w-screen-2xl m-auto  px-4 sm:px-6 lg:px-8">
 
 
-      <div class="relative isolate overflow-hidden bg-black py-10">
+      <div class="relative isolate bg-black py-10 z-10">
 
         <div class="mx-auto flex lg:px-8 items-center justify-between">
           <div class="flex h-16 items-center justify-start lg:justify-between flex-1">
@@ -47,7 +56,7 @@ const { content = {}, headings } = Astro.props
                 <img class="h-11" src="/assets/docs/noop-logo-plain.svg" alt="Noop">
               </a>
               <a href="/docs/" class="font-sans text-3xl uppercase font-bold text-white pl-4 ml-4 border-l border-lime-500">Docs</a>
-
+              
             </div>
             <div class="flex items-center">
               <a href="/register" id="app-link" class="ml-6 lg:ml-0 px-2 py-1.5 text-xs lg:px-3.5 lg:py-2.5 lg:text-sm font-mono uppercase rounded-md bg-lime-500 text-black ">Log in</a>
@@ -74,20 +83,22 @@ const { content = {}, headings } = Astro.props
 
       <!-- Mobile sidebar content -->
       <div class="absolute left-0 lg:hidden w-full bg-black z-10 p-6 bg-gray-800 hidden" id="mobile-menu">
+        <div class="mb-6">
+          <Search id="mobile" />
+        </div>
         <Navigation />
       </div>
 
       <div class="grid grid-cols-12 gap-4 px-4 sm:px-6 lg:px-8 py-8">
-
-
-        <div class="hidden lg:block col-span-3 border-r-8 border-gray-700">
+        <div class="hidden lg:block col-span-3 border-r-8 border-gray-800">
           <div class="sticky top-8">
             <!-- Sidebar left -->
+            <div class="mb-6 mr-2">
+              <Search id="desktop" />
+            </div>
             <Navigation />
           </div>
         </div>
-
-
         <slot />
       </div>
     </div>
