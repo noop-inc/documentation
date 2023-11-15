@@ -5,7 +5,10 @@ import tailwind from '@astrojs/tailwind'
 // https://astro.build/config
 export default defineConfig({
   build: {
-    inlineStylesheets: 'always'
+      inlineStylesheets: 'always',
+      format: "file",
+      assets: 'assets/docs/_astro'
   },
+    
     integrations: [tailwind(), pagefind()]
 })
