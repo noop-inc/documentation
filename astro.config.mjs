@@ -6,7 +6,6 @@ import tailwind from '@astrojs/tailwind'
 export default defineConfig({
   build: {
       inlineStylesheets: 'always',
-      format: "file",
       assets: 'assets/docs/_astro'
   },
     
