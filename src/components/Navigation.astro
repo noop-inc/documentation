@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+
 const docs = [].concat(await getCollection('docs'));
 
 const sections = ['getting started', 'core concepts', 'guides', 'components', 'resources', 'reference']
@@ -18,31 +19,33 @@ Object.keys(groupedDocs).forEach(k => {
   })
 })
 ---
+<div>
 
-<nav class="pr-8 text-base lg:text-sm">
-  <ul role="list" class="-ml-0.5  overflow-y-auto pl-0.5 space-y-8">
-    {
-    sections.filter(s => !!groupedDocs[s]).map((section) => (
-    <li>
-      <h3 class="font-bold capitalize">
-        {section}
-      </h3>
+  <nav class="pr-8 text-base lg:text-sm">
+    <ul role="list" class="-ml-0.5  overflow-y-auto pl-0.5 space-y-8">
+      {
+      sections.filter(s => !!groupedDocs[s]).map((section) => (
+      <li>
+        <h3 class="font-bold capitalize">
+          {section}
+        </h3>
 
-      <ul role="list" class="pl-3 mt-3 space-y-2">
-        {
-        groupedDocs[section].map((item) => (
-        <li>
-          <a href={`/docs/${item.slug}/`}>
-            {item.data.title}
-          </a>
-        </li>
-        ))
-        }
-      </ul>
-    </li>
-    ))
-    }
-  </ul>
-</nav>
+        <ul role="list" class="pl-3 mt-3 space-y-2">
+          {
+          groupedDocs[section].map((item) => (
+          <li>
+            <a href={`/docs/${item.slug}/`}>
+              {item.data.title}
+            </a>
+          </li>
+          ))
+          }
+        </ul>
+      </li>
+      ))
+      }
+    </ul>
+  </nav>
 
 
+</div>
