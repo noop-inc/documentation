@@ -13,6 +13,8 @@ export default function pagefind(pagefindConfig: { site?: string; outputSubdir?:
   process.env.PAGEFIND_SITE = site
 
   let outDir: string;
+
+
   return {
     name: "pagefind",
     hooks: {
