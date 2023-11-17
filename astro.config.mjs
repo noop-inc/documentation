@@ -9,5 +9,5 @@ export default defineConfig({
         assets: 'assets/docs/_astro'
     },
 
-    integrations: [tailwind(), pagefind({site: 'dist', outputSubdir: 'assets/docs/pagefind'})]
+    integrations: [tailwind(), pagefind({site: 'dist', outputSubdir: 'assets/docs/pf'})]
 })
