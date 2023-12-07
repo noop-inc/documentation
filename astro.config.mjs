@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import pagefind from "./lib/astro-pagefind/pagefind.ts"
 import tailwind from '@astrojs/tailwind'
+import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,5 +10,5 @@ export default defineConfig({
         assets: 'assets/docs/_astro'
     },
 
-    integrations: [tailwind(), pagefind({site: 'dist', outputSubdir: 'assets/docs/pf'})]
+    integrations: [tailwind(), mdx(), pagefind({site: 'dist', outputSubdir: 'assets/docs/pf'})]
 })

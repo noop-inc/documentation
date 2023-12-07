@@ -1,7 +1,7 @@
 ---
-title: 'Blueprints (app.yml)'
+title: 'Blueprints (blueprint.yaml)'
 description: 'Describing how to run your Software, with Source Code'
-slug: 'application-manifest-app-yml'
+slug: 'blueprints'
 section: 'core concepts'
 layout: '../../layouts/Doc.astro'
 pubDate: ''
@@ -10,7 +10,7 @@ order: 2
 
 # Specification
 
-The Noop app.yml file defines your application's components, routes, resources, and lifecycle events.
+The Noop `blueprint.yaml` file defines your application's components, routes, resources, and lifecycle events.
 
 ## components
 
