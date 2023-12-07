@@ -1,0 +1,45 @@
+---
+title: 'Quick Start Guide'
+description: ''
+slug: 'quick-start-guide'
+section: 'getting started'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
+order: 4
+---
+
+import TemplateList from '../../components/TemplateList.astro'
+
+## Overview
+
+The fastest way to get started on Noop is to use one of our pre-configured Templates. Any of the officially supported Templates will automatically create a running Environment with all required Resources (databases, block storage, etc.).
+
+## Creating an Application From a Template
+
+First make sure Noop Desktop is installed.
+
+<p class="my-8"><a href="/download/" class="rounded-md bg-noop no-underline px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ">Download Noop</a></p>
+
+On the home-screen, select the Template for the language and framework you need (If you don't see what you need, [suggest one](https://github.com/orgs/noop-inc/discussions/new?category=feature-requests-and-ideas)). 
+
+Continue to follow the Template-creation process, giving your Application a name and any other necessary configuration.
+
+Workshop will automatically:
+
+- Creating an Environment
+- Launching required resources (database, block storage, etc)
+- Build the source code
+- Deploy the build (locally)
+- And finally, create a local endpoint to serve the application from `something.local.noop.app`
+
+## Creating an Application From Scratch
+
+The only thing required to make an app a Noop Application is a `blueprint.yaml` file located in the `.noop` directory in the app root.
+
+See the [Applications docs page](/docs/applications/) for an overview of what Noop Applications are. Also check out the [Blueprint docs page](/docs/blueprints/) for a reference of what a Blueprint can define.
+
+A helpful way to understand how an app is configured to work with Noop is to look at the guides associated with each of the officially supported templates.
+
+### Template Guides
+
+<TemplateList />

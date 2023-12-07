@@ -9,7 +9,7 @@ order: 3
 
 Applications are software components that run together. Noop Applications map 1:1 with a code repository. An Application can be a single service (possibly with a database requirement) or a monorepo that includes a collection of services, tasks and resources.
 
-Define an Application using the Noop `blueprint.yml` configuration in the project's `.noop` directory. The `blueprint.yml` is responsible for defining all aspects of your Application including:
+Define an Application using the Noop [`blueprint.yml`](/docs/blueprints/) configuration in the project's `.noop` directory. The `blueprint.yml` is responsible for defining all aspects of your Application including:
 
 - Components: static assets, scheduled tasks, and container services
   - Build processes for each Component
