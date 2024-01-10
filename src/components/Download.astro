@@ -1,0 +1,141 @@
+
+
+<div class="inline-flex rounded-md shadow-sm">
+
+  <a href="https://github.com/noop-inc/desktop/releases/latest" class="relative inline-flex items-center rounded-l-md rounded-md bg-noop text-white px-3 py-2 text-sm font-bold ring-1 ring-inset focus:z-10 no-underline" id="default-button">Download Noop</a>
+
+
+  <div class="relative -ml-px block hidden">
+    <button type="button" class="relative inline-flex items-center rounded-r-md bg-noop px-2 py-2 text-white border-l border-white focus:z-10" id="option-menu-button" aria-expanded="true" aria-haspopup="true">
+      <span class="sr-only">Open options</span>
+      <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+      </svg>
+    </button>
+
+    <div class="hidden absolute right-0 z-10 -mr-1 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="option-menu-button" tabindex="-1" id="option-menu">
+      <div class="py-1" role="none" id="menu-items"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script>
+ const icons = {
+   linux: `<svg data-v-aca98933="" data-v-14aaddc1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1.1em" height="1.1em" class="icon linux" style="margin-top: -1px;"><g fill="currentcolor"><path d="M16.59,15.359a4.464,4.464,0,0,1,.979.432c.067.037.13.076.192.108.16-.015.419-.069.633-.114a5.774,5.774,0,0,1,1.171-.162,2.413,2.413,0,0,1,.4.035,7.268,7.268,0,0,0-.022-1.065A8.384,8.384,0,0,0,18.1,10.262c-.942-1.035-2.391-2.523-2.391-3.653V3.474a3.475,3.475,0,0,0-6.949,0V8.041c-.151.79-.546.866-1.167,1.732a10.318,10.318,0,0,0-1.45,2.674c-.29.87-.905,1.788-1.186,2.511a2.034,2.034,0,0,1,.23-.057,2.183,2.183,0,0,1,.34-.027,2.293,2.293,0,0,1,1.139.313A16.567,16.567,0,0,1,8.763,10.3a4.509,4.509,0,0,0,.7-2.918c.364.29.727,1.192,1.719,1.192S12.837,7.8,13.389,7.52a1.5,1.5,0,0,0,.382-.274l.095.022a46.862,46.862,0,0,1,2.3,4.915A11.1,11.1,0,0,1,16.59,15.359ZM10.94,5.274a2.247,2.247,0,0,0-.466.148l-.077.036a2.478,2.478,0,0,0-.376.216h0a1.325,1.325,0,0,1-.342-.826c-.049-.58.205-1.076.566-1.106s.693.416.742,1A1.571,1.571,0,0,1,10.94,5.274Zm2.4-.418a1.6,1.6,0,0,1-.279.8c-.057-.03-.12-.061-.185-.092l-.049-.024c-.078-.036-.162-.07-.252-.1l-.01,0a3.2,3.2,0,0,0-.678-.167,1.77,1.77,0,0,1-.038-.537c.055-.654.433-1.156.845-1.121S13.4,4.2,13.34,4.856Z" fill="currentcolor"></path> <path d="M6.7,17.286c-.339-.514-.8-.979-1.268-.9s-.791.917-1.092,1.168-1.456.025-1.808.4-.025,1.719-.088,2.36-.4.979-.439,1.28.063.64.628.841,2.674.728,3.4.891,2.435,1.243,3.239-.062a2.193,2.193,0,0,0-.477-2.75A33.772,33.772,0,0,1,6.7,17.286Z"></path> <path d="M11.691,21.674a6.427,6.427,0,0,1-.666-.035,3.216,3.216,0,0,1,.02,1.059,13.928,13.928,0,0,1,2.583.092,4.6,4.6,0,0,1,.082-1.626A4.188,4.188,0,0,1,11.691,21.674Z" fill="currentcolor"></path> <path d="M21.536,19.734a2.4,2.4,0,0,1-1.217-1.255c-.113-.5-.013-.967-.4-1.268s-1.659.273-2.409.18c-.526-.066-1.31-.889-1.845-.548-.318.2-.152,1.008-.14,1.435a22.877,22.877,0,0,1-.188,2.561c-.088.489-.766,2.033.552,2.912a2.014,2.014,0,0,0,2.461-.54,7.4,7.4,0,0,1,1.87-1.393,4.616,4.616,0,0,0,1.67-1.054C22.089,20.425,22.064,20.035,21.536,19.734Z"></path></g></svg>`,
+   win: `<svg data-v-aca98933="" data-v-14aaddc1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1.1em" height="1.1em" class="icon microsoft" style="margin-top: -1px;"><g fill="currentcolor"><rect x="1" y="1" width="10" height="10" fill="currentcolor"></rect> <rect x="13" y="1" transform="matrix(-1 -4.492907e-11 4.492907e-11 -1 36 12)" width="10" height="10"></rect> <rect x="1" y="13" width="10" height="10"></rect> <rect x="13" y="13" transform="matrix(-1 -4.492907e-11 4.492907e-11 -1 36 36)" width="10" height="10" fill="currentcolor"></rect></g></svg>`,
+   mac: `<svg data-v-aca98933="" data-v-14aaddc1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1.1em" height="1.1em" class="icon apple" style="margin-top: -1px;"><g fill="currentcolor"><path d="M21.354,16.487c-1.338-0.506-2.233-1.721-2.334-3.17c-0.099-1.412,0.593-2.666,1.851-3.355l1.046-0.573 l-0.747-0.93c-1.255-1.563-3.051-2.497-4.804-2.497c-1.215,0-2.058,0.318-2.735,0.574c-0.478,0.181-0.855,0.323-1.269,0.323 c-0.472,0-0.938-0.166-1.478-0.358c-0.708-0.252-1.51-0.538-2.54-0.538c-1.99,0-3.997,1.188-5.237,3.098 c-1.851,2.849-1.343,7.734,1.208,11.616C5.326,22.215,6.743,23.982,8.75,24c0.013,0,0.026,0,0.039,0 c1.643,0,2.003-0.876,3.598-0.886c1.742,0.082,1.962,0.893,3.589,0.882c1.961-0.018,3.375-1.771,4.499-3.484 c0.664-1.007,0.921-1.534,1.438-2.678l0.438-0.97L21.354,16.487z" fill="currentcolor"></path> <path d="M15.1,3.45c0.65-0.834,1.143-2.011,0.964-3.214c-1.062,0.073-2.302,0.748-3.027,1.628 c-0.658,0.799-1.201,1.983-0.99,3.135C13.205,5.035,14.404,4.343,15.1,3.45L15.1,3.45z"></path></g></svg>`
+ }
+
+ icons.macIntel = icons.mac;
+ 
+
+
+ const menuToggle = document.getElementById('option-menu-button');
+ const optionMenu = document.getElementById('option-menu');
+ const menuItems = document.getElementById('menu-items');
+ const defaultButton = document.getElementById('default-button');
+
+ menuToggle.addEventListener('click', () => {
+   optionMenu.classList.toggle('block');
+   optionMenu.classList.toggle('hidden');
+ })
+
+ const os = (() => {
+   let os = 'none'
+   if (window.navigator.userAgent.indexOf('Win') !== -1) os = 'win'
+   if (window.navigator.userAgent.indexOf('Mac') !== -1) os = 'mac'
+   if (window.navigator.userAgent.indexOf('Linux') !== -1) os = 'linux'
+   return os
+ })()
+
+
+ const getRelease = async () => {
+   const release = await fetch('https://api.github.com/repos/noop-inc/desktop/releases/latest',
+                               {
+                                 headers: {
+                                   Accept: 'application/vnd.github+json',
+                                   'X-GitHub-Api-Version': '2022-11-28'
+                                 }
+                               }
+   )
+
+   return release.json()
+ }
+
+ const findReleaseUrl = (platform, version, assets) => {
+   version = version.replace(/^v/, '');
+   let searchTerm;
+   switch (platform) {
+     case ('mac'):
+       searchTerm = `Noop-${version}-arm64.dmg`;
+       break;
+     case ('windows'):
+       break;
+     case ('linux'):
+       break;
+     default:
+       break;
+   }
+
+   if (searchTerm) {
+     const asset = assets.find(a => a.name === searchTerm)
+     return asset ? asset.browser_download_url : 'https://github.com/noop-inc/desktop/releases/latest'
+   }
+
+   return 'https://github.com/noop-inc/desktop/releases/latest';
+ }
+
+
+ const run = async () => {
+   const alts = [{name: 'mac', label: 'macOS (Apple Silicon)'},
+                 // {name: 'macIntel', label: 'macOS (Intel)'}, {name: 'win', label: 'Windows'}, {name: 'linux', label: 'Ubuntu'}
+   ]
+
+   const rel = await getRelease()
+
+   const {name, assets} = rel
+
+   alts.map(alt => Object.assign(alt, {url: findReleaseUrl(alt.name, name, assets)}))
+
+   const selected = alts.splice(alts.findIndex(alt => alt.name === os), 1)[0]
+
+   const label = document.createElement('span')
+   label.textContent = `Download Noop ${name} ${selected.label}`
+
+   const icon = document.createElement('span')
+   icon.innerHTML = icons[selected.name]
+   icon.setAttribute('class', 'mr-2')
+   defaultButton.textContent = ''
+   defaultButton.appendChild(icon)
+   defaultButton.appendChild(label)
+   defaultButton.setAttribute('href', selected.url)
+
+   alts.forEach(alt => {
+     // <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="option-menu-item-0">Linux </a>
+     const menuItem = document.createElement('a');
+
+     const icon = document.createElement('span')
+
+     icon.innerHTML = icons[alt.name]
+     icon.setAttribute('class', 'mr-2');
+
+     const label = document.createElement('span')
+     label.textContent = alt.label
+
+     menuItem.appendChild(icon)
+     menuItem.appendChild(label)
+
+     menuItem.setAttribute('class', 'text-gray-700 block px-4 py-2 text-sm flex items-center no-underline')
+     menuItem.setAttribute('href', alt.url)
+     menuItem.setAttribute('role', 'menuitem')
+
+     menuItems.appendChild(menuItem)
+   })
+ }
+
+ run()
+</script>
