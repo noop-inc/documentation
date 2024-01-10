@@ -1,6 +1,6 @@
 ---
 title: 'Local Development'
-description: 'Overview and guide for developing Applications locally using Noop Desktop.'
+description: 'Overview and guide for developing Applications locally using Noop Workshop.'
 slug: 'local-development'
 section: 'getting started'
 layout: '../../layouts/Doc.astro'
@@ -8,59 +8,45 @@ pubDate: ''
 order: 5
 ---
 
+Local development on Noop is done with the Workshop product. Worshop is a local software development product included as part of the Noop desktop app.
+
+Workshop simulates the experience of running a cloud application -- locally (no internet dependencies). All of the platform Components, Resources and tools available in Noop Cloud are also available in Workshop.
+
 # Installation
 
-1. Download and install [Docker](https://docs.docker.com/get-docker/). Make sure it is running on your computer.
-
-2. Download and install the [Noop Desktop app](https://noop.dev/download).
+Download and install the [Noop Desktop app](https://noop.dev/docs/introduction/).
 
 # Project setup
 
-Open Noop Desktop. In the left-hand menu, select “Local Development”.
+Workshop automatically detects Applications configured to run on Noop. Meaning any source repository with a `.noop` directory containing a `blueprint.yaml` file will register as a Workshop Application.
 
-This guide uses the [NodeJS Todo application Blueprint](https://github.com/noop-inc/blueprint-todo-nodejs-vue). To follow along, clone that repository.
+### Starting a New Application
 
-![Noop Console showing the left panel menu where "Local Development" can be selected.](/assets/docs/imgs/418a2f75-0dfb-47ac-8760-916f63589e5a.png)
+The fastest way to get an Application up and running on Workshop is to start with a Template. There are Templates available for many familiar languages and platforms. 
 
-If you’d like to use your own project, make sure you have a Noop application manifest ([app.yml](https://docs.noop.dev/en/articles/7905578-application-manifest-app-yml)) in the `.noop` directory at the root of your project.
+On the Workshop home screen there is a panel with a selection of available Templates. Choose one and follow the instructions to finish creating the new Application.
 
-Once you have a Noop project on your local computer, import it into Noop:
+Once complete, the Template is ready to run. There is some platform-specific setup for the templates, which can be found in their associated guides.
 
-![Console panel on the Project overview page showing the button to create a new project.](/assets/docs/imgs/d7bcf80f-342d-42c6-bc78-b3a5fe0fcbdf.png)
+### Developing an Existing Application
 
-- Click “New Project” at the top of the Projects list.
+Workshop will attempt to find existing Applications located on your filesystem. If you don't see your Application in the Applications list on the Workshop dashboard, add it by pressing the "Add Application" button and pointing Workshop to the appropriate directory.
 
-- Choose the directory of the source code cloned from earlier.
-
-- Choose a project name
-
-- Click “Create Project”
-
-![New Project form filled out to show the information needed to create a Noop Local Project](/assets/docs/imgs/bb6f3aa7-ff4a-4558-9b2f-02f3932a9c2f.png)
-
-Once that’s done you should see a success message modal. At the bottom of this modal is an option to “Create Endpoint”. Creating an Endpoint will produce a URL to view your project once it is launched (locally). Click the “Create Endpoint” button.
-
-![Showing the form for creating a Local Endpoint and routing traffic to the Local Application Project](/assets/docs/imgs/6f5f09c4-294c-4f36-b0d1-7b31017f5b35.png)
-
-Choose a subdomain and click the “Create Endpoint” button. Note: this domain is pointed to your local computer. The benefit to the local Endpoint setup is your apps will be served over HTTPS on the default port 443. However, the Endpoint is not accessible from the public internet.
+Once added, a "Default" Environment is created for the Application. Navigate to the Environment and toggle the on switch located at the top of the left-hand page panel.
 
 # Run the project
 
-On the project page click the right-facing triangle icon button to the right of the status indicator. Once clicked, the project will launch all Application Components and Resources defined in your app.yml.
-
-![Project page in Noop Desktop before starting the Project.](/assets/docs/imgs/b80a2263-1338-4af3-9ef4-fb43ef178a47.png)
-
-![Project page in Noop Desktop after successfully starting the Project.](/assets/docs/imgs/8a4a693c-092d-4d39-8df1-7c6706c86f9b.png)
+On the Application Environment page click the on toggle at the top of the left-hand panel. Once clicked, the project will launch all Application Components and Resources defined in your blueprint.yaml.
 
 ## Application Logs
 
 All of your Application Component and Resource logs are available at the bottom of the project page. To view an individual Component or Resource’s Logs, click on the Component or Resource name on the project overview page.
 
-Logs can be filtered exactly as in Noop Cloud.
+[Logs](/docs/logs-and-log-filtering/) can be filtered exactly as in Noop Cloud.
 
 ## Environment Variables
 
-Variables can either be defined in app.yml or from the Local Console. To define a variable from the Console, select the Component you want to add a variable to. On the component overview page there is a form to input variable names and values. Each variable can optionally be included as a secret, meaning its value will be encrypted.
+Variables can either be defined in blueprint.yaml or from the Local Console. To define a variable from the Console, select the Component you want to add a variable to. On the component overview page there is a form to input variable names and values. Each variable can optionally be included as a secret, meaning its value will be encrypted.
 
 ## Container Terminal
 
@@ -72,12 +58,12 @@ The data within all Resources is available for viewing and in the case of `dynam
 
 # Updating the project
 
-Any changes to your project, whether the app.yml or the source code of any component, Noop Local will automatically relaunch with the updates.
+Any changes to your project, whether the blueprint.yaml or the source code of any Component, Workshop will automatically relaunch with the updates.
 
 ## Adding and removing Resources and Components
 
-The app.yml is where all Application Resources and Components are defined. To add a new one or remove an existing one, edit and save the `.noop/app.yml` file. Once app.yml is saved Noop Desktop will rebuild your environment according to your changes.
+The blueprint.yaml is where all Application Resources and Components are defined. To add a new one or remove an existing one, edit and save the `.noop/blueprint.yaml` file. Once blueprint.yaml is saved Noop Desktop will rebuild your environment according to your changes.
 
-## Recovering from app.yml Validation Errors
+## Recovering from blueprint.yaml Validation Errors
 
-If your app.yml is invalid, a validation error will be displayed on the Project page. You will need to restart the project by clicking right-facing triangle button to the right of the status field on the Project page.
+If your blueprint.yaml is invalid, a validation error will be displayed on the Project page. You will need to restart the project by clicking right-facing triangle button to the right of the status field on the Project page.
