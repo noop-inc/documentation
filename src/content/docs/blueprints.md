@@ -14,7 +14,7 @@ The Noop `blueprint.yaml` file defines your application's components, routes, re
 
 ## components
 
-The app.yml must declare a `components` root element as a list of objects containing configuration for each component in your application. At least one component object must be defined.
+The blueprint.yaml must declare a `components` root element as a list of objects containing configuration for each component in your application. At least one component object must be defined.
 
 ```yaml
 components:
@@ -89,11 +89,11 @@ Specifies an image to be used for multi-stage builds. The optional `stage` key c
 
 ### runtime
 
-`runtime` defines properties associated with a component instance. `runtime` properties affect build [Deployments](https://github.com/noop-inc/documentation/blob/app-manifest-update/docs/Deployments.md), specifying container execution commands, instance memory, component resources, and component variables.
+`runtime` defines properties associated with a component instance. `runtime` properties affect build [Deployments](/docs/deployments/), specifying container execution commands, instance memory, component resources, and component variables.
 
 #### resources
 
-Resources that a component will use must be defined in the `resources` property of a component's runtime section. Resources are an array of strings, where the string value corresponds to the name of the resource as defined in the AppManifest resources (provide link) section.
+Resources that a component will use must be defined in the `resources` property of a component's runtime section. Resources are an array of strings, where the string value corresponds to the name of the resource as defined in the Application Blueprint resources (provide link) section.
 
 ```yaml
 ...
@@ -249,12 +249,12 @@ One of `BeforeTraffic` or `BeforeServices`. **Required**
 
 Array of `task` Components. Components are executed in series. **Required**
 
-# Complete app.yml Example
+# Complete blueprint.yaml Example
 
-Expressed in Source Code at `.noop/app.yml`
+Expressed in Source Code at `.noop/blueprint.yaml`
 
 ```yaml
-# Sample AppManifest
+# Sample Application Blueprint
 components:
   - name: ApiService
     type: service

@@ -16,11 +16,11 @@ The Amazon DynamoDB Resource is a NoSQL database solution for the Noop platform.
 
 - Browse, query, and debug your data with the Resource Explorer for DynamoDB in the Noop Console.
 
-- Manage access automatically for all Components referencing the Resource from the Application Manifest (app.yml) file.
+- Manage access automatically for all Components referencing the Resource from the Application Blueprint (blueprint.yaml) file.
 
 # Usage
 
-To add DynamoDB to your application insert an entry in the app.yml under `resources`. Specify the `type` as `dynamodb` and include an alphanumeric name.
+To add DynamoDB to your application insert an entry in the blueprint.yaml under `resources`. Specify the `type` as `dynamodb` and include an alphanumeric name.
 
 ## Required Parameters
 
@@ -54,7 +54,7 @@ One of `S`, `N`,or` B`
 
 ## Example
 
-Here’s a complete app.yml example:
+Here’s a complete blueprint.yaml example:
 
 ```
 ---
@@ -87,7 +87,7 @@ resources:
     hashKeyType: S
 ```
 
-When a resource is connected to a Noop service the following dynamic variables are available to use within the app manifest:
+When a resource is connected to a Noop service the following dynamic variables are available to use within the Application Blueprint:
 
 - `endpoint`
 

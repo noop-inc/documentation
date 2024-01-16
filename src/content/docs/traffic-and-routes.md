@@ -16,9 +16,9 @@ It all starts with an Endpoint. Endpoints are a group of Routes associated with 
 
 Endpoints are primarily responsible for routing Traffic to a Noop Application Environment. They can also proxy requests to hosts outside Noop, redirect Traffic, produce error responses and send Traffic into a black hole.
 
-When Traffic resolves to a specific Environment, there are another set of Routes defined in the app.yml which determine the Component for handling the request.
+When Traffic resolves to a specific Environment, there are another set of Routes defined in the blueprint.yaml which determine the Component for handling the request.
 
-By default all Application Components are private. They are only available on the public Internet when two things happen: the app.yml associates a Route with the Component and an Endpoint specifies a Route for the running Application Environment. In some cases you might want to associate a Route with a Service Component and keep the Service internal, see **[internal Routes](http://localhost:3000/docs/routing#internal-routes)**.
+By default all Application Components are private. They are only available on the public Internet when two things happen: the blueprint.yaml associates a Route with the Component and an Endpoint specifies a Route for the running Application Environment. In some cases you might want to associate a Route with a Service Component and keep the Service internal, see **[internal Routes](http://localhost:3000/docs/routing#internal-routes)**.
 
 # Endpoints
 
@@ -64,9 +64,9 @@ To add the rule, click the green "Add" button. Once you are finished adding Rout
 
 # Application Routes
 
-Application routes, unlike Endpoint Routes are defined in the Application Manifest (app.yml).
+Application routes, unlike Endpoint Routes are defined in the Application Blueprint (blueprint.yaml).
 
-A simple Application might only have one component. Here is an example app.yml with a single Component and Route:
+A simple Application might only have one component. Here is an example blueprint.yaml with a single Component and Route:
 
 ```
 ---

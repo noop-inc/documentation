@@ -22,7 +22,7 @@ In plain english, the above says: Match all log entries where the **`level`** va
 
 In addition to **[Log filtering](http://localhost:3000/docs/Logic#log-filtering)**, Logic can:
 
-- **[Set Application Manifest properties](http://localhost:3000/docs/Logic#manifest-properties)**
+- **[Set Application Blueprint properties](http://localhost:3000/docs/Logic#blueprint-properties)**
 
 - **[Determine Pipeline execution criteria](http://localhost:3000/docs/Logic#pipeline-execution)**
 
@@ -70,9 +70,9 @@ NOTE: Not all Logic operators are available for Log filtering. See the Logic ref
 
 The context variable of Logs changes depending on the Log stream and also by custom properties set by application developers. See the Log documentation to learn how to inspect and create quick Log filters from the Console.
 
-# Manifest Properties
+# Blueprint Properties
 
-Within the Application Manifest, Logic can be used to dynamically set properties. For example, an environment variable could be written to change depending on whether the Noop **`$env.production`** value is set to **`true`**. In the following example the **`NODE_ENV`** environment variable is set to **`production`** when **`$env.production`** is **`true`** otherwise it is set to **`dev`**.
+Within the Application Blueprint, Logic can be used to dynamically set properties. For example, an environment variable could be written to change depending on whether the Noop **`$env.production`** value is set to **`true`**. In the following example the **`NODE_ENV`** environment variable is set to **`production`** when **`$env.production`** is **`true`** otherwise it is set to **`dev`**.
 
 ```
 ---
@@ -155,7 +155,7 @@ $request:
 
 # Conditional Application Routing
 
-Similar to routing Endpoint Traffic, it’s also possible to conditionally route Traffic at the application level. Application route conditions are configured within the app.yml. This could be used to allow specific routes for users coming from a specific network.
+Similar to routing Endpoint Traffic, it’s also possible to conditionally route Traffic at the application level. Application route conditions are configured within the blueprint.yaml. This could be used to allow specific routes for users coming from a specific network.
 
 See the following example:
 

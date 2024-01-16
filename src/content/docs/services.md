@@ -26,7 +26,7 @@ A Service can run a web server or microservice in any programming language or fr
 
 # **Service Configuration**
 
-Service defaults are configured in your Application Manifest (app.yml). Memory and cpu capacity, build process and runtime details are all defined in the app.yml.
+Service defaults are configured in your Application Blueprint (blueprint.yaml). Memory and cpu capacity, build process and runtime details are all defined in the blueprint.yaml.
 
 Here is a basic example of a NodeJS service with no environment variables.
 
@@ -43,9 +43,9 @@ components:
 
 By default, Services are not accessible via the public Internet. In order for clients to connect to your Services, you need to set up an Endpoint and a Route.
 
-Endpoints are defined in the console and target a specific Environment. Once Traffic requests are forwarded from the Endpoint to your Environment, the Routes defined in your Application Manifest (app.yml) are used to determine which Component should handle that request.
+Endpoints are defined in the console and target a specific Environment. Once Traffic requests are forwarded from the Endpoint to your Environment, the Routes defined in your Application Blueprint (blueprint.yaml) are used to determine which Component should handle that request.
 
-Assuming an Endpoint is already created, the following app.yml will send all Traffic to the `ExampleService` component.
+Assuming an Endpoint is already created, the following blueprint.yaml will send all Traffic to the `ExampleService` component.
 
 ```
 components:
@@ -61,7 +61,7 @@ routes:
 
 # **Connecting to a Resource**
 
-Noop automatically manages the variables used for Resources. To associate a service with a Resource, include the Resource name in the Service’s \`runtime.resources\` property in the app.yml. Here is an example of a service that uses a MySQL Resource and surfaces the URL as a variable in the service runtime:
+Noop automatically manages the variables used for Resources. To associate a service with a Resource, include the Resource name in the Service’s \`runtime.resources\` property in the blueprint.yaml. Here is an example of a service that uses a MySQL Resource and surfaces the URL as a variable in the service runtime:
 
 ```
 components:
@@ -90,7 +90,7 @@ Services need to be designed to relaunch predictably. This is because the contai
 
 # Configuration Reference
 
-Service Components are defined in your .noop/app.yml as an array under the components property.
+Service Components are defined in your .noop/blueprint.yaml as an array under the components property.
 
 - The `name` property is an alpha-numeric string and is required
 
@@ -108,7 +108,7 @@ Service Components are defined in your .noop/app.yml as an array under the compo
 
   - health.checker can be set to `http`, `tcp`, or `cmd`
 
-# **app.yml Examples**
+# **blueprint.yaml Examples**
 
 ### Basic Service
 
