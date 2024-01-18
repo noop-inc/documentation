@@ -12,9 +12,9 @@ Noop provides an Amazon S3 Resource to associate block storage with your applica
 
 ## Usage
 
-To create an S3 bucket on Noop, add it to your Application Manifest (app.yml) under the resources property. Specify the type as \`s3\` and include an alphanumeric name. The name is used to reference the resource from Application Components.
+To create an S3 bucket on Noop, add it to your Application Blueprint (blueprint.yaml) under the resources property. Specify the type as \`s3\` and include an alphanumeric name. The name is used to reference the resource from Application Components.
 
-Here’s a complete app.yml example:
+Here’s a complete blueprint.yaml example:
 
 ```
 components:
@@ -34,7 +34,7 @@ resources:
    type: s3
 ```
 
-When an S3 resource is connected to an Application Component the following dynamic variables are available to use within the app.yml `components.[n].runtime` property:
+When an S3 resource is connected to an Application Component the following dynamic variables are available to use within the blueprint.yaml `components.[n].runtime` property:
 
 - `endpoint`
 

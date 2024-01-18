@@ -12,7 +12,7 @@ Environment Variables can be defined in a number of ways. Which method to use de
 
 # Standard Variables
 
-When a variable does not need to be secret it can be included directly in the Application Manifest (app.yml). If the variable is the same across all Environments create a static variable definition like the LOG_LEVEL example here:
+When a variable does not need to be secret it can be included directly in the Application Blueprint (blueprint.yaml). If the variable is the same across all Environments create a static variable definition like the LOG_LEVEL example here:
 
 ```
 components:

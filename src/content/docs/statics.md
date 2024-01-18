@@ -28,7 +28,7 @@ Statics are a good choice for hosting static sites and SPAs. Noop supports all m
 
 # **Service Configuration**
 
-Static Components are defined in the Application Manifest (app.yml). Statics require an alphanumeric `name`, a `type` of `static` and an `image` for executing the asset build process.
+Static Components are defined in the Application Blueprint (blueprint.yaml). Statics require an alphanumeric `name`, a `type` of `static` and an `image` for executing the asset build process.
 
 ```
 components:
@@ -56,7 +56,7 @@ The final working directory in the build.steps property is the content that will
 
 ## **Configuration Reference**
 
-Service Components are defined in your .noop/app.yml as an array under the components property.
+Service Components are defined in your .noop/blueprint.yaml as an array under the components property.
 
 - The `name` property is an alpha-numeric string and is required
 

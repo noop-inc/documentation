@@ -11,7 +11,7 @@ Resources are for storing state within your Applications, whether that's Amazon 
 
 A Resource is created at the Environment level and can be attached to any Component in the Environment.
 
-As you create new Environments for your Application, Noop automatically creates the necessary Resources defined in your [app.yml](/docs/application-manifest-app-yml/).
+As you create new Environments for your Application, Noop automatically creates the necessary Resources defined in your [blueprint.yaml](/docs/blueprints/).
 
 Resources include Postgres, MySQL, Redis, Amazon DynamoDB and Amazon S3. To create a resource in your Application, specify the name, type and other Resource-specific configuration parameters.
 

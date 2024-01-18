@@ -8,7 +8,7 @@ pubDate: ''
 order: 15
 ---
 
-Tasks are a type of Component for executing one-off or repeating and short-running processes. Tasks are defined in the Application Manifest (app.yml). Tasks can either run on a cron schedule, in response to deployment hooks (`BeforeTraffic` and `BeforeServices`), or by manual execution via the Console Stack page.
+Tasks are a type of Component for executing one-off or repeating and short-running processes. Tasks are defined in the Application Blueprint (blueprint.yaml). Tasks can either run on a cron schedule, in response to deployment hooks (`BeforeTraffic` and `BeforeServices`), or by manual execution via the Console Stack page.
 
 Each time a Task is run, a Task Execution is created. The Execution is considered successful if its process exits with `exitCode=0`. All other exitCode values are considered Task failures.
 
@@ -18,9 +18,9 @@ To receive Notifications about Task failures, toggle the “Task Failure” opti
 
 # Cron Tasks
 
-To run a Task on a cron schedule, specify the cron pattern in the app.yml along with the Task definition.
+To run a Task on a cron schedule, specify the cron pattern in the blueprint.yaml along with the Task definition.
 
-The following example shows a complete Task definition in the app.yml. It uses the cron schedule, build and runtime configurations and environment variables.
+The following example shows a complete Task definition in the blueprint.yaml. It uses the cron schedule, build and runtime configurations and environment variables.
 
 ```
 components:
@@ -93,7 +93,7 @@ lifecycles:
 
 # Manually Running Tasks
 
-Any Task defined in app.yml can be run manually from the Console. To run a task manually navigate to the deployed Stack page. Select the Task from the dropdown at the bottom of the left-hand panel under the “Execute Task” heading. Click the right-arrow button adjacent to the dropdown.
+Any Task defined in blueprint.yaml can be run manually from the Console. To run a task manually navigate to the deployed Stack page. Select the Task from the dropdown at the bottom of the left-hand panel under the “Execute Task” heading. Click the right-arrow button adjacent to the dropdown.
 
 ![Screenshot showing the panel on the Stack page which includes the "Execute Task" section](/assets/docs/imgs/340324e5-3755-42c8-b024-f79bee4894a7.png)
 
@@ -105,7 +105,7 @@ Tasks support handling input JSON data via stdin and outputting data via stdout 
 
 ## **Puppeteer Browser Integration Tests during Deployment**
 
-This app.yml example shows how to execute browser integration tests during a Deployment. The \`BeforeTraffic\` lifecycle hook means that this Task will run after the new Stack is ready, but before any Traffic is routed to it. Which happens to be a great time to run integration testing and apply a final check before setting the deployment live.
+This blueprint.yaml example shows how to execute browser integration tests during a Deployment. The \`BeforeTraffic\` lifecycle hook means that this Task will run after the new Stack is ready, but before any Traffic is routed to it. Which happens to be a great time to run integration testing and apply a final check before setting the deployment live.
 
 ```
 ---
@@ -122,7 +122,7 @@ lifecycles:
 
 ## **Sqitch Database Migration during Deployments**
 
-This is an app.ymlshowing how to migrate database changes in MySQL or PostgreSQL Database Resources. [Sqitch](http://sqitch.org/) is a great, open-source database change management tool for managing schema changes in Source Code. The BeforeServices lifecycle hook means that this Task will run during a Deployment before any other Components start.
+This is an blueprint.yaml showing how to migrate database changes in MySQL or PostgreSQL Database Resources. [Sqitch](http://sqitch.org/) is a great, open-source database change management tool for managing schema changes in Source Code. The BeforeServices lifecycle hook means that this Task will run during a Deployment before any other Components start.
 
 ```
 ---

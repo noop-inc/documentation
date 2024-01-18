@@ -16,13 +16,13 @@ The MySQL resource is a relational database solution for the Noop platform. It p
 
 - Browse, query, and debug your data with the Resource Explorer for MySQL in the Noop Console.
 
-- Manage access automatically for all Components referencing the Resource from the Application Manifest (app.yml) file.
+- Manage access automatically for all Components referencing the Resource from the Application Blueprint (blueprint.yaml) file.
 
 ## Usage
 
-To add MySQL to your application insert an entry in your Application Manifest (app.yml) under `resources`. Specify the `type` as `mysql` and include an alphanumeric name. The name is used to reference the resource from other Noop services or tasks.
+To add MySQL to your application insert an entry in your Application Blueprint (blueprint.yaml) under `resources`. Specify the `type` as `mysql` and include an alphanumeric name. The name is used to reference the resource from other Noop services or tasks.
 
-Here’s a complete app manifest example:
+Here’s a complete Application Blueprint (blueprint.yaml) example:
 
 ```
 ---
@@ -55,7 +55,7 @@ resources:
     type: mysql
 ```
 
-When a resource is connected to a Noop service the following dynamic variables are available to use within the app manifest:
+When a resource is connected to a Noop service the following dynamic variables are available to use within the Application Blueprint:
 
 - `host`
 
