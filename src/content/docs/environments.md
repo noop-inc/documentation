@@ -1,16 +1,14 @@
 ---
-title: 'Environments'
-description: ''
-slug: 'environments'
-section: 'core concepts'
-layout: '../../layouts/Doc.astro'
-pubDate: ''
-order: 12
----
+ title: 'Environments'
+ description: ''
+ slug: 'environments'
+ section: 'core concepts'
+ layout: '../../layouts/Doc.astro'
+ pubDate: ''
+ order: 12
+ ---
 
-# Environments
-
-Environments are an isolated space for a single instance of an [Application](/docs/applications.md). They run on a designated Cluster and contain the [Resources](/docs/Resources.md) needed by the Application.
+Environments are an isolated space for a single instance of an [Application](/docs/applications/). They run on a designated Cluster and contain the [Resources](/docs/resources/) needed by the Application.
 
 Locally, in Noop Workshop, Environments are used exactly as they are in Cloud. Environments will each have their own database and storage resources as well as their own Secrets and Variables.
 
@@ -24,7 +22,7 @@ Secrets are defined exclusively in the console. Secrets are encrypted at rest an
 
 In addition to user-defined Variables and Secrets, dynamic variables can be used to create connections between Application Components and Resources.
 
-See the [Variables and Secrets]() guide for more usage details.
+See the [Variables and Secrets](/docs/creating-environment-variables-and-secrets/) guide for more usage details.
 
 ## Deployments
 
