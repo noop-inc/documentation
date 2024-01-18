@@ -1,12 +1,12 @@
 ---
- title: 'Environments'
- description: ''
- slug: 'environments'
- section: 'core concepts'
- layout: '../../layouts/Doc.astro'
- pubDate: ''
- order: 12
- ---
+title: 'Environments'
+description: ''
+slug: 'environments'
+section: 'core concepts'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
+order: 12
+---
 
 Environments are an isolated space for a single instance of an [Application](/docs/applications/). They run on a designated Cluster and contain the [Resources](/docs/resources/) needed by the Application.
 
