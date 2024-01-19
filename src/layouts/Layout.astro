@@ -6,8 +6,6 @@ import Footer from '../components/Footer.astro'
 import QuickLinks from '../components/QuickLinks.astro'
 import Search from "../components/Search.astro"
 
-
-
 export interface Props {
   title: string;
 }
@@ -50,15 +48,95 @@ const { data = {} } = Astro.props
      });
     </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BQFKP55CCM"></script>
-    <script>
-     window.dataLayer = window.dataLayer || [];
-     function gtag(){dataLayer.push(arguments);}
-     gtag('js', new Date());
 
-     gtag('config', 'G-BQFKP55CCM');
+
+    <script>
+     const gaScript = () => {
+       const script = document.createElement('script');
+       script.type = 'text/javascript';
+       script.async = true;
+       script.src = 'https://www.googletagmanager.com/gtag/js?id=G-BQFKP55CCM';
+
+       const body = document.getElementsByTagName('body')[0];
+       const scriptLoc = body.getElementsByTagName('script')[0]
+       body.insertBefore(script, scriptLoc)
+
+
+       window.dataLayer = window.dataLayer || [];
+       function gtag(){ dataLayer.push(arguments); }
+       gtag('js', new Date());
+       gtag('config', 'G-BQFKP55CCM');
+     }
+
+
+     const intercomScript = () => {
+       window.localStorage.removeItem('NOOP_INTERCOM_REDIRECT')
+
+       // Get metadata from LocalStorage
+       let metadataString = window.localStorage.getItem('NOOP_METADATA')
+       let metadataParsed = metadataString ? JSON.parse(metadataString) : {}
+
+       let intercomVisible = false
+       const intercomString = window.localStorage.getItem('intercom.intercom-state')
+       const intercomParsed = intercomString ? JSON.parse(intercomString) : {}
+       const openOnBoot = (('openOnBoot' in intercomParsed) && ('type' in intercomParsed.openOnBoot))
+       if (openOnBoot) intercomVisible = !!intercomParsed.openOnBoot.type
+
+       // If an Intercom App ID does not exist in metadata then fallback to production App ID
+       if (!metadataParsed?.intercomAppId) {
+	       metadataParsed = { ...metadataParsed, intercomAppId: 'qncyoyki' }
+	       metadataString = JSON.stringify(metadataParsed)
+	       window.localStorage.setItem('NOOP_METADATA', metadataString)
+       }
+
+       // Load Intercom messenger
+       const intercomAppId = metadataParsed?.intercomAppId
+       if (intercomAppId) {
+	       (function () { const w = window; const ic = w.Intercom; if (typeof ic === 'function') { ic('reattach_activator'); ic('update', w.intercomSettings) } else { const d = document; const i = function () { i.c(arguments) }; i.q = []; i.c = function (args) { i.q.push(args) }; w.Intercom = i; const l = function () { const s = d.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = `https://widget.intercom.io/widget/${intercomAppId}`; const x = d.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x) }; if (document.readyState === 'complete') { l() } else if (w.attachEvent) { w.attachEvent('onload', l) } else { w.addEventListener('load', l, false) } } })()
+	       window.Intercom('boot', { app_id: intercomAppId, hide_default_launcher: false })
+	       window.Intercom('onHide', () => {
+		       intercomVisible = false
+	       })
+	       window.Intercom('onShow', () => {
+		       intercomVisible = true
+	       })
+
+	       window.addEventListener('storage', (event) => {
+		       if ((event.key === 'NOOP_INTERCOM_REDIRECT') && intercomVisible) {
+			       const redirect = window.localStorage.getItem('NOOP_INTERCOM_REDIRECT')
+			       if (redirect) {
+				       if (redirect !== window.location.pathname) window.location.pathname = redirect
+				       window.localStorage.removeItem('NOOP_INTERCOM_REDIRECT')
+			       }
+		       }
+	       })
+       }
+     }
+
+     const loadTrackingScripts = () => {
+       gaScript()
+       intercomScript()
+     }
+
+     let cookieConsentTimeout;
+
+     const pollForCookieConsent = () => {
+       const cookieConsent = window.localStorage.getItem('NOOP_COOKIE_CONSENT');
+       console.log(cookieConsent, 'cookieconsent')
+       if (cookieConsent === 'ACCEPT') {
+         loadTrackingScripts()
+         clearTimeout(cookieConsentTimeout)
+       } else if (cookieConsent === 'REJECT') {
+         clearTimeout(cookieConsentTimeout)
+       } else {
+         cookieConsentTimeout = setTimeout(pollForCookieConsent, 1000)
+       }
+     }
+
+
+     pollForCookieConsent()
     </script>
+
   </head>
   <body class="h-full">
     <div class="min-h-full max-w-screen-2xl m-auto  px-4 sm:px-6 lg:px-8">
@@ -120,6 +198,7 @@ const { data = {} } = Astro.props
         <slot />
       </div>
     </div>
+    <Footer />
   </body>
 </html>
 
@@ -277,4 +356,96 @@ const { data = {} } = Astro.props
    appLink.href = '/home'
    appLink.text = 'Console'
  }
+</script>
+
+
+<script>
+ // TODO: eventually externalize these scripts so that they can get pulled in across docs and public sites
+ const gaScript = () => {
+   const script = document.createElement('script');
+   script.type = 'text/javascript';
+   script.async = true;
+   script.src = 'https://www.googletagmanager.com/gtag/js?id=G-BQFKP55CCM';
+
+   const body = document.getElementsByTagName('body')[0];
+   const scriptLoc = body.getElementsByTagName('script')[0]
+   body.insertBefore(script, scriptLoc)
+
+
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){ dataLayer.push(arguments); }
+   gtag('js', new Date());
+   gtag('config', 'G-BQFKP55CCM');
+ }
+
+
+ const intercomScript = () => {
+   window.localStorage.removeItem('NOOP_INTERCOM_REDIRECT')
+
+   // Get metadata from LocalStorage
+   let metadataString = window.localStorage.getItem('NOOP_METADATA')
+   let metadataParsed = metadataString ? JSON.parse(metadataString) : {}
+
+   let intercomVisible = false
+   const intercomString = window.localStorage.getItem('intercom.intercom-state')
+   const intercomParsed = intercomString ? JSON.parse(intercomString) : {}
+   const openOnBoot = (('openOnBoot' in intercomParsed) && ('type' in intercomParsed.openOnBoot))
+   if (openOnBoot) intercomVisible = !!intercomParsed.openOnBoot.type
+
+   // If an Intercom App ID does not exist in metadata then fallback to production App ID
+   if (!metadataParsed?.intercomAppId) {
+	   metadataParsed = { ...metadataParsed, intercomAppId: 'qncyoyki' }
+	   metadataString = JSON.stringify(metadataParsed)
+	   window.localStorage.setItem('NOOP_METADATA', metadataString)
+   }
+
+   // Load Intercom messenger
+   const intercomAppId = metadataParsed?.intercomAppId
+   if (intercomAppId) {
+	   (function () { const w = window; const ic = w.Intercom; if (typeof ic === 'function') { ic('reattach_activator'); ic('update', w.intercomSettings) } else { const d = document; const i = function () { i.c(arguments) }; i.q = []; i.c = function (args) { i.q.push(args) }; w.Intercom = i; const l = function () { const s = d.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = `https://widget.intercom.io/widget/${intercomAppId}`; const x = d.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x) }; if (document.readyState === 'complete') { l() } else if (w.attachEvent) { w.attachEvent('onload', l) } else { w.addEventListener('load', l, false) } } })()
+	   window.Intercom('boot', { app_id: intercomAppId, hide_default_launcher: false })
+	   window.Intercom('onHide', () => {
+		   intercomVisible = false
+	   })
+	   window.Intercom('onShow', () => {
+		   intercomVisible = true
+	   })
+
+	   window.addEventListener('storage', (event) => {
+		   if ((event.key === 'NOOP_INTERCOM_REDIRECT') && intercomVisible) {
+			   const redirect = window.localStorage.getItem('NOOP_INTERCOM_REDIRECT')
+			   if (redirect) {
+				   if (redirect !== window.location.pathname) window.location.pathname = redirect
+				   window.localStorage.removeItem('NOOP_INTERCOM_REDIRECT')
+			   }
+		   }
+	   })
+   }
+ }
+
+ const loadTrackingScripts = () => {
+   gaScript()
+   intercomScript()
+ }
+
+ let cookieConsentTimeout;
+
+ const pollForCookieConsent = () => {
+   const cookieConsent = window.localStorage.getItem('NOOP_COOKIE_CONSENT');
+   console.log(cookieConsent, 'cookieconsent')
+   if (cookieConsent === 'ACCEPT') {
+     loadTrackingScripts()
+     clearTimeout(cookieConsentTimeout)
+   } else if (cookieConsent === 'REJECT') {
+     clearTimeout(cookieConsentTimeout)
+   } else {
+     cookieConsentTimeout = setTimeout(pollForCookieConsent, 1000)
+   }
+ }
+
+
+ pollForCookieConsent()
+ // Run the check to see if we've received cookie consent, then load scripts
+
+
 </script>
