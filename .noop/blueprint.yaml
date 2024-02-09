@@ -2,13 +2,19 @@
 components:
   - name: Website
     type: static
-    image: node:alpine
+    image: node:20-alpine
     hosting:
       index: index.html
     build:
       steps:
-        - copy: .
+        - copy: package*.json
+          destination: ./
         - run: npm ci
+        - copy: astro.config.mjs
+        - copy: tailwind.config.cjs
+        - copy: public/
+        - copy: lib/
+        - copy: src/
         - run: npm run build
         - directory: dist/
 routes:
