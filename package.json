@@ -51,7 +51,6 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
-    "astro-pagefind": "github:1800joe/astro-pagefind#main",
     "concurrently": "^8.2.2",
     "eslint": "^8.55.0",
     "eslint-config-standard": "^17.1.0",
