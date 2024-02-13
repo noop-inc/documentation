@@ -42,7 +42,7 @@ On the Application Environment page click the on toggle at the top of the left-h
 
 All of your Application Component and Resource logs are available at the bottom of the project page. To view an individual Component or Resource’s Logs, click on the Component or Resource name on the project overview page.
 
-[Logs](/docs/logs-and-log-filtering/) can be filtered exactly as in Noop Cloud.
+[Logs](/docs/logs/) can be filtered exactly as in Noop Cloud.
 
 ## Environment Variables
 

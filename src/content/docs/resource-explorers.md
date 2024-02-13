@@ -12,7 +12,7 @@ Resource Explorers are web-based interfaces for browsing and manipulating data o
 
 ![Screenshot showing a the Amazon DynamoDB Resource explorer interface](/assets/docs/imgs/d1c7248c-a16d-4bf6-8e1f-f78fe4dfb73c.png)
 
-All Noop Resources are private and protected. Which means that they're not accessible directly via the public Internet. Access to Noop Resources is limited to associated Components (Services and Tasks), and Resource Explorers.
+All Noop Resources are private and protected. Which means that they're not accessible directly via the public Internet. Access to Noop Resources is limited to associated Components (Services and Tasks), and, of course, Resource Explorers.
 
 To Navigate to a Resource Explorer, first go to the Environment of the desired Resource. In the Environment menu choose the Resource from the list of available Resources. The right-panel on the individual Resource page is the Explorer.
 
