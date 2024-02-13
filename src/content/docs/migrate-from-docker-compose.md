@@ -1,0 +1,123 @@
+# Migrate from Docker Compose to Noop
+
+This is a basic overview of how to translate a Docker Compose configuration (`docker-compose.yaml`) to a Noop configuration (`blueprint.yaml`).
+
+The Noop `blueprint.yaml`  works for local development (Workshop) _and_ Cloud deployments. Workshop can, in most cases, be used as a replacement for Docker Compose. Workshop is a standalone development environment, it works without connecting to the Cloud product. Also, the Workshop license does not have commercial-use restrictions and will remain free forever.
+
+One important note: Noop aims to create a higher-level abstraction than Docker. As such, some Noop concepts are not available in Docker and vis versa. Refer to the [Noop Blueprint](/docs/blueprints/) specification documentation and the [Docker Compose Reference](https://docs.docker.com/compose/compose-file/compose-file-v3/) for a complete inventory of configuration options of the two tools.
+
+## Simple Translation
+
+### Typical Docker Compose App
+
+A typical Docker Compose setup includes a web server and database. The two system components are defined as `services` at the top level of the `docker-compose.yaml` file. If and when the system requires a cache resource or an additional web service, it would be added to the services dictionary.
+
+```yaml
+version: '3.9'
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: "4000"
+      NODE_ENV: "development"
+      DATABASE_URL: "postgres://postgres@db/postgres"
+  db:
+    image: postgres:10.18
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+```
+
+The `web` service usually requires a `build` step defined in a separate `Dockerfile`. This is an important consideration because Noop defines the build within the `blueprint.yaml`.
+
+```
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm ci
+
+COPY . .
+
+EXPOSE 4000
+CMD [ "npm" "start" ]
+
+```
+
+The rest of the configuration: database connection details, ports and volumes should be familiar to developers using Docker Compose.
+
+### Noop Translation
+
+The following Noop `blueprint.yaml` represents the same system:
+
+```yaml
+components:
+  - name: Web
+    type: service
+    image: node:20-alpine
+    root: api-service
+    port: 4000
+    build:
+      steps:
+        - copy: package*.json
+          destination: ./
+        - run: npm ci
+        - copy: .
+    runtime:
+      command: npm start
+      resources:
+        - Database
+      variables:
+        DATABASE_URL:
+          $resources: Database.url
+routes:
+  - target:
+      component: Web
+
+resources:
+  - name: Database
+    type: postgresql
+
+```
+
+#### Components and Resources
+
+One key difference between Noop and Compose is the distinction Noop makes between Components and Resources. Components are three different app types: [Services](/docs/services/) (long running processes such as a web server), [Statics](/docs/statics/) (a collection of static assets served over HTTPS), and [Tasks](/docs/tasks/) (one-off processes run on a schedule or in response to Application events). [Resources](/docs/resources/), on the other hand, are for storing the Application state. Noop currently supports five different Resource types: Postgres, MySQL, Amazon DynamoDB, Redis, and Amazon S3. Resources are implemented as containers locally, in Cloud they use their respective AWS services.
+
+With these distinctions in mind, the `blueprint.yaml` defines system Components as a list of Services, Tasks and Statics and Resources as a list of storage mechanisms. To ensure the Components have access to the necessary Resources, they must be explicitly associated in the `components[n].runtime.resources` list.
+
+Resources expose connection parameters that can be used by Services and Tasks so long as the desired Resource is listed in the Component's `runtime.resources` list. To retrieve the database url and provide it as an environment variable to the Web Service use the `$resources` keyword to reference the associated Resource parameter:
+
+```yaml
+...
+      variables:
+        DATABASE_URL:
+          $resources: Database.url
+...
+```
+
+
+#### Routes
+
+Another key difference between Compose and Noop is the Route rules. To enable Traffic to an Application Component, a route needs to be defined. In the example above, all Traffic is sent to the `Web` component.
+
+It's possible to route traffic to different Components based on a path pattern. A typical scenario is defined in the [Noop Nodejs Template](https://github.com/noop-inc/template-nodejs-vue/blob/main/.noop/blueprint.yaml). In the linked example, all traffic to the `/api/**` route is sent to the API service, everything else is sent to the Static web app.
+
+
+#### Build and Runtime
+
+As stated above the build configuration is defined in the `blueprint.yaml`. It follows the same sequence as the `Dockerfile`. Similar to Docker, Noop supports multi-stage builds. Each step in a build can optionally specify a `name` and `image` property. Subsequent `copy` commands can indicate a `from` property to reference the name of earlier Build stages.
+
+The runtime `command` configuration is defined under the Component's `runtime` property.
+
+
+#### Deployment
+
+Unlike Compose, Noop Workshop automatically creates an Application Endpoint running on the standard HTTPS port. Once the application is started from Workshop, the Endpoint is available on the Environment Dashboard. This feature is especially useful when developing authentication and cookie schemes that require HTTPS to comply with browser and auth provider standards.
