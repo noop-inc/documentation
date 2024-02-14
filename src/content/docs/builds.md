@@ -7,7 +7,7 @@ section: core concepts
 order: 3
 ---
 
-Builds are the processes that create a Component's Deployment artifact. They are defined in the Noop Blueprint (blueprint.yaml) for each Application Components.
+Builds are the processes that create a Component's Deployment artifact. They are defined in the Noop Blueprint (blueprint.yaml) for each Application Component.
 
 Each step in the Build process creates a container image, the image from the final step becomes the Service or Task runtime or defines the directory for a Static (the artifact in this case is a collection of static files).
 
@@ -63,7 +63,7 @@ The schema for a build definition is a single required `steps` array property th
 
 The image property referenced above makes it possible to configure multi-stage builds. Here's an example that shows constructing a build using multiple images:
 
-```
+```yaml
  - name: WebsiteStatic
    type: service
    image: node:20-alpine
