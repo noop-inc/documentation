@@ -1,7 +1,7 @@
 ---
-title: 'Logs and Log Filtering'
+title: 'Logs'
 description: 'Overview of Log types and how to query them.'
-slug: 'logs-and-log-filtering'
+slug: 'logs'
 section: 'core concepts'
 layout: '../../layouts/Doc.astro'
 pubDate: ''
@@ -14,23 +14,9 @@ Noop logs everything. From activity on Traffic Endpoints all the way down to the
 
 Logs are accessible from the Noop Console. Each page has a panel showing the associated Log stream open to the live tail. It’s possible to query the Log view to a specific date, time and content criteria (such as error conditions).
 
-All Noop Logs are structured as JSON and can be queried with Noop Logic. When you output your own logs in JSON format, they also become queriable with Logic.
+All Noop Logs are structured as JSON and can be filtered with Noop Logic. See the [log filtering](/docs/filtering-logs/) docs for an overview of how to query the logs. When you output your own logs in JSON format, they also become queriable with Logic.
 
 Noop also supports full-text search for all Logs.
-
-## Filtering Logs
-
-Log filtering is accessible under the hamburger menu icon in the top right corner of every Log panel. In the Log filter menu are options to search (using arbitrary text), select a date range, and apply filter Logic.
-
-![Screenshot of panel showing Log event items](/assets/docs/imgs/90a4b574-a281-453c-bb6b-0201d32c9477.png)
-
-There’s also a way to add filter Logic without manually writing the condition code. Select (by clicking) a Log entry with a property you want to apply to the filter. Hover over the property and click the hamburger icon to the left. Select “Filter logs by \[PROPERTY NAME] value”. The Logs will update to only include entries matching that value.
-
-![Screenshot of link used to filter Logs by property](/assets/docs/imgs/0c3f5fd5-1ae9-4891-963f-8a7f17e66ba5.png)
-
-Opening the Log filter menu again will show the Logic operator that was applied to filter the logs.
-
-![Screenshot showing Log filter menu with Logic query applied to Log view.](/assets/docs/imgs/64488720-58d1-416f-9f88-cb2ca9bee36c.png)
 
 ## Live Tailing
 
@@ -62,7 +48,7 @@ The most common Traffic Log sequence will show `traffic.request`, `traffic.forwa
 
 ![Screenshot of Traffic Log panel showing a typical request sequence.](/assets/docs/imgs/8513b52c-ebe1-47a7-b347-79c33c7f2824.png)
 
-Traffic forward is the Event type indicating traffic sent to an Application Environment. See [Traffic and Routing](https://docs.noop.dev/en/articles/8159788-traffic-and-routes) for details on how Traffic is resolved.
+Traffic forward is the Event type indicating traffic sent to an Application Environment. See [Traffic and Routing](/docs/traffic-and-routes/) for details on how Traffic is resolved.
 
 ### Environment Logs
 

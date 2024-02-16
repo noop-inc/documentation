@@ -30,7 +30,7 @@ Statics are a good choice for hosting static sites and SPAs. Noop supports all m
 
 Static Components are defined in the Application Blueprint (blueprint.yaml). Statics require an alphanumeric `name`, a `type` of `static` and an `image` for executing the asset build process.
 
-```
+```yaml
 components:
   - name: StaticApp
     type: static
