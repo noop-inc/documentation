@@ -1,24 +1,29 @@
 
+<div class="flex items-center">
+  <div class="inline-flex rounded-md shadow-sm">
 
-<div class="inline-flex rounded-md shadow-sm">
-
-  <a href="https://github.com/noop-inc/desktop/releases/latest" class="relative inline-flex items-center rounded-l-md rounded-md bg-noop text-white px-3 py-2 text-sm font-bold ring-1 ring-inset focus:z-10 no-underline" id="default-button">Download Noop</a>
+    <a href="https://github.com/noop-inc/desktop/releases/latest" class="relative inline-flex items-center rounded-l-md bg-noop text-white px-3 py-2 text-sm font-bold ring-1 ring-inset focus:z-10 no-underline" id="default-button">Download Noop</a>
 
 
-  <div class="relative -ml-px block hidden">
-    <button type="button" class="relative inline-flex items-center rounded-r-md bg-noop px-2 py-2 text-white border-l border-white focus:z-10" id="option-menu-button" aria-expanded="true" aria-haspopup="true">
-      <span class="sr-only">Open options</span>
-      <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-      </svg>
-    </button>
+    <div class="relative -ml-px block">
 
-    <div class="hidden absolute right-0 z-10 -mr-1 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="option-menu-button" tabindex="-1" id="option-menu">
-      <div class="py-1" role="none" id="menu-items"></div>
+      <button type="button" class="relative inline-flex items-center rounded-r-md bg-noop px-2 py-2 text-white border-l border-black focus:z-10 h-[100%]" id="option-menu-button" aria-expanded="true" aria-haspopup="true">
+
+        <span class="sr-only">Open options</span>
+        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+        </svg>
+      </button>
+
+      <div class="hidden absolute right-1 z-10 -mr-1 mt-2 w-56 origin-top-right rounded-md bg-gray-700 text-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="option-menu-button" tabindex="-1" id="option-menu">
+        <div class="py-1" role="none" id="menu-items"></div>
+      </div>
     </div>
   </div>
+  <div class="ml-4">
+    <a href="https://github.com/noop-inc/desktop/releases" class="text-gray-200 underline">Releases</a>
+  </div>
 </div>
-
 
 
 
@@ -73,6 +78,9 @@
      case ('mac'):
        searchTerm = `Noop-${version}-arm64.dmg`;
        break;
+     case ('macIntel'):
+       searchTerm = `Noop-${version}-x64.dmg`;
+       break;
      case ('windows'):
        break;
      case ('linux'):
@@ -92,19 +100,20 @@
 
  const run = async () => {
    const alts = [{name: 'mac', label: 'macOS (Apple Silicon)'},
-                 // {name: 'macIntel', label: 'macOS (Intel)'}, {name: 'win', label: 'Windows'}, {name: 'linux', label: 'Ubuntu'}
+                 {name: 'macIntel', label: 'macOS (Intel)'}
+     // , {name: 'win', label: 'Windows'}, {name: 'linux', label: 'Ubuntu'}
    ]
 
    const rel = await getRelease()
-
-   const {name, assets} = rel
+   
+   const {name, assets } = rel
 
    alts.map(alt => Object.assign(alt, {url: findReleaseUrl(alt.name, name, assets)}))
 
    const selected = alts.splice(alts.findIndex(alt => alt.name === os), 1)[0]
 
    const label = document.createElement('span')
-   label.textContent = `Download Noop ${name} ${selected.label}`
+   label.textContent = `Download Noop ${selected.label}`
 
    const icon = document.createElement('span')
    icon.innerHTML = icons[selected.name]
@@ -129,7 +138,7 @@
      menuItem.appendChild(icon)
      menuItem.appendChild(label)
 
-     menuItem.setAttribute('class', 'text-gray-700 block px-4 py-2 text-sm flex items-center no-underline')
+     menuItem.setAttribute('class', 'text-white block px-4 py-2 text-sm flex items-center no-underline')
      menuItem.setAttribute('href', alt.url)
      menuItem.setAttribute('role', 'menuitem')
 
