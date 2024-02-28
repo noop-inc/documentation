@@ -7,7 +7,7 @@ section: 'core concepts'
 order: 5
 ---
 
-Resources are for storing state within your Applications, whether that's Amazon S3 to store image files or a relational database to store customer orders.
+Resources are for storing state within an Applications, whether that's Amazon S3 to store image files or a relational database to store customer orders.
 
 A Resource is created at the Environment level and can be attached to any Component in the Environment.
 

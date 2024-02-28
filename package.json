@@ -41,21 +41,21 @@
     "lint-prettier": "npm run common-prettier -- --check"
   },
   "dependencies": {
-    "@astrojs/mdx": "^2.0.0",
-    "@astrojs/tailwind": "^5.0.3",
+    "@astrojs/mdx": "^2.1.1",
+    "@astrojs/tailwind": "^5.1.0",
     "@pagefind/default-ui": "^1.0.4",
-    "astro": "^4.0.2",
+    "astro": "^4.4.6",
     "pagefind": "^1.0.4",
-    "sirv": "^2.0.3",
-    "tailwindcss": "^3.3.6"
+    "sirv": "^2.0.4",
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "concurrently": "^8.2.2",
-    "eslint": "^8.55.0",
+    "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
     "prettier": "^2.8.8",
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.3"
   },
   "eslintConfig": {
     "root": true,
