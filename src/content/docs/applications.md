@@ -25,11 +25,11 @@ Each component must define its own build process. The container in the final bui
 
 ## Source Code
 
-Applications can be linked to a Repository to integrate with its code and events automatically. Linked Resositories connect Source Code to Builds and trigger [Pipelines](/docs/pipelines/).
+Applications can be linked to a Repository to integrate with its code and events automatically. Linked Repositories connect Source Code to Builds and trigger [Pipelines](/docs/pipelines/).
 
 ## Environments
 
-Environments are instances of the Application. They contain their own Resourses, Variables/Secrets, and scaling configuration. Typically Environments are created once and remain active indefinitely i.e. a `prod` or `staging` env. However, it's also possible to create temporary preview Environments in response to a pull request.
+Environments are instances of the Application. They contain their own Resources, Variables/Secrets, and scaling configuration. Typically Environments are created once and remain active indefinitely i.e. a `prod` or `staging` env. However, it's also possible to create temporary preview Environments in response to a pull request.
 
 ## Pipelines
 
