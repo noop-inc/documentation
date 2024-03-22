@@ -8,7 +8,7 @@ pubDate: ''
 order: 1
 ---
 
-Noop is a desktop and web application for running cloud software. To install the desktop app, visit the [installation page](/docs/installation).
+Noop is a desktop and web application for running cloud software. To install the desktop app, visit the [installation page](/docs/installation/).
 
 Noop runs Applications that include stateless components ([web servers](/docs/services/), [static sites](/docs/statics/) and [chron tasks](/tasks/)), stateful [resources](/docs/resources/) (SQL and noSQL) and object storage (such as S3). Noop handles all aspects of running these apps: security, networking, logging, monitoring, metrics, etc.
 

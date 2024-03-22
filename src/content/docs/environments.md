@@ -22,7 +22,7 @@ Secrets are defined exclusively in the console. Secrets are encrypted at rest an
 
 In addition to user-defined Variables and Secrets, dynamic variables can be used to create connections between Application Components and Resources.
 
-See the [Variables and Secrets](/docs/creating-environment-variables-and-secrets/) guide for more usage details.
+See the [Variables and Secrets](/docs/environment-variables-and-secrets/) guide for more usage details.
 
 ## Deployments
 
