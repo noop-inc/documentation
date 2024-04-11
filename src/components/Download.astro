@@ -1,34 +1,102 @@
 
-<div class="flex items-center">
-  <div class="inline-flex rounded-md shadow-sm">
-
-    <a href="https://github.com/noop-inc/desktop/releases/latest" class="relative inline-flex items-center rounded-l-md bg-noop text-white px-3 py-2 text-sm font-bold ring-1 ring-inset focus:z-10 no-underline" id="default-button">Download Noop</a>
 
 
-    <div class="relative -ml-px block">
 
-      <button type="button" class="relative inline-flex items-center rounded-r-md bg-noop px-2 py-2 text-white border-l border-black focus:z-10 h-[100%]" id="option-menu-button" aria-expanded="true" aria-haspopup="true">
 
-        <span class="sr-only">Open options</span>
-        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-        </svg>
-      </button>
+<div class="flex flex-col">
+  <div class="flex items-center justify-center">
+    <div class="inline-flex rounded-md shadow-sm">
 
-      <div class="hidden absolute right-1 z-10 -mr-1 mt-2 w-56 origin-top-right rounded-md bg-gray-700 text-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="option-menu-button" tabindex="-1" id="option-menu">
-        <div class="py-1" role="none" id="menu-items"></div>
+      <a href="https://github.com/noop-inc/desktop/releases/latest" class="relative inline-flex items-center rounded-l-md bg-noop text-white px-3 py-2 text-sm font-bold focus:z-10 no-underline" id="default-button">Download Noop</a>
+
+
+      <div class="relative -ml-px block">
+
+        <button type="button" class="relative inline-flex items-center rounded-r-md bg-noop px-2 py-2 text-white border-l border-black focus:z-10 h-[100%]" id="option-menu-button" aria-expanded="true" aria-haspopup="true">
+
+          <span class="sr-only">Open options</span>
+          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+          </svg>
+        </button>
+
+        <div class="hidden absolute right-1 z-10 -mr-1 mt-2 w-56 origin-top-right rounded-md bg-gray-700 text-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="option-menu-button" tabindex="-1" id="option-menu">
+          <div class="py-1" role="none" id="menu-items"></div>
+        </div>
       </div>
     </div>
+    <div class="ml-4">
+      <a href="https://github.com/noop-inc/desktop/releases" class="text-gray-200 underline">Releases</a>
+    </div>
   </div>
-  <div class="ml-4">
-    <a href="https://github.com/noop-inc/desktop/releases" class="text-gray-200 underline">Releases</a>
+
+
+
+  <div class="mt-8 border-t border-white/10 pt-4 sm:mt-10 lg:mt-12 lg:items-center lg:justify-between hidden" id="release-notify">
+    <div class="mr-8 text-left">
+      <h3 class="text-sm font-semibold leading-6 text-white">Be the first to know!</h3>
+      <p class="mt-2 text-sm leading-6 text-gray-300" id="notify-headline">The requested platform isn't available today, but we are working on it.</p>
+    </div>
+    
+    <form action="https://dev.us21.list-manage.com/subscribe/post?u=1a9c973330176e665a209bb18&amp;id=239f99cb33&amp;f_id=00045ee1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="mt-6 sm:flex sm:max-w-md lg:mt-0 validate" target="_self" novalidate="">
+      <label for="email-address" class="sr-only">Email address</label>
+      <input type="email" name="EMAIL" class="required email w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-3 py-1.5 text-base text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-56 sm:text-sm sm:leading-6" placeholder="Enter your email" id="mce-EMAIL" required="" value="">
+
+      <div hidden=""><input id="platform-tag" type="hidden" name="tags" value="2982728"></div>
+
+      <div aria-hidden="true" style="position: absolute; left: -5000px;">
+        /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+        <input type="text"  tabindex="-1" value="">
+      </div>
+
+      <div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
+        <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="flex w-full items-center justify-center rounded-md bg-noop px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 button" value="Let me know!">
+      </div>
+    </form>
   </div>
+
 </div>
 
 
 
 
+
+
+
 <script>
+
+ const ph = posthog || {capture: ()=>{}}
+
+ let platformInterest;
+
+ const dlButtonHandler = (rel, selected) => {
+   return e => {
+
+     e.preventDefault();
+     e.stopImmediatePropagation();
+
+     if (selected.asset) {
+       const dl = document.createElement('a')
+       dl.setAttribute('href', selected.asset.browser_download_url)
+       document.body.appendChild(dl)
+       dl.click()
+       document.body.removeChild(dl)
+       posthog.capture('download click', { platform: selected.name, desktop_version: rel.name, is_available: true })
+     } else {
+       posthog.capture('download click', { platform: selected.name, desktop_version: rel.name, is_available: false })
+
+       notifyHeadline.textContent = `${selected.label} support isn't available today, but we are working on it.`
+       platformInterest = selected
+       // `The requested platform `
+       releaseNotify.classList.toggle('hidden')
+       releaseNotify.classList.add('lg:flex')
+       optionMenu.classList.toggle('hidden')
+
+       platformTag.setAttribute('value', tags[selected.name])
+     }
+   }
+ }
+
  const icons = {
    linux: `<svg data-v-aca98933="" data-v-14aaddc1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1.1em" height="1.1em" class="icon linux" style="margin-top: -1px;"><g fill="currentcolor"><path d="M16.59,15.359a4.464,4.464,0,0,1,.979.432c.067.037.13.076.192.108.16-.015.419-.069.633-.114a5.774,5.774,0,0,1,1.171-.162,2.413,2.413,0,0,1,.4.035,7.268,7.268,0,0,0-.022-1.065A8.384,8.384,0,0,0,18.1,10.262c-.942-1.035-2.391-2.523-2.391-3.653V3.474a3.475,3.475,0,0,0-6.949,0V8.041c-.151.79-.546.866-1.167,1.732a10.318,10.318,0,0,0-1.45,2.674c-.29.87-.905,1.788-1.186,2.511a2.034,2.034,0,0,1,.23-.057,2.183,2.183,0,0,1,.34-.027,2.293,2.293,0,0,1,1.139.313A16.567,16.567,0,0,1,8.763,10.3a4.509,4.509,0,0,0,.7-2.918c.364.29.727,1.192,1.719,1.192S12.837,7.8,13.389,7.52a1.5,1.5,0,0,0,.382-.274l.095.022a46.862,46.862,0,0,1,2.3,4.915A11.1,11.1,0,0,1,16.59,15.359ZM10.94,5.274a2.247,2.247,0,0,0-.466.148l-.077.036a2.478,2.478,0,0,0-.376.216h0a1.325,1.325,0,0,1-.342-.826c-.049-.58.205-1.076.566-1.106s.693.416.742,1A1.571,1.571,0,0,1,10.94,5.274Zm2.4-.418a1.6,1.6,0,0,1-.279.8c-.057-.03-.12-.061-.185-.092l-.049-.024c-.078-.036-.162-.07-.252-.1l-.01,0a3.2,3.2,0,0,0-.678-.167,1.77,1.77,0,0,1-.038-.537c.055-.654.433-1.156.845-1.121S13.4,4.2,13.34,4.856Z" fill="currentcolor"></path> <path d="M6.7,17.286c-.339-.514-.8-.979-1.268-.9s-.791.917-1.092,1.168-1.456.025-1.808.4-.025,1.719-.088,2.36-.4.979-.439,1.28.063.64.628.841,2.674.728,3.4.891,2.435,1.243,3.239-.062a2.193,2.193,0,0,0-.477-2.75A33.772,33.772,0,0,1,6.7,17.286Z"></path> <path d="M11.691,21.674a6.427,6.427,0,0,1-.666-.035,3.216,3.216,0,0,1,.02,1.059,13.928,13.928,0,0,1,2.583.092,4.6,4.6,0,0,1,.082-1.626A4.188,4.188,0,0,1,11.691,21.674Z" fill="currentcolor"></path> <path d="M21.536,19.734a2.4,2.4,0,0,1-1.217-1.255c-.113-.5-.013-.967-.4-1.268s-1.659.273-2.409.18c-.526-.066-1.31-.889-1.845-.548-.318.2-.152,1.008-.14,1.435a22.877,22.877,0,0,1-.188,2.561c-.088.489-.766,2.033.552,2.912a2.014,2.014,0,0,0,2.461-.54,7.4,7.4,0,0,1,1.87-1.393,4.616,4.616,0,0,0,1.67-1.054C22.089,20.425,22.064,20.035,21.536,19.734Z"></path></g></svg>`,
    win: `<svg data-v-aca98933="" data-v-14aaddc1="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="1.1em" height="1.1em" class="icon microsoft" style="margin-top: -1px;"><g fill="currentcolor"><rect x="1" y="1" width="10" height="10" fill="currentcolor"></rect> <rect x="13" y="1" transform="matrix(-1 -4.492907e-11 4.492907e-11 -1 36 12)" width="10" height="10"></rect> <rect x="1" y="13" width="10" height="10"></rect> <rect x="13" y="13" transform="matrix(-1 -4.492907e-11 4.492907e-11 -1 36 36)" width="10" height="10" fill="currentcolor"></rect></g></svg>`,
@@ -36,13 +104,23 @@
  }
 
  icons.macIntel = icons.mac;
- 
-
 
  const menuToggle = document.getElementById('option-menu-button');
  const optionMenu = document.getElementById('option-menu');
  const menuItems = document.getElementById('menu-items');
  const defaultButton = document.getElementById('default-button');
+ const releaseNotify = document.getElementById('release-notify')
+ const notifyHeadline = document.getElementById('notify-headline')
+ const platformTag = document.getElementById('platform-tag')
+ const emailSubmit = document.getElementById('mc-embedded-subscribe')
+
+ // linux <div hidden=""><input type="hidden" name="tags" value="2982728"></div>
+ // windows <div hidden=""><input type="hidden" name="tags" value="2982727"></div>
+ const tags = {
+   win: '2982727',
+   linux: '2982728'
+ }
+
 
  menuToggle.addEventListener('click', () => {
    optionMenu.classList.toggle('block');
@@ -51,6 +129,7 @@
 
  const os = (() => {
    let os = 'none'
+
    if (window.navigator.userAgent.indexOf('Win') !== -1) os = 'win'
    if (window.navigator.userAgent.indexOf('Mac') !== -1) os = 'mac'
    if (window.navigator.userAgent.indexOf('Linux') !== -1) os = 'linux'
@@ -71,7 +150,11 @@
    return release.json()
  }
 
- const findReleaseUrl = (platform, version, assets) => {
+ emailSubmit.addEventListener('click', e => {
+   posthog.capture('submit email: desktop', { platform: platformInterest.name })
+ })
+
+ const findAsset = (platform, version, assets) => {
    version = version.replace(/^v/, '');
    let searchTerm;
    switch (platform) {
@@ -90,42 +173,79 @@
    }
 
    if (searchTerm) {
-     const asset = assets.find(a => a.name === searchTerm)
-     return asset ? asset.browser_download_url : 'https://github.com/noop-inc/desktop/releases/latest'
+     return assets.find(a => a.name === searchTerm)
    }
-
-   return 'https://github.com/noop-inc/desktop/releases/latest';
  }
-
 
  const run = async () => {
    const alts = [{name: 'mac', label: 'macOS (Apple Silicon)'},
-                 {name: 'macIntel', label: 'macOS (Intel)'}
-     // , {name: 'win', label: 'Windows'}, {name: 'linux', label: 'Ubuntu'}
+                 {name: 'macIntel', label: 'macOS (Intel)'},
+                 {name: 'win', label: 'Windows'},
+                 {name: 'linux', label: 'Linux'}
    ]
 
    const rel = await getRelease()
-   
+
    const {name, assets } = rel
 
-   alts.map(alt => Object.assign(alt, {url: findReleaseUrl(alt.name, name, assets)}))
+   alts.map(alt => Object.assign(alt, {asset: findAsset(alt.name, name, assets)}))
 
-   const selected = alts.splice(alts.findIndex(alt => alt.name === os), 1)[0]
+   const selected = alts.find(alt => alt.name === os)
 
-   const label = document.createElement('span')
-   label.textContent = `Download Noop ${selected.label}`
+   if (selected.asset) {
+     const label = document.createElement('span')
+     label.textContent = `Download Noop ${selected.label}`
 
-   const icon = document.createElement('span')
-   icon.innerHTML = icons[selected.name]
-   icon.setAttribute('class', 'mr-2')
-   defaultButton.textContent = ''
-   defaultButton.appendChild(icon)
-   defaultButton.appendChild(label)
-   defaultButton.setAttribute('href', selected.url)
+     const icon = document.createElement('span')
+     icon.innerHTML = icons[selected.name]
+     icon.setAttribute('class', 'mr-2')
+
+
+     defaultButton.textContent = ''
+     defaultButton.appendChild(icon)
+     defaultButton.appendChild(label)
+     defaultButton.setAttribute('href', selected.asset.browser_download_url)
+
+
+     defaultButton.addEventListener('click', dlButtonHandler(rel, selected))
+   } else {
+
+     defaultButton.classList.remove('bg-noop')
+     defaultButton.classList.add('bg-gray-600')
+     defaultButton.classList.add('cursor-not-allowed')
+
+     const icon = document.createElement('span')
+     icon.innerHTML = icons[selected.name]
+     icon.setAttribute('class', 'mr-2')
+
+
+     defaultButton.textContent = ''
+     const label = document.createElement('span')
+     label.textContent = `Download Noop ${selected.label}`
+
+     defaultButton.appendChild(icon)
+     defaultButton.appendChild(label)
+
+     defaultButton.addEventListener('click', e => {
+       e.preventDefault();
+       e.stopImmediatePropagation();
+     })
+
+     notifyHeadline.textContent = `${selected.label} support isn't available today, but we are working on it.`
+     // `The requested platform `
+
+     platformInterest = selected
+
+     releaseNotify.classList.toggle('hidden')
+     releaseNotify.classList.add('lg:flex')
+
+     platformTag.setAttribute('value', tags[selected.name])
+   }
+
 
    alts.forEach(alt => {
      // <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="option-menu-item-0">Linux </a>
-     const menuItem = document.createElement('a');
+     const menuItem = document.createElement('span');
 
      const icon = document.createElement('span')
 
@@ -137,10 +257,10 @@
 
      menuItem.appendChild(icon)
      menuItem.appendChild(label)
-
-     menuItem.setAttribute('class', 'text-white block px-4 py-2 text-sm flex items-center no-underline')
-     menuItem.setAttribute('href', alt.url)
+     menuItem.setAttribute('class', 'text-white block px-4 py-2 text-sm flex items-center no-underline cursor-pointer')
      menuItem.setAttribute('role', 'menuitem')
+
+     menuItem.addEventListener('click', dlButtonHandler(rel, alt))
 
      menuItems.appendChild(menuItem)
    })
