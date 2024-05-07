@@ -5,30 +5,54 @@ const { content = {}, headings } = Astro.props
 ---
 
 <Layout data={content}>
-  <main class="lg:col-span-6 col-span-12 pb-36" data-pagefind-body>
-    <article>
-      <header>
-        <h3 class="text-xs font-mono uppercase text-fuchsia-500">
-          {content.section}
-        </h3>
+  { headings.length ?
+    <main class="lg:col-start-4 col-start-1 col-end-10 pb-36" data-pagefind-body>
+      <article>
+        <header>
+          <h3 class="text-xs font-mono uppercase text-fuchsia-500">
+            {content.section}
+          </h3>
 
-        <h1 class="text-5xl pb-8 font-bold">
-          {content.title}
-        </h1>
-      </header>
+          <h1 class="text-5xl pb-8 font-bold">
+            {content.title}
+          </h1>
+        </header>
 
-      <p class="mt-2  pb-8">
-        {content.description}
-      </p>
+        <p class="mt-2  pb-8">
+          {content.description}
+        </p>
 
-      <div class="prose prose-invert text-white">
-        <slot />
-      </div>
-    </article>
-  </main>
+        <div class="prose prose-invert text-white">
+          <slot />
+        </div>
+      </article>
+    </main> :
+    <main class="lg:col-start-4 col-start-1 col-end-13 pb-36" data-pagefind-body>
+      <article>
+        <header>
+          <h3 class="text-xs font-mono uppercase text-fuchsia-500">
+            {content.section}
+          </h3>
+
+          <h1 class="text-5xl pb-8 font-bold">
+            {content.title}
+          </h1>
+        </header>
+
+        <p class="mt-2  pb-8">
+          {content.description}
+        </p>
+
+        <div class="prose prose-invert text-white">
+          <slot />
+        </div>
+      </article>
+    </main>
+  }
+    
 
   { headings.length ?
-  <aside class="border-l border-gray-700 col-span-3 pl-4 hidden lg:block">
+  <aside class="border-l border-gray-700 col-start-10 col-end-13 pl-4 hidden lg:block">
     <!-- Secondary column (hidden on smaller screens) -->
     <div class="sticky top-8 text-base lg:text-sm">
       <h4 class="font-bold text-base">On this page</h4>

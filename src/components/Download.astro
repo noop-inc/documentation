@@ -1,38 +1,15 @@
-
-
-
-
-
 <div class="flex flex-col">
-  <div class="flex items-center justify-center">
-    <div class="inline-flex rounded-md shadow-sm">
+  <div class="flex items-center mb-8">
+    <div id="detected-options" class="inline-flex rounded-md shadow-sm">
 
-      <a href="https://github.com/noop-inc/desktop/releases/latest" class="relative inline-flex items-center rounded-l-md bg-noop text-white px-3 py-2 text-sm font-bold focus:z-10 no-underline" id="default-button">Download Noop</a>
+      
+      <a href="https://github.com/noop-inc/desktop/releases/latest" class="relative inline-flex items-center rounded-md bg-noop text-white px-3 py-2 text-sm font-bold focus:z-10 no-underline mr-4" id="default-button">Download Noop</a>
 
-
-      <div class="relative -ml-px block">
-
-        <button type="button" class="relative inline-flex items-center rounded-r-md bg-noop px-2 py-2 text-white border-l border-black focus:z-10 h-[100%]" id="option-menu-button" aria-expanded="true" aria-haspopup="true">
-
-          <span class="sr-only">Open options</span>
-          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-          </svg>
-        </button>
-
-        <div class="hidden absolute right-1 z-10 -mr-1 mt-2 w-56 origin-top-right rounded-md bg-gray-700 text-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="option-menu-button" tabindex="-1" id="option-menu">
-          <div class="py-1" role="none" id="menu-items"></div>
-        </div>
-      </div>
-    </div>
-    <div class="ml-4">
-      <a href="https://github.com/noop-inc/desktop/releases" class="text-gray-200 underline">Releases</a>
     </div>
   </div>
 
 
-
-  <div class="mt-8 border-t border-white/10 pt-4 sm:mt-10 lg:mt-12 lg:items-center lg:justify-between hidden" id="release-notify">
+  <div class="border-t border-white/10 pt-4 lg:items-center lg:justify-between hidden" id="release-notify">
     <div class="mr-8 text-left">
       <h3 class="text-sm font-semibold leading-6 text-white">Be the first to know!</h3>
       <p class="mt-2 text-sm leading-6 text-gray-300" id="notify-headline">The requested platform isn't available today, but we are working on it.</p>
@@ -55,10 +32,14 @@
     </form>
   </div>
 
+  <div>
+  <h4>Not your OS? Download an alternative:</h4>
+  <div id="alt-container">
+    
+  </div>
+  <a href="https://github.com/noop-inc/desktop/releases" class="text-gray-200 underline">See all releases</a>
+  </div>
 </div>
-
-
-
 
 
 
@@ -71,7 +52,6 @@
 
  const dlButtonHandler = (rel, selected) => {
    return e => {
-
      e.preventDefault();
      e.stopImmediatePropagation();
 
@@ -90,7 +70,6 @@
        // `The requested platform `
        releaseNotify.classList.toggle('hidden')
        releaseNotify.classList.add('lg:flex')
-       optionMenu.classList.toggle('hidden')
 
        platformTag.setAttribute('value', tags[selected.name])
      }
@@ -105,9 +84,8 @@
 
  icons.macIntel = icons.mac;
 
- const menuToggle = document.getElementById('option-menu-button');
- const optionMenu = document.getElementById('option-menu');
- const menuItems = document.getElementById('menu-items');
+ 
+ const detectedOptions = document.getElementById('detected-options')
  const defaultButton = document.getElementById('default-button');
  const releaseNotify = document.getElementById('release-notify')
  const notifyHeadline = document.getElementById('notify-headline')
@@ -122,11 +100,6 @@
  }
 
 
- menuToggle.addEventListener('click', () => {
-   optionMenu.classList.toggle('block');
-   optionMenu.classList.toggle('hidden');
- })
-
  const os = (() => {
    let os = 'none'
 
@@ -136,11 +109,10 @@
    return os
  })()
 
-
  const getRelease = async () => {
    const release = await fetch('https://api.github.com/repos/noop-inc/desktop/releases/latest',
-                               {
-                                 headers: {
+                                                 {
+                                                   headers: {
                                    Accept: 'application/vnd.github+json',
                                    'X-GitHub-Api-Version': '2022-11-28'
                                  }
@@ -178,58 +150,62 @@
  }
 
  const run = async () => {
-   const alts = [{name: 'mac', label: 'macOS (Apple Silicon)'},
-                 {name: 'macIntel', label: 'macOS (Intel)'},
-                 {name: 'win', label: 'Windows'},
-                 {name: 'linux', label: 'Linux'}
-   ]
+   const detectables = {
+     mac: {
+       label: 'Mac',
+       supported: true,
+       releases: [
+         {label: 'macOS (Apple Silicon)'},
+         {label: 'macOS (Intel)'}
+       ]
+     },
+     win: {
+       label: 'Windows',
+       supported: false,
+       releases: [
+         {label: 'Windows'}
+     ]},
+     linux: {
+       label: 'Linux',
+       supported: false,
+       releases: [
+         {label: 'Linux'}
+       ]
+     }
+   }
 
    const rel = await getRelease()
 
    const {name, assets } = rel
 
-   alts.map(alt => Object.assign(alt, {asset: findAsset(alt.name, name, assets)}))
+   Object.keys(detectables).forEach(k => detectables[k].releases.forEach(rel => Object.assign(rel, {asset: findAsset(k, name, assets), name: k})))
 
-   const selected = alts.find(alt => alt.name === os)
+   const selected = detectables[os]
 
-   if (selected.asset) {
-     const label = document.createElement('span')
-     label.textContent = `Download Noop ${selected.label}`
+   if (!selected) {
+     
+   } else if (selected.supported) {
+     detectedOptions.innerHTML = ''
+     selected.releases.forEach(rel => {
+       const relBtn = defaultButton.cloneNode()
 
-     const icon = document.createElement('span')
-     icon.innerHTML = icons[selected.name]
-     icon.setAttribute('class', 'mr-2')
+       const label = document.createElement('span')
+       label.textContent = `Download Noop ${rel.label}`
 
-
-     defaultButton.textContent = ''
-     defaultButton.appendChild(icon)
-     defaultButton.appendChild(label)
-     defaultButton.setAttribute('href', selected.asset.browser_download_url)
-
-
-     defaultButton.addEventListener('click', dlButtonHandler(rel, selected))
-   } else {
-
-     defaultButton.classList.remove('bg-noop')
-     defaultButton.classList.add('bg-gray-600')
-     defaultButton.classList.add('cursor-not-allowed')
-
-     const icon = document.createElement('span')
-     icon.innerHTML = icons[selected.name]
-     icon.setAttribute('class', 'mr-2')
+       const icon = document.createElement('span')
+       icon.innerHTML = icons[rel.name]
+       icon.setAttribute('class', 'mr-2')
 
 
-     defaultButton.textContent = ''
-     const label = document.createElement('span')
-     label.textContent = `Download Noop ${selected.label}`
-
-     defaultButton.appendChild(icon)
-     defaultButton.appendChild(label)
-
-     defaultButton.addEventListener('click', e => {
-       e.preventDefault();
-       e.stopImmediatePropagation();
+       relBtn.textContent = ''
+       relBtn.appendChild(icon)
+       relBtn.appendChild(label)
+       relBtn.setAttribute('href', rel.asset.browser_download_url)
+       relBtn.addEventListener('click', dlButtonHandler(rel, selected))
+       detectedOptions.appendChild(relBtn)
      })
+   } else {
+     detectedOptions.innerHTML = ''
 
      notifyHeadline.textContent = `${selected.label} support isn't available today, but we are working on it.`
      // `The requested platform `
@@ -239,8 +215,14 @@
      releaseNotify.classList.toggle('hidden')
      releaseNotify.classList.add('lg:flex')
 
-     platformTag.setAttribute('value', tags[selected.name])
+     platformTag.setAttribute('value', tags[os])
    }
+
+
+   const altContainer = document.getElementById('alt-container')
+
+
+   const alts = Object.keys(detectables).filter(k => k !== os).flatMap(k => detectables[k].releases)
 
 
    alts.forEach(alt => {
@@ -257,12 +239,12 @@
 
      menuItem.appendChild(icon)
      menuItem.appendChild(label)
-     menuItem.setAttribute('class', 'text-white block px-4 py-2 text-sm flex items-center no-underline cursor-pointer')
+     menuItem.setAttribute('class', 'text-white block py-2 text-sm flex items-center no-underline cursor-pointer')
      menuItem.setAttribute('role', 'menuitem')
 
      menuItem.addEventListener('click', dlButtonHandler(rel, alt))
 
-     menuItems.appendChild(menuItem)
+     altContainer.appendChild(menuItem)
    })
  }
 
