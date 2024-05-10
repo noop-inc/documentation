@@ -54,7 +54,6 @@
    return e => {
      e.preventDefault();
      e.stopImmediatePropagation();
-
      if (selected.asset) {
        const dl = document.createElement('a')
        dl.setAttribute('href', selected.asset.browser_download_url)
@@ -111,8 +110,8 @@
 
  const getRelease = async () => {
    const release = await fetch('https://api.github.com/repos/noop-inc/desktop/releases/latest',
-                                                 {
-                                                   headers: {
+                               {
+                                 headers: {
                                    Accept: 'application/vnd.github+json',
                                    'X-GitHub-Api-Version': '2022-11-28'
                                  }
@@ -136,7 +135,8 @@
      case ('macIntel'):
        searchTerm = `Noop-${version}-x64.dmg`;
        break;
-     case ('windows'):
+     case ('win'):
+       searchTerm = `Noop-${version}.Setup.exe`;
        break;
      case ('linux'):
        break;
@@ -161,7 +161,7 @@
      },
      win: {
        label: 'Windows',
-       supported: false,
+       supported: true,
        releases: [
          {label: 'Windows'}
      ]},
@@ -175,36 +175,34 @@
    }
 
    const rel = await getRelease()
-
+   
    const {name, assets } = rel
 
    Object.keys(detectables).forEach(k => detectables[k].releases.forEach(rel => Object.assign(rel, {asset: findAsset(k, name, assets), name: k})))
 
    const selected = detectables[os]
 
-   if (!selected) {
-     
-   } else if (selected.supported) {
+   if (selected && selected.supported) {
      detectedOptions.innerHTML = ''
-     selected.releases.forEach(rel => {
+     selected.releases.forEach(s => {
        const relBtn = defaultButton.cloneNode()
 
        const label = document.createElement('span')
-       label.textContent = `Download Noop ${rel.label}`
+       label.textContent = `Download Noop ${s.label}`
 
        const icon = document.createElement('span')
-       icon.innerHTML = icons[rel.name]
+       icon.innerHTML = icons[s.name]
        icon.setAttribute('class', 'mr-2')
 
 
        relBtn.textContent = ''
        relBtn.appendChild(icon)
        relBtn.appendChild(label)
-       relBtn.setAttribute('href', rel.asset.browser_download_url)
-       relBtn.addEventListener('click', dlButtonHandler(rel, selected))
+       relBtn.setAttribute('href', s.asset.browser_download_url)
+       relBtn.addEventListener('click', dlButtonHandler(rel, s))
        detectedOptions.appendChild(relBtn)
      })
-   } else {
+   } else if (selected) {
      detectedOptions.innerHTML = ''
 
      notifyHeadline.textContent = `${selected.label} support isn't available today, but we are working on it.`
