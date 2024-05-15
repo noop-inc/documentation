@@ -1,3 +1,13 @@
+---
+title: 'Migrate from Docker Compose to Noop'
+description: 'Guide on how to move local development setup from Docker Compose to Noop Workshop'
+slug: 'migrate-from-docker-compose-to-noop'
+section: 'guides'
+layout: '../../layouts/Doc.astro'
+pubDate: ''
+order: 1
+---
+
 # Migrate from Docker Compose to Noop
 
 This is a basic overview of how to translate a Docker Compose configuration (`docker-compose.yaml`) to a Noop configuration (`blueprint.yaml`).
@@ -11,6 +21,8 @@ One important note: Noop aims to create a higher-level abstraction than Docker. 
 ### Typical Docker Compose App
 
 A typical Docker Compose setup includes a web server and database. The two system components are defined as `services` at the top level of the `docker-compose.yaml` file. If and when the system requires a cache resource or an additional web service, it would be added to the services dictionary.
+
+
 
 ```yaml
 version: '3.9'
@@ -121,3 +133,6 @@ The runtime `command` configuration is defined under the Component's `runtime` p
 #### Deployment
 
 Unlike Compose, Noop Workshop automatically creates an Application Endpoint running on the standard HTTPS port. Once the application is started from Workshop, the Endpoint is available on the Environment Dashboard. This feature is especially useful when developing authentication and cookie schemes that require HTTPS to comply with browser and auth provider standards.
+
+
+
