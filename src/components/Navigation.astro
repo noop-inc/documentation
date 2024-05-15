@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 
 const docs = [].concat(await getCollection('docs'));
 
-const sections = ['getting started', 'core concepts', 'guides', 'components', 'resources', 'reference']
+const sections = ['getting started', 'guides', 'core concepts', 'components', 'resources', 'reference']
 /* How is this sorted? */
 const groupedDocs = docs.reduce((docs, object) => {
   const property = object.data.section;
