@@ -373,24 +373,6 @@ const { data = {} } = Astro.props
 
 <script>
  // TODO: eventually externalize these scripts so that they can get pulled in across docs and public sites
- const gaScript = () => {
-   const script = document.createElement('script');
-   script.type = 'text/javascript';
-   script.async = true;
-   script.src = 'https://www.googletagmanager.com/gtag/js?id=G-BQFKP55CCM';
-
-   const body = document.getElementsByTagName('body')[0];
-   const scriptLoc = body.getElementsByTagName('script')[0]
-   body.insertBefore(script, scriptLoc)
-
-
-   window.dataLayer = window.dataLayer || [];
-   function gtag(){ dataLayer.push(arguments); }
-   gtag('js', new Date());
-   gtag('config', 'G-BQFKP55CCM');
- }
-
-
  const intercomScript = () => {
    window.localStorage.removeItem('NOOP_INTERCOM_REDIRECT')
 
@@ -436,7 +418,6 @@ const { data = {} } = Astro.props
  }
 
  const loadTrackingScripts = () => {
-   gaScript()
    intercomScript()
  }
 
