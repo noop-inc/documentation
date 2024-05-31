@@ -10,6 +10,8 @@ export interface Props {
   title: string;
 }
 
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
 const { data = {} } = Astro.props
 ---
 
@@ -22,7 +24,7 @@ const { data = {} } = Astro.props
     <link rel="stylesheet" type="text/css" href="/assets/docs/styles.css" />
     <meta name="robots" content="index, follow">
     <meta name="description" content={data.description} />
-
+    <link rel="canonical" href={canonicalURL} />
     <meta property="og:title" content={`Noop Developer Docs: ${data.title}`}>
     <meta property="og:description" content={data.description}>
     <meta property="og:url" content={Astro.url.pathname}>

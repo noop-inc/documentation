@@ -9,6 +9,6 @@ export default defineConfig({
         inlineStylesheets: 'always',
         assets: 'assets/docs/_astro'
     },
-
+    site: 'https://noop.dev',
     integrations: [tailwind(), mdx(), pagefind({site: 'dist', outputSubdir: 'assets/docs/pf'})]
 })
