@@ -7,7 +7,6 @@ order: 5
 ---
 
 
-
 ## add
 
 Add a list of numbers together. Strings will be converted to numbers, null is treated as 0.
@@ -1909,6 +1908,63 @@ reduce:
 ```
 
 
+## search
+
+Determines whether a substring is present within a log entry's search string, returns a boolean.
+
+### Return Value
+
+(`boolean`) 
+
+### Parameters
+
+#### searchElement (`number`, `string`, `boolean`, `null`)
+
+### Examples
+
+
+*Example 1*
+
+```yaml
+search: foobar
+
+```
+
+*Returns*
+
+```json
+false
+```
+
+
+*Example 2*
+
+```yaml
+search: 123
+
+```
+
+*Returns*
+
+```json
+false
+```
+
+
+*Example 3*
+
+```yaml
+search: true
+
+```
+
+*Returns*
+
+```json
+false
+```
+
+
 ## slice
 
 Returns a portion of an array selected from start to end (end not included) where start and end represent the index of items in that array.
@@ -2115,7 +2171,7 @@ Determines whether a string starts with the characters of this search string. Nu
 *Example 1*
 
 ```yaml
-endswith:
+startswith:
   - Hello, friend
   - Hello
 
@@ -2124,14 +2180,14 @@ endswith:
 *Returns*
 
 ```json
-false
+true
 ```
 
 
 *Example 2*
 
 ```yaml
-endswith:
+startswith:
   - 42
   - 4
 
@@ -2140,14 +2196,14 @@ endswith:
 *Returns*
 
 ```json
-false
+true
 ```
 
 
 *Example 3*
 
 ```yaml
-endswith:
+startswith:
   - Hello, friend
   - friend
 
@@ -2156,7 +2212,7 @@ endswith:
 *Returns*
 
 ```json
-true
+false
 ```
 
 
